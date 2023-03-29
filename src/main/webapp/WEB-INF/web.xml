@@ -17,16 +17,16 @@
   	<servlet-class>com.smhrd.controller.LoginCon</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>Logout</servlet-name>
-  	<display-name>Logout</display-name>
-  	<description></description>
-  	<servlet-class>com.smhrd.controller.Logout</servlet-class>
-  </servlet>
-  <servlet>
   	<servlet-name>idCheckCon</servlet-name>
   	<display-name>idCheckCon</display-name>
   	<description></description>
   	<servlet-class>com.smhrd.controller.idCheckCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>LogoutCon</servlet-name>
+  	<display-name>LogoutCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.LogoutCon</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>JoinCon</servlet-name>
@@ -37,12 +37,12 @@
   	<url-pattern>/LoginCon</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>Logout</servlet-name>
-  	<url-pattern>/Logout</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
   	<servlet-name>idCheckCon</servlet-name>
   	<url-pattern>/idCheckCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LogoutCon</servlet-name>
+  	<url-pattern>/LogoutCon</url-pattern>
   </servlet-mapping>
 
 

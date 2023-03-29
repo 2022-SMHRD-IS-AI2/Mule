@@ -13,7 +13,6 @@
 			<li><input type="password"  placeholder="PW를 입력하세요" name="pw" ></li>
 			<li><input type="submit" value="LogIn" class="button fit"></li>
 		</form>
-					
-     <a href="LogoutCon">로그아웃</a>
+
 </body>
 </html>

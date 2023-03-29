@@ -28,19 +28,19 @@ public class LoginCon extends HttpServlet {
 		System.out.println(vo);
 		UserDAO dao = new UserDAO();
 		
-		UserVO loginMember =dao.selectUser(vo);
-		System.out.println("user"+loginMember);
+		UserVO loginUser =dao.selectUser(vo);
+		System.out.println("user"+loginUser);
 		
-		if( loginMember!=null) {//로그인 성공
+		if( loginUser!=null) {//로그인 성공
 			System.out.println("로그인 성공");
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("loginMember", loginMember);
-			response.sendRedirect("sample.jsp");
+			session.setAttribute("loginUser", loginUser);
+			response.sendRedirect("Main.jsp");
 			 
 		}else {//로그인 실패
 			System.out.println("로그인 실패");
-			response.sendRedirect("sample.jsp");
+			response.sendRedirect("Main.jsp");
 		}
 	}
 
