@@ -8,13 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-sample
+
 
 <%
-	UserVO loginMember=(UserVO)session.getAttribute("loginMember"); 
-	loginMember.getU_name();
-
+	UserVO loginUser=(UserVO)session.getAttribute("loginMember"); 
 %>
 
+	<%=loginUser.getU_name()%>님 환영합니다
 </body>
 </html>

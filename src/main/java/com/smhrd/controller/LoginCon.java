@@ -18,7 +18,7 @@ public class LoginCon extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String id = request.getParameter("email");
+		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
 		
