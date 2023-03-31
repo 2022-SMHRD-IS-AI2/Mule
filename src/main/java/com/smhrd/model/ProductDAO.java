@@ -35,5 +35,26 @@ public class ProductDAO {
 			return OPshow;
 		}
 		
+		
+		// 각 세부 상품정보 조회
+		public ProductVO ShowOpDetail(int prod_num) {
+			
+			ProductVO vo = sqlSession.selectOne("com.smhrd.model.ProductDAO.ShowOpDetail",prod_num);
+			sqlSession.close();
+			
+			return vo;
+		}
+		
+		
+	    // 로그인한 사람 해외공구상품 장바구니 조회
+		public List<ProductVO> OpBucket(String U_id) {
+
+			List<ProductVO> vo = sqlSession.selectList("com.smhrd.model.ProductDAO.OpBucket", U_id);
+			sqlSession.close();
+			
+
+			return vo;
+		}
+		
 
 }

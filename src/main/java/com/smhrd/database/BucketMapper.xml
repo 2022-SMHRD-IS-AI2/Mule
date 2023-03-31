@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.model.BucketDAO">
+
+	<!-- 장바구니에 선택한 상품번호/id 업로드 -->
+	<insert id="OpBucketUpload" parameterType="com.smhrd.model.BucketVO">
+		insert into bucket values(
+		bucket_SEQ.nextval,#{prod_num},sysdate,#{u_id},#{amount},'N')
+	</insert>
+	
+	<!-- 장바구니에 담기 클릭 시 해당상품이 이미 있는지 확인하기-->
+	<select id = "amountCheck" resultType="boolean" parameterType="com.smhrd.model.BucketVO">
+		select case when count(*)>0 then 1
+              else 0
+              end result
+      from bucket where u_id=#{u_id} and prod_num=#{prod_num}
+  	 </select>
+  	 
+  	 <!--장바구니에 담기 클릭 시 해당상품이 이미 있다면 기존의 장바구니에 있던 수량에 추가한 수량을 더해서 업데이트 -->
+	<update id="amountUpdate" parameterType="com.smhrd.model.BucketVO">
+		 UPDATE bucket SET amount = amount + #{amount} WHERE u_id = #{u_id} and prod_num=#{prod_num}
+	</update>
+</mapper>

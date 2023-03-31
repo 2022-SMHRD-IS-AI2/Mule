@@ -14,6 +14,7 @@
 
 
 <%
+	// 로그인한 회원 불러오기
 	UserVO loginUser=(UserVO)session.getAttribute("loginUser"); 
 
 	if(loginUser != null){%>
@@ -24,25 +25,19 @@
 	<%} %>
 	
 	<a href="OverseasProd.jsp">상품등록</a>
+   	<a href="OpBucket.jsp">장바구니</a>
+   
+	<%List<ProductVO> Pvo = (new ProductDAO()).OPshow(); %>
 	
-	<%List<ProductVO> OPvo = (new ProductDAO()).OPshow(); %>
-	
-	<%for(int i=0; i<OPvo.size(); i++){ %>
-		<%=OPvo.get(i).getProd_num() %>
-		<%=OPvo.get(i).getProd_name() %>
-		<%=OPvo.get(i).getProd_cate() %>
-		<%=OPvo.get(i).getProd_price()%>
-		<img src="./OverseasProd/<%=OPvo.get(i).getProd_title()%>" alt="">
-		<img src="./OverseasProd/<%=OPvo.get(i).getProd_img1()%>" alt="">
-		<img src="./OverseasProd/<%=OPvo.get(i).getProd_img2()%>" alt="">
-		<%=OPvo.get(i).getProd_desc()%>
-		<%=OPvo.get(i).getLikes()%>
-		<%=OPvo.get(i).getViews()%>
-		<%=OPvo.get(i).getProd_date() %>
-		<%=OPvo.get(i).getNumber_of_people()%>
-		<%=OPvo.get(i).getSeller_id()%>
-		<%=OPvo.get(i).getProd_check()%>
-		<%=OPvo.get(i).getReturn_period()%>
+	<%for(int i=0; i<Pvo.size(); i++){ %>
+		<%=Pvo.get(i).getProd_name() %>
+		<%=Pvo.get(i).getProd_price()%>
+		 <a href="OPdetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
+		<img src="./OverseasProd/<%=Pvo.get(i).getProd_title()%>" alt=""></a>
+		<%=Pvo.get(i).getNumber_of_people()%>
     <%} %>
+    
+	
+    
 </body>
 </html>
