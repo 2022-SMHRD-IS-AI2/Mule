@@ -25,15 +25,15 @@
 	<%} %>
 	
 	<a href="OverseasProd.jsp">상품등록</a>
-   	<a href="OpBucket.jsp">장바구니</a>
+   	<a href="Bucket.jsp">장바구니</a>
    
 	<%List<ProductVO> Pvo = (new ProductDAO()).OPshow(); %>
 	
 	<%for(int i=0; i<Pvo.size(); i++){ %>
 		<%=Pvo.get(i).getProd_name() %>
 		<%=Pvo.get(i).getProd_price()%>
-		 <a href="OPdetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
-		<img src="./OverseasProd/<%=Pvo.get(i).getProd_title()%>" alt=""></a>
+		 <a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
+		<img src="./Prod/<%=Pvo.get(i).getProd_title()%>" alt=""></a>
 		<%=Pvo.get(i).getNumber_of_people()%>
     <%} %>
     

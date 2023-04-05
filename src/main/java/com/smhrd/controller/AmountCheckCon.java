@@ -14,7 +14,7 @@ import com.smhrd.model.BucketVO;
 import com.smhrd.model.UserVO;
 
 
-public class amountCheckCon extends HttpServlet {
+public class AmountCheckCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -35,7 +35,7 @@ public class amountCheckCon extends HttpServlet {
 			if(check==true) {
 				System.out.println("장바구니에 있는 상품");
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("amountUpdateCon");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("AmountUpdateCon");
 				request.setAttribute("prod_num", prod_num);
 				request.setAttribute("amount", amount);
 				
@@ -44,7 +44,7 @@ public class amountCheckCon extends HttpServlet {
 			}else {
 				System.out.println("장바구니에 없는 상품");
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("OpBucketCon");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("BucketCon");
 				request.setAttribute("prod_num", prod_num);
 				request.setAttribute("amount", amount);
 				

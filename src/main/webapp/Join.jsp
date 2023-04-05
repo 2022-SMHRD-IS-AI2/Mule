@@ -12,7 +12,7 @@
                 <span>아이디</span>
                 <div class="inputs id">
                 <input type="text" placeholder="아이디" id="dcid" name="id">        
-            	<button type="button" id= "idCheck" >id체크</button>
+            	<button type="button" id= "IdCheck" >id체크</button>
             	</div>
             	<h4 id="resultCheck"></h4>
                 <span>비밀번호</span>
@@ -44,17 +44,17 @@
             
             
        <script>
-       		let button = document.querySelector("#idCheck");
+       		let button = document.querySelector("#IdCheck");
       	 	console.log("버튼제대로눌림")
             	function checkE(){
-               	var idCheck = $('#dcid').val()
-               	console.log(idCheck)
+               	var IdCheck = $('#dcid').val()
+               	console.log(IdCheck)
                
                $.ajax({
                  		 // 어디로 요청할 것인지??
-                        url : 'idCheckCon',
+                        url : 'IdCheckCon',
                         // 요청데이터(jsaon형태, {key, value})
-                        data : {'idCheck': idCheck},
+                        data : {'IdCheck': IdCheck},
                         // 요청방식
                         type: 'get',
                         // 요청-응답

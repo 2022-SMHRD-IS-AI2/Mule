@@ -13,20 +13,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{customs_clearance_num},#{seller_id},'0', #{return_period})
 	</insert>
 	
-	 <!--해외공구상품 등록하기-->
+	 <!--해외공구상품 출력-->
 	 <!--prod_check=0(해외공구상품) prod_check=1(중고거래 상품)-->
 	<select id="OPshow" resultType="com.smhrd.model.ProductVO">
 		select * from product where prod_check='0' 		 
 	</select>
 	
-	 <!--해외공구상품 상세정보페이지 -->
-	<select id="ShowOpDetail" resultType="com.smhrd.model.ProductVO" parameterType="int">
+	 <!--상품 상세정보 페이지 -->
+	<select id="ShowProdDetail" resultType="com.smhrd.model.ProductVO" parameterType="int">
 		select * from PRODUCT where prod_num=#{prod_num}
 	</select>
 	
-	<!-- 로그인한 유저의 해외공구 상품 장바구니 조회  -->
-  	 <select id = "OpBucket" resultType="com.smhrd.model.ProductVO" parameterType = "String">
-		select T1.*, T.amount from PRODUCT T1
+	<!-- 로그인한 유저의 상품 장바구니 조회  -->
+  	 <select id = "Bucket" resultType="com.smhrd.model.ProductVO" parameterType = "String">
+		select T1.*, T.* from PRODUCT T1
 		JOIN BUCKET T
 		ON T1.PROD_NUM = T.PROD_NUM
 		AND T.u_id = #{u_id} where order_status='N'

@@ -21,6 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<mapper resource="com/smhrd/database/UserMapper.xml" />
 	<mapper resource="com/smhrd/database/ProductMapper.xml" />
 	<mapper resource="com/smhrd/database/BucketMapper.xml" />
+	<mapper resource="com/smhrd/database/OrderMapper.xml" />
 	</mappers>
 
 </configuration>

@@ -19,7 +19,7 @@
                 <select class="boad-content1-select" name ="prodCate" >
             		<option>TV&리모컨</option>
             		<option>PC&ACC</option>
-            		<option>게임&콘솔</option>
+            		<option>마우스&키보드</option>
             		<option>빔프로젝트&스피커</option>
             	</select>
             </div>      

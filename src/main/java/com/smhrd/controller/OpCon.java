@@ -31,7 +31,7 @@ public class OpCon extends HttpServlet {
 		// MultipartRequest에서 필요한 매개변수 설정
 		// 1.모든 요청의 청보가 담겨있는 request객체
 		// 2.업로드 된 파일(이미지)을 저장할 경로
-		String path =request.getServletContext().getRealPath("./OverseasProd");
+		String path =request.getServletContext().getRealPath("./Prod");
 		System.out.println(path);
 		System.out.println(request.getContextPath());
 		System.out.println(request.getServletPath());

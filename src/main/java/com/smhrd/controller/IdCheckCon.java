@@ -11,17 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.smhrd.model.UserDAO;
 
 
-public class idCheckCon extends HttpServlet {
+public class IdCheckCon extends HttpServlet {
    private static final long serialVersionUID = 1L;
 
    
    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
    
-      String idCheck= request.getParameter("idCheck");
-      System.out.println(idCheck);
+      String IdCheck= request.getParameter("IdCheck");
+      System.out.println(IdCheck);
       UserDAO dao = new UserDAO();
       
-      boolean check = dao.idCheck(idCheck);
+      boolean check = dao.idCheck(IdCheck);
       
       System.out.println(check);
       

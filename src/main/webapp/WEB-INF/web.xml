@@ -17,10 +17,10 @@
   	<servlet-class>com.smhrd.controller.LoginCon</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>idCheckCon</servlet-name>
-  	<display-name>idCheckCon</display-name>
+  	<servlet-name>IdCheckCon</servlet-name>
+  	<display-name>IdCheckCon</display-name>
   	<description></description>
-  	<servlet-class>com.smhrd.controller.idCheckCon</servlet-class>
+  	<servlet-class>com.smhrd.controller.IdCheckCon</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>LogoutCon</servlet-name>
@@ -35,22 +35,40 @@
   	<servlet-class>com.smhrd.controller.OpCon</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>OpBucketCon</servlet-name>
-  	<display-name>OpBucketCon</display-name>
+  	<servlet-name>BucketCon</servlet-name>
+  	<display-name>BucketCon</display-name>
   	<description></description>
-  	<servlet-class>com.smhrd.controller.OpBucketCon</servlet-class>
+  	<servlet-class>com.smhrd.controller.BucketCon</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>amountCheckCon</servlet-name>
-  	<display-name>amountCheckCon</display-name>
+  	<servlet-name>AmountCheckCon</servlet-name>
+  	<display-name>AmountCheckCon</display-name>
   	<description></description>
-  	<servlet-class>com.smhrd.controller.amountCheckCon</servlet-class>
+  	<servlet-class>com.smhrd.controller.AmountCheckCon</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>amountUpdateCon</servlet-name>
-  	<display-name>amountUpdateCon</display-name>
+  	<servlet-name>AmountUpdateCon</servlet-name>
+  	<display-name>AmountUpdateCon</display-name>
   	<description></description>
-  	<servlet-class>com.smhrd.controller.amountUpdateCon</servlet-class>
+  	<servlet-class>com.smhrd.controller.AmountUpdateCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>OrderCon</servlet-name>
+  	<display-name>OrderCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.OrderCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AmountUpdateCon2</servlet-name>
+  	<display-name>AmountUpdateCon2</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.AmountUpdateCon2</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>OrderSuccessCon</servlet-name>
+  	<display-name>OrderSuccessCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.OrderSuccessCon</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>JoinCon</servlet-name>
@@ -61,8 +79,8 @@
   	<url-pattern>/LoginCon</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>idCheckCon</servlet-name>
-  	<url-pattern>/idCheckCon</url-pattern>
+  	<servlet-name>IdCheckCon</servlet-name>
+  	<url-pattern>/IdCheckCon</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>LogoutCon</servlet-name>
@@ -73,16 +91,28 @@
   	<url-pattern>/OpCon</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>OpBucketCon</servlet-name>
-  	<url-pattern>/OpBucketCon</url-pattern>
+  	<servlet-name>BucketCon</servlet-name>
+  	<url-pattern>/BucketCon</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>amountCheckCon</servlet-name>
-  	<url-pattern>/amountCheckCon</url-pattern>
+  	<servlet-name>AmountCheckCon</servlet-name>
+  	<url-pattern>/AmountCheckCon</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>amountUpdateCon</servlet-name>
-  	<url-pattern>/amountUpdateCon</url-pattern>
+  	<servlet-name>AmountUpdateCon</servlet-name>
+  	<url-pattern>/AmountUpdateCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>OrderCon</servlet-name>
+  	<url-pattern>/OrderCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AmountUpdateCon2</servlet-name>
+  	<url-pattern>/AmountUpdateCon2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>OrderSuccessCon</servlet-name>
+  	<url-pattern>/OrderSuccessCon</url-pattern>
   </servlet-mapping>
 
 
