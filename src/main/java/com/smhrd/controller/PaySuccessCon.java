@@ -12,7 +12,7 @@ import com.smhrd.model.ProductDAO;
 import com.smhrd.model.UserVO;
 
 
-public class OrderSuccessCon extends HttpServlet {
+public class PaySuccessCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -28,10 +28,10 @@ public class OrderSuccessCon extends HttpServlet {
 		int cnt = new BucketDAO().orderStatusCheck(u_id);
 		
 		if(cnt>0) {
-			System.out.println("주문완료");
+			System.out.println("결제완료");
 			response.sendRedirect("BuyerCntUpdateCon");
 		}else {
-			System.out.println("주문실패");
+			System.out.println("결제실패");
 			
 		}
 	

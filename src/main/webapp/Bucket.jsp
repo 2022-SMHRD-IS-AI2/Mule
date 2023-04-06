@@ -64,8 +64,8 @@
 		<h3> 총 결제 금액: <span id="totalAmount"><%= totalAmount %> 원</span></h3>
 	
 		  
-		  <input hidden name="prod_name" value="<%=Bvo.get(0).getProd_name() %>">
-		  <input hidden name="amount" value="<%=Bvo.size()%>">
+		  <input hidden name="main_prod_name" value="<%=Bvo.get(0).getProd_name() %>">
+		  <input hidden name="total_amount" value="<%=Bvo.size()%>">
 		  <input name="_totalAmount" id="_totalAmount" value="<%=totalAmount%>" type="hidden">
   
 	

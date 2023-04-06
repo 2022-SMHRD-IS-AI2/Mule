@@ -16,15 +16,16 @@ import lombok.Setter;
 @Getter //getter메소드
 @Setter //setter 메소드
 
-public class OrderVO {
+public class PayVO {
 
-	private BigDecimal order_num;
-	@NonNull private int prod_num;
-    private Timestamp order_date;
+	private BigDecimal pay_num;
+    private Timestamp  pay_date;
     @NonNull private String u_id;
-    @NonNull private int amount;
-    private String delivery_progress;
-    private String payment_status;
-    private String return_status;
+    @NonNull private int paid_amount;
+    @NonNull private String recipient;
+    @NonNull private String address;
+    @NonNull private String phone;
+    @NonNull private int total_amount;
+    @NonNull private String main_prod_name;
  
 }

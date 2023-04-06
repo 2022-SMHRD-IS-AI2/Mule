@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import com.smhrd.model.BucketDAO;
 import com.smhrd.model.BucketVO;
+import com.smhrd.model.OrderDAO;
+import com.smhrd.model.OrderVO;
 import com.smhrd.model.UserVO;
 
 
@@ -20,14 +22,17 @@ public class AmountUpdateCon2 extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
+		
 		HttpSession session = request.getSession();
 		UserVO loginUser=(UserVO)session.getAttribute("loginUser"); 
 		
 		String u_id=loginUser.getU_id();
-		String prod_name = request.getParameter("prod_name");
-		System.out.println("이름"+prod_name);
-		int amount = Integer.parseInt(request.getParameter("amount"));
-		System.out.println("수량"+amount);
+		String main_prod_name = request.getParameter("main_prod_name");
+		System.out.println("이름"+main_prod_name);
+		int total_amount = Integer.parseInt(request.getParameter("total_amount"));
+		System.out.println("수량"+total_amount);
 		int paid_amount = Integer.parseInt(request.getParameter("_totalAmount"));
 		System.out.println("결제액"+paid_amount);
 		String[] cnts = request.getParameterValues("cnt[]");
@@ -44,7 +49,6 @@ public class AmountUpdateCon2 extends HttpServlet {
 			
 			if(cnt>0) {
 				System.out.println("수량 재설정 성공");
-		
 			}else {
 				System.out.println("수량 재설정 실패");
 				
@@ -52,12 +56,16 @@ public class AmountUpdateCon2 extends HttpServlet {
 			
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Order.jsp");
-		request.setAttribute("prod_name", prod_name);
-		request.setAttribute("amount", amount);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("OrderCon");
+		
+		request.setAttribute("cnt[]", cnts );
+		request.setAttribute("prodNum[]", prodNums);
+		request.setAttribute("main_prod_name", main_prod_name);
+		request.setAttribute("total_amount", total_amount);
 		request.setAttribute("paid_amount", paid_amount);
 		
 		dispatcher.forward(request, response);
+		
 		
 		
 		

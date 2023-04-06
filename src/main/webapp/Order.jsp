@@ -19,7 +19,7 @@
 
 	%>
 	
-	 <form class="input2" action="OrderCon" method="post">
+	 <form class="input2" action="PayCon" method="post">
                 <span>받는분</span>
                 <div class="inputs phone">
                     <input type="text" placeholder="받는분" name="recipient">
@@ -35,14 +35,14 @@
 
 	<%
 	
-	String prod_name = (String)request.getAttribute("prod_name");
-	int amount = (int)request.getAttribute("amount");
+	String main_prod_name= (String)request.getAttribute("main_prod_name");
+	int total_amount = (int)request.getAttribute("total_amount");
 	int paid_amount = (int)request.getAttribute("paid_amount");
 	 
 	%>
 
-		  <input hidden name="prod_name" value="<%=prod_name %>">
-		  <input hidden name="amount" value="<%=amount%>">
+		  <input hidden name="main_prod_name" value="<%=main_prod_name %>">
+		  <input hidden name="total_amount" value="<%=total_amount%>">
   		  <input hidden name="paid_amount" value="<%=paid_amount %>">
   		  
           <input type="submit" value="결제하기">

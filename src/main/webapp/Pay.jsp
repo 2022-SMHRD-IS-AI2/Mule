@@ -13,9 +13,9 @@
 
   	<%
 	
-	String prod_name = (String)request.getAttribute("prod_name");
-	int amount = (int)request.getAttribute("amount");
-	amount-=1;
+	String main_prod_name = (String)request.getAttribute("main_prod_name");
+	int total_amount = (int)request.getAttribute("total_amount");
+	total_amount-=1;
 	int paid_amount = (int)request.getAttribute("paid_amount");
 	 
 	%> 
@@ -41,7 +41,7 @@
                 pg : 'html5_inicis.INIpayTest',
                 pay_method : 'card',
                 merchant_uid: "IMP"+makeMerchantUid, 
-                name : '<%=prod_name%>외<%=amount%>개',
+                name : '<%=main_prod_name%>외<%=total_amount%>개',
                 amount : 100 ,
                 buyer_email : 'Iamport@chai.finance',
                 buyer_name : '아임포트 기술지원팀',
@@ -50,7 +50,7 @@
                 buyer_postcode : '123-456'
             }, function (rsp) { // callback
                 if (rsp.success) {
-                  location.href = 'OrderSuccessCon';
+                  location.href = 'PaySuccessCon';
                 } else {
                    location.href = 'Pay.jsp';
                 }

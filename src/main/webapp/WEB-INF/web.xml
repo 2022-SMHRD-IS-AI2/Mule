@@ -65,16 +65,22 @@
   	<servlet-class>com.smhrd.controller.AmountUpdateCon2</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>OrderSuccessCon</servlet-name>
-  	<display-name>OrderSuccessCon</display-name>
+  	<servlet-name>PaySuccessCon</servlet-name>
+  	<display-name>PaySuccessCon</display-name>
   	<description></description>
-  	<servlet-class>com.smhrd.controller.OrderSuccessCon</servlet-class>
+  	<servlet-class>com.smhrd.controller.PaySuccessCon</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>BuyerCntUpdateCon</servlet-name>
   	<display-name>BuyerCntUpdateCon</display-name>
   	<description></description>
   	<servlet-class>com.smhrd.controller.BuyerCntUpdateCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>PayCon</servlet-name>
+  	<display-name>PayCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.PayCon</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>JoinCon</servlet-name>
@@ -117,12 +123,16 @@
   	<url-pattern>/AmountUpdateCon2</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>OrderSuccessCon</servlet-name>
-  	<url-pattern>/OrderSuccessCon</url-pattern>
+  	<servlet-name>PaySuccessCon</servlet-name>
+  	<url-pattern>/PaySuccessCon</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>BuyerCntUpdateCon</servlet-name>
   	<url-pattern>/BuyerCntUpdateCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PayCon</servlet-name>
+  	<url-pattern>/PayCon</url-pattern>
   </servlet-mapping>
 
 

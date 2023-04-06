@@ -26,7 +26,7 @@ public class BucketVO {
 	@NonNull private String U_id;
 	@NonNull private int amount;
 	private String order_status;
-	private String payment_status;
+	
 	
 	public BucketVO(int prod_num,  String u_id) {
 		this.prod_num = prod_num;
