@@ -26,7 +26,8 @@
 	<%
 	 int totalAmount = 0; // 총 결제 금액을 저장할 변수
 	
-	 for (int i = 0; i < Bvo.size(); i++) {
+	 if(Bvo.size()>0){
+	 	for (int i = 0; i < Bvo.size(); i++) {
 		    int amount = Bvo.get(i).getAmount();
 		    int price = Bvo.get(i).getProd_price();
 		    int totalPrice = amount * price;
@@ -41,32 +42,40 @@
 		    $(document).ready(function() {
 		      $('#cnt'+<%= i %>).change(function() {
 		        let amount = $('#cnt'+<%= i %>).val();
-		        let totalPrice = amount * <%= price %>; // 총 결제 금액 계산
+		        let totalPrice = amount * <%= price %>; // 상품 하나당 총 결제 금액 계산
 		        $('#totalPrice'+<%= i %>).text(totalPrice + " 원"); 
 		        totalAmount = 0; // 총 결제 금액 초기화
 		        $('.totalPrice').each(function() {
 		          totalAmount += parseInt($(this).text()); // 총 결제 금액 재계산
 		        });
-		        $('#totalAmount').text(totalAmount + " 원"); // 총 결제 금액 출력
+		        $('#totalAmount').text(totalAmount + " 원"); // 총 결제 금액 저장
+				document.getElementById('_totalAmount').value = totalAmount;
+				console.log(document.getElementById('_totalAmount').value);
 		      });
 		    });
 		  </script>
 		  
 		  <h3> 결제 금액<span class="totalPrice" id="totalPrice<%= i %>"><%= totalPrice %> 원</span></h3>
 		  
-		  	  <input hidden name="prodNum[]" value="<%=Bvo.get(i).getProd_num()%>">
+		  <input hidden name="prodNum[]" value="<%=Bvo.get(i).getProd_num()%>">
 		  	 
 		<% } %>
 
 		<h3> 총 결제 금액: <span id="totalAmount"><%= totalAmount %> 원</span></h3>
 	
+		  
 		  <input hidden name="prod_name" value="<%=Bvo.get(0).getProd_name() %>">
 		  <input hidden name="amount" value="<%=Bvo.size()%>">
-		  <input hidden name="paid_amount" value="<%= totalAmount %>">
-		  
+		  <input name="_totalAmount" id="_totalAmount" value="<%=totalAmount%>" type="hidden">
+  
+	
 	         <div class="inputs signUp">
-                  <input type="submit" value="주문하기">
+                <input type="submit" value="주문하기">
              </div>
+       	<% } %>	      
+             
+      
+             
         </form>
 	
 	

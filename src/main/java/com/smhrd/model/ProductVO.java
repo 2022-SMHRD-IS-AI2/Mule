@@ -39,6 +39,7 @@ public class ProductVO {
     @NonNull private String return_period;
     private int amount;
     private int bucket_num;
+    private int buyer_cnt;
 }
 
 

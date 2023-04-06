@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into product values(
 		product_SEQ.nextval,#{prod_name},#{prod_cate},#{prod_price},#{prod_title},
 		#{prod_img1},#{prod_img2},#{prod_desc},'0','0',sysdate,#{number_of_people},
-		#{customs_clearance_num},#{seller_id},'0', #{return_period})
+		#{customs_clearance_num},#{seller_id},'0', #{return_period},'0')
 	</insert>
 	
 	 <!--해외공구상품 출력-->
@@ -32,6 +32,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		AND T.u_id = #{u_id} where order_status='N'
   	 </select>
   	 
-  
+  	<!--장바구니에 담아놓은 상품 결제완료시 구매한 사람 수 업데이트 -->
+	<update id="buyerCntUpdate" parameterType="String" >
+		MERGE INTO product p
+        USING (SELECT prod_num, amount FROM bucket WHERE order_status = 'Y' and u_id=#{u_id}) b
+        ON (p.prod_num = b.prod_num)
+        WHEN MATCHED THEN UPDATE SET p.buyer_cnt = b.amount
+	</update>
 	
 </mapper>	

@@ -39,10 +39,12 @@ public class OrderCon extends HttpServlet {
 			System.out.println("주문내역 업로드 성공");
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("Pay.jsp");
-			
 			request.setAttribute("prod_name", prod_name);
 			request.setAttribute("amount", amount);
 			request.setAttribute("paid_amount", paid_amount);
+			
+			dispatcher.forward(request, response);
+			
 			
 		}else {
 			System.out.println("주문내역 업로드 실패");

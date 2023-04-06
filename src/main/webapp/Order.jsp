@@ -35,15 +35,15 @@
 
 	<%
 	
-		 String prod_name = request.getParameter("prod_name");
-	 	 int amount = Integer.parseInt(request.getParameter("amount"));
-		 int amount_paid = Integer.parseInt(request.getParameter("amount_paid"));
+	String prod_name = (String)request.getAttribute("prod_name");
+	int amount = (int)request.getAttribute("amount");
+	int paid_amount = (int)request.getAttribute("paid_amount");
 	 
 	%>
 
 		  <input hidden name="prod_name" value="<%=prod_name %>">
 		  <input hidden name="amount" value="<%=amount%>">
-  		  <input hidden name="paid_amount" value="<%=amount_paid %>">
+  		  <input hidden name="paid_amount" value="<%=paid_amount %>">
   		  
           <input type="submit" value="결제하기">
         </form>

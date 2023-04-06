@@ -56,5 +56,31 @@ public class ProductDAO {
 			return vo;
 		}
 		
+		
+		//장바구니에 담아놓은 상품 결제완료시 구매한 사람 수 업데이트
+		public int buyerCntUpdate (String loginUser) {
+
+		int cnt=0;
+			
+			try {//만약 sql문이 잘못되었거나, url이 잘못되었다면 세션이 잘 생성이 안될수 있음
+				
+				//insert("실행할 sql 경로 정의",넘겨줄 값)
+				cnt=sqlSession.update("com.smhrd.model.ProductDAO.buyerCntUpdate", loginUser);
+				
+				if(cnt>0) {
+					sqlSession.commit();
+				}else {
+					sqlSession.rollback();
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				
+			}finally {
+				sqlSession.close();
+			}
+			return cnt;
+		}
+		
 
 }

@@ -7,17 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.smhrd.model.BucketDAO;
 import com.smhrd.model.ProductDAO;
 import com.smhrd.model.UserVO;
 
 
-public class OrderSuccessCon extends HttpServlet {
+public class BuyerCntUpdateCon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
@@ -25,17 +23,16 @@ public class OrderSuccessCon extends HttpServlet {
 		
 		String u_id=loginUser.getU_id();
 		
-		int cnt = new BucketDAO().orderStatusCheck(u_id);
+		int cnt = new ProductDAO().buyerCntUpdate(u_id);
 		
 		if(cnt>0) {
-			System.out.println("주문완료");
-			response.sendRedirect("BuyerCntUpdateCon");
+			System.out.println("판매자 수 업데이트 성공");
+			response.sendRedirect("Bucket.jsp");
 		}else {
-			System.out.println("주문실패");
+			System.out.println("판매자 수 업데이트 실패");
 			
 		}
 	
-		
 	}
 
 }

@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select case when count(*)>0 then 1
               else 0
               end result
-      from bucket where u_id=#{u_id} and prod_num=#{prod_num}
+      from bucket where u_id=#{u_id} and prod_num=#{prod_num} and order_status='N'
   	 </select>
   	 
   	 <!--장바구니에 담기 클릭 시 해당상품이 이미 있다면 기존의 장바구니에 있던 수량에 추가한 수량을 더해서 업데이트 -->
@@ -28,4 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="amountUpdate2" parameterType="com.smhrd.model.BucketVO">
 		 UPDATE bucket SET amount = #{amount} WHERE u_id = #{u_id} and prod_num=#{prod_num}
 	</update>
+	
+	<!--장바구니에 담아놓은 상품 결제완료시 주문상태 주문완료로 바꾸기 N->Y -->
+	<update id="orderStatusCheck" parameterType="String" >
+		update bucket set order_status='Y' where u_id=#{u_id}
+	</update>
+	
 </mapper>

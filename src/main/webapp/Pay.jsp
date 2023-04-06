@@ -13,11 +13,12 @@
 
   	<%
 	
-		 String prod_name = request.getParameter("prod_name");
-	 	 int amount = Integer.parseInt(request.getParameter("amount"));
-		 int amount_paid = Integer.parseInt(request.getParameter("amount_paid"));
+	String prod_name = (String)request.getAttribute("prod_name");
+	int amount = (int)request.getAttribute("amount");
+	amount-=1;
+	int paid_amount = (int)request.getAttribute("paid_amount");
 	 
-	%>
+	%> 
 
 	<!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
@@ -41,7 +42,7 @@
                 pay_method : 'card',
                 merchant_uid: "IMP"+makeMerchantUid, 
                 name : '<%=prod_name%>외<%=amount%>개',
-                amount : <%=amount_paid%>,
+                amount : 100 ,
                 buyer_email : 'Iamport@chai.finance',
                 buyer_name : '아임포트 기술지원팀',
                 buyer_tel : '010-1234-5678',
