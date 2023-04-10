@@ -8,7 +8,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!-- 주문내역 업로드  -->
    <insert id="orderUpload" parameterType="com.smhrd.model.OrderVO">
        insert into m_order values(
-       m_order_seq.nextval,#{prod_num},sysdate, #{u_id},#{amount},'N','N','N')
+       m_order_seq.nextval,#{prod_num},sysdate, #{u_id},#{amount},'N','N','N','N','N')
    </insert>
    
+     <!--상품의 구매자수가 인원수 이상일때 해당 상품의 배송상태 N->Y로 변경하기 -->
+	<update id="deliveryProgressUpdate">
+ 		UPDATE m_order
+		SET delivery_progress = 'Y'
+		WHERE EXISTS (SELECT *
+  				 	 FROM product
+  				 	 WHERE product.prod_num= m_order.prod_num
+                 	 AND product.buyer_cnt >=  product.number_of_people)
+	</update>
+	
+   <!-- 상품구매자가 반품 신청시 반품여부 N->Y로 변경하기 --> 
+	<update id="returnStatusUpdate" parameterType="com.smhrd.model.OrderVO">
+ 	 	UPDATE m_order SET return_status='Y'
+ 	 	WHERE u_id = #{u_id} and order_num=#{order_num}
+	</update>
+	
+	
+	<!-- 상품구매자가 결제확정시 결제여부 N->Y로 변경하기 --> 
+	<update id="paymentStatusUpdate" parameterType="com.smhrd.model.OrderVO">
+ 	 	UPDATE m_order SET payment_status='Y'
+ 	 	WHERE u_id = #{u_id} and order_num=#{order_num}
+	</update>
+	
+	<!-- 상품구매자가 중고거래 선택시 중고거래 여부 N->Y로 변경하기 --> 
+	<update id="usedProdStatusUpdate" parameterType="com.smhrd.model.OrderVO">
+ 	 	UPDATE m_order SET usedprod_status='Y'
+ 	 	WHERE u_id = #{u_id} and order_num=#{order_num}
+	</update>
+	
+	<!-- 상품구매자가 리뷰작성 완료시 리뷰작성여부 N->Y로 변경하기 --> 
+	<update id="reviewStatusUpdate" parameterType="com.smhrd.model.OrderVO">
+ 	 	UPDATE m_order SET review_status='Y'
+ 	 	WHERE u_id = #{u_id} and order_num=#{order_num}
+	</update>
+	
  </mapper>

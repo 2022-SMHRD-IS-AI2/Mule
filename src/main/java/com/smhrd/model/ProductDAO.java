@@ -26,6 +26,16 @@ public class ProductDAO {
 		}
 		
 		
+		//중고거래상품 등록 요청
+		public int UPupload(ProductVO vo) {
+			
+			int cnt = sqlSession.insert("UPupload",vo);
+			sqlSession.close();
+			
+			return cnt;
+		}
+		
+		
 		// 해외공구상품 출력
 		public List<ProductVO> OPshow() {
 			
@@ -33,6 +43,16 @@ public class ProductDAO {
 			sqlSession.close();
 		
 			return OPshow;
+		}
+		
+		
+		// 중고거래상품 출력
+		public List<ProductVO> UPshow() {
+					
+			List<ProductVO> UPshow  = sqlSession.selectList("com.smhrd.model.ProductDAO.UPshow");
+			sqlSession.close();
+				
+			return UPshow;
 		}
 		
 		
@@ -58,14 +78,14 @@ public class ProductDAO {
 		
 		
 		//장바구니에 담아놓은 상품 결제완료시 구매한 사람 수 업데이트
-		public int buyerCntUpdate (String loginUser) {
+		public int buyerCntUpdate () {
 
 		int cnt=0;
 			
 			try {//만약 sql문이 잘못되었거나, url이 잘못되었다면 세션이 잘 생성이 안될수 있음
 				
 				//insert("실행할 sql 경로 정의",넘겨줄 값)
-				cnt=sqlSession.update("com.smhrd.model.ProductDAO.buyerCntUpdate", loginUser);
+				cnt=sqlSession.update("com.smhrd.model.ProductDAO.buyerCntUpdate");
 				
 				if(cnt>0) {
 					sqlSession.commit();
@@ -81,6 +101,15 @@ public class ProductDAO {
 			}
 			return cnt;
 		}
+		
+		   // 로그인한 유저의 상품 주문내역 조회
+			public List<ProductVO> orderList(String U_id) {
+
+			List<ProductVO> vo = sqlSession.selectList("com.smhrd.model.ProductDAO.orderList", U_id);
+			sqlSession.close();
+				
+			return vo;
+			}
 		
 
 }

@@ -27,16 +27,14 @@
 	<a href="OverseasProd.jsp">상품등록</a>
    	<a href="Bucket.jsp">장바구니</a>
     <a href="OrderList.jsp">마이페이지</a>
-    <a href="UsedProdMain.jsp">중고거래</a>
     
-	<%List<ProductVO> Pvo = (new ProductDAO()).OPshow(); %>
+	<%List<ProductVO> Pvo = (new ProductDAO()).UPshow(); %>
 	
 	<%for(int i=0; i<Pvo.size(); i++){ %>
 		<%=Pvo.get(i).getProd_name() %>
 		<%=Pvo.get(i).getProd_price()%>
 		 <a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
 		<img src="./Prod/<%=Pvo.get(i).getProd_title()%>" alt=""></a>
-		<%=Pvo.get(i).getNumber_of_people()%>
     <%} %>
     
 	

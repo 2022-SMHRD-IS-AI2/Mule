@@ -13,10 +13,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{customs_clearance_num},#{seller_id},'0', #{return_period},'0')
 	</insert>
 	
+	<!--중고거래상품 등록 -->
+	<insert id="UPupload" parameterType="com.smhrd.model.ProductVO">
+		insert into product values(
+		product_SEQ.nextval,#{prod_name},'N',#{prod_price},#{prod_title},
+		#{prod_img1},#{prod_img2},#{prod_desc},'0','0',sysdate,'0',
+		'0',#{seller_id},'1', #{return_period},'0')
+	</insert>
+	
 	 <!--해외공구상품 출력-->
 	 <!--prod_check=0(해외공구상품) prod_check=1(중고거래 상품)-->
 	<select id="OPshow" resultType="com.smhrd.model.ProductVO">
 		select * from product where prod_check='0' 		 
+	</select>
+	
+	
+	 <!--중고거래상품 출력-->
+	 <!--prod_check=0(해외공구상품) prod_check=1(중고거래 상품)-->
+	<select id="UPshow" resultType="com.smhrd.model.ProductVO">
+		select * from product where prod_check='1' 		 
 	</select>
 	
 	 <!--상품 상세정보 페이지 -->
@@ -29,15 +44,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select T1.*, T.* from PRODUCT T1
 		JOIN BUCKET T
 		ON T1.PROD_NUM = T.PROD_NUM
-		AND T.u_id = #{u_id} where order_status='N'
+		AND T.u_id = #{u_id} 
   	 </select>
   	 
   	<!--장바구니에 담아놓은 상품 결제완료시 구매한 사람 수 업데이트 -->
-	<update id="buyerCntUpdate" parameterType="String" >
-		MERGE INTO product p
-        USING (SELECT prod_num, amount FROM bucket WHERE order_status = 'Y' and u_id=#{u_id}) b
-        ON (p.prod_num = b.prod_num)
-        WHEN MATCHED THEN UPDATE SET p.buyer_cnt = b.amount
+	<update id="buyerCntUpdate">
+ 	UPDATE product p
+	SET p.buyer_cnt =(SELECT SUM(o.amount)
+                      FROM m_order o
+                      WHERE o.prod_num = p.prod_num) 
 	</update>
+	
+	
+	<!-- 로그인한 유저의 상품 주문내역 조회 -->
+	<select id="orderList" resultType="com.smhrd.model.ProductVO" parameterType = "String">
+		select T1.*, T.* from PRODUCT T1
+		JOIN m_order T
+		ON T1.PROD_NUM = T.PROD_NUM
+		AND T.U_ID = #{u_id}
+	</select> 
 	
 </mapper>	

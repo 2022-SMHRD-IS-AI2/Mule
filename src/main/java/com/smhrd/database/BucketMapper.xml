@@ -29,9 +29,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 UPDATE bucket SET amount = #{amount} WHERE u_id = #{u_id} and prod_num=#{prod_num}
 	</update>
 	
-	<!--장바구니에 담아놓은 상품 구매완료 시 장바구니에서 삭제하기 -->
-	<update id="orderStatusCheck" parameterType="String" >
-		update bucket set order_status='Y' where u_id=#{u_id}
-	</update>
+	<!--결제 성공시 기존 장바구니 정보 삭제하기 -->
+	<delete id="AllDeleteBucket" parameterType="String" >
+		DELETE FROM bucket WHERE u_id = #{u_id}
+	</delete>
 	
 </mapper>

@@ -28,10 +28,13 @@ public class JoinCon extends HttpServlet {
 	      String nick = request.getParameter("nick");
 	      String tel = request.getParameter("tel");
 	      String address = request.getParameter("address");
+	      String gender = request.getParameter("gender");
+	      int age = Integer.parseInt(request.getParameter("age"));
+	      String job = request.getParameter("job");
 	      
 	      
 	      // 데이터베이스에 한번에 값 넣어주기
-	      UserVO vo = new UserVO(id, pw, name, nick,address, tel);
+	      UserVO vo = new UserVO(id, pw, name, nick,address, tel,gender,age,job);
 	      
 	      UserDAO dao = new UserDAO();
 	      int cnt = dao.insertUser(vo);

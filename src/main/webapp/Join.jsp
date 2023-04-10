@@ -36,7 +36,34 @@
                 <div class="inputs phone">
                     <input type="text" placeholder="전화번호" name="tel">
                 </div>
+                
+                 <span>성별</span>
+                <div class="inputs phone">
+                    <input type="radio" name="gender" value="female">
+  					여성
+  					<input type="radio" name="gender" value="male">
+  				    남성
+                </div>
+                
+                 <span>나이</span>
+                <div class="inputs phone">
+                   <input type="number" min="1" max="99" name="age">
+                </div>
 
+                 <span>직업</span>
+                <div class="inputs phone">
+                  <select name ="job" >
+            		<option>전문직</option>
+            		<option>공무원</option>
+            		<option>프리랜서</option>
+            		<option>자영업</option>
+            		<option>종교인</option>
+            		<option>주부</option>
+            		<option>학생</option>
+            		<option>기타</option>
+            	</select>
+                </div>
+                
                 <div class="inputs signUp">
                     <input type="submit" value="회원가입">
                 </div>

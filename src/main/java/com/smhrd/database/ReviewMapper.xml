@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.model.ReviewDAO">
+	
+	<!--사용자가 입력한 리뷰 내용 업로드 -->	
+	<insert id="reviewUpload" parameterType = "com.smhrd.model.ReviewVO">
+	insert into REVIEW values(REVIEW_SEQ.nextval, #{PROD_NUM}, #{REVIEW_CONTENT}, sysdate, 
+							  #{U_ID}, #{REVIEW_RATINGS})	
+	</insert>
+
+	<!--사용자가 입력한 리뷰 각 상품상세페이지에 출력 -->
+	<select id="showReview" resultType="com.smhrd.model.ReviewVO" parameterType = "int">
+		select * from REVIEW where PROD_NUM=#{PROD_NUM}
+		order by review_date desc
+	</select> 
+	
+</mapper>

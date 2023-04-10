@@ -21,7 +21,7 @@
   	List<ProductVO> Bvo = new ProductDAO().Bucket(u_id);
 	%>
 	
-	 <form class="input2" action="AmountUpdateCon2" method="post">
+	 <form class="input2" action="OrderCon" method="post">
        
 	<%
 	 int totalAmount = 0; // 총 결제 금액을 저장할 변수

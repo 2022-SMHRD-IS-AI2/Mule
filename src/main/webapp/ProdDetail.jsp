@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.ReviewDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.ReviewVO"%>
 <%@page import="com.smhrd.model.BucketDAO"%>
 <%@page import="com.smhrd.model.BucketVO"%>
 <%@page import="com.smhrd.model.ProductVO"%>
@@ -16,6 +19,9 @@
    // 사용자가 클릭한 상품의 대한 상품 상세페이지 상품번호를 이용하여 받아오기
    int prod_num = Integer.parseInt(request.getParameter("prod_num"));
    ProductVO Pvo = new ProductDAO().ShowProdDetail(prod_num);
+   
+   // 해당 상품의 리뷰내용 불러오기 
+   List<ReviewVO> Rvo = new ReviewDAO().showReview(prod_num);
    %>
    
    <img src="./Prod/<%=Pvo.getProd_title()%>" alt=""></a>
@@ -36,6 +42,22 @@
       <input type="number" min="1" max="9999" name="amount" value="1">
       <button type="submit">장바구니 담기</button>
    </form>
+   
+   <% //리뷰내용 출력
+   
+   for(int i=0; i<Rvo.size(); i++){%>
+   
+   		<%=Rvo.get(i).getU_ID() %>
+   		<%=Rvo.get(i).getREVIEW_DATE() %>
+   		
+   	    <%for(int j=0; j<Rvo.get(i).getREVIEW_RATINGS(); j++){ %>
+                 <span>★</span>
+              <%} %>
+              
+   		<%=Rvo.get(i).getREVIEW_RATINGS() %>
+   		<%=Rvo.get(i).getREVIEW_CONTENT() %>
+	   
+   <%}%>
    
 </body>
 </html>

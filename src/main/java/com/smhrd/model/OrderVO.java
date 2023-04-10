@@ -18,7 +18,7 @@ import lombok.Setter;
 
 public class OrderVO {
 
-	private BigDecimal order_num;
+	private int order_num;
 	@NonNull private int prod_num;
     private Timestamp order_date;
     @NonNull private String u_id;
@@ -26,5 +26,13 @@ public class OrderVO {
     private String delivery_progress;
     private String payment_status;
     private String return_status;
- 
+    private String usedprod_status;
+    private String review_status;
+    
+	
+	public OrderVO(String u_id,  int order_num) {
+		this.order_num = order_num;
+		this.u_id = u_id;
+	}
+    
 }

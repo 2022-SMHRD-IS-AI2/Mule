@@ -59,12 +59,6 @@
   	<servlet-class>com.smhrd.controller.OrderCon</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>AmountUpdateCon2</servlet-name>
-  	<display-name>AmountUpdateCon2</display-name>
-  	<description></description>
-  	<servlet-class>com.smhrd.controller.AmountUpdateCon2</servlet-class>
-  </servlet>
-  <servlet>
   	<servlet-name>PaySuccessCon</servlet-name>
   	<display-name>PaySuccessCon</display-name>
   	<description></description>
@@ -81,6 +75,48 @@
   	<display-name>PayCon</display-name>
   	<description></description>
   	<servlet-class>com.smhrd.controller.PayCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DeliveryProgressCon</servlet-name>
+  	<display-name>DeliveryProgressCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.DeliveryProgressCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>PaymentStatusCon</servlet-name>
+  	<display-name>PaymentStatusCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.PaymentStatusCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UsedProdCon</servlet-name>
+  	<display-name>UsedProdCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.UsedProdCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UsedprodStatusCon</servlet-name>
+  	<display-name>UsedprodStatusCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.UsedprodStatusCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ReviewStatusCon</servlet-name>
+  	<display-name>ReviewStatusCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.ReviewStatusCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ReturnStatusCon</servlet-name>
+  	<display-name>ReturnStatusCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.ReturnStatusCon</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ReviewCon</servlet-name>
+  	<display-name>ReviewCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.ReviewCon</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>JoinCon</servlet-name>
@@ -119,10 +155,6 @@
   	<url-pattern>/OrderCon</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>AmountUpdateCon2</servlet-name>
-  	<url-pattern>/AmountUpdateCon2</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
   	<servlet-name>PaySuccessCon</servlet-name>
   	<url-pattern>/PaySuccessCon</url-pattern>
   </servlet-mapping>
@@ -133,6 +165,34 @@
   <servlet-mapping>
   	<servlet-name>PayCon</servlet-name>
   	<url-pattern>/PayCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeliveryProgressCon</servlet-name>
+  	<url-pattern>/DeliveryProgressCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PaymentStatusCon</servlet-name>
+  	<url-pattern>/PaymentStatusCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UsedProdCon</servlet-name>
+  	<url-pattern>/UsedProdCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UsedprodStatusCon</servlet-name>
+  	<url-pattern>/UsedprodStatusCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ReviewStatusCon</servlet-name>
+  	<url-pattern>/ReviewStatusCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ReturnStatusCon</servlet-name>
+  	<url-pattern>/ReturnStatusCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ReviewCon</servlet-name>
+  	<url-pattern>/ReviewCon</url-pattern>
   </servlet-mapping>
 
 

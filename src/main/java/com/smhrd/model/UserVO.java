@@ -22,6 +22,9 @@ public class UserVO{
 	private String u_name;
 	private String u_nick;
 	private String u_addr;
-	private String u_phone;	
+	private String u_phone;
+	private String u_gender;
+	private int u_age;
+	private String u_job;
 	
 }

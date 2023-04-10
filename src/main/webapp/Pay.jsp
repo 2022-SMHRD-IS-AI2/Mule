@@ -15,6 +15,7 @@
 	
 	String main_prod_name = (String)request.getAttribute("main_prod_name");
 	int total_amount = (int)request.getAttribute("total_amount");
+	System.out.println(total_amount);
 	total_amount-=1;
 	int paid_amount = (int)request.getAttribute("paid_amount");
 	 
@@ -51,6 +52,7 @@
             }, function (rsp) { // callback
                 if (rsp.success) {
                   location.href = 'PaySuccessCon';
+                  
                 } else {
                    location.href = 'Pay.jsp';
                 }

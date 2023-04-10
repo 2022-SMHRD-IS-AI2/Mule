@@ -44,6 +44,8 @@ public class OrderCon extends HttpServlet {
          
              OrderVO O_vo = new OrderVO(prodNum,u_id,num);   
              int O_cnt = new OrderDAO().orderUpload(O_vo);
+             
+
                
              if(O_cnt>0) {
                System.out.println("주문내역 업로드 완료");

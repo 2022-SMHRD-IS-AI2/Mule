@@ -8,7 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <!-- 회원가입  -->
    <insert id="insertUser" parameterType="com.smhrd.model.UserVO">
-       insert into m_user values (#{u_id}, #{u_pw}, #{u_name},#{u_nick},#{u_addr},#{u_phone},sysdate) 
+       insert into m_user values (#{u_id}, #{u_pw}, #{u_name},#{u_nick},#{u_addr},#{u_phone},sysdate,
+       								#{u_gender},#{u_age},#{u_job}) 
    </insert>
    
    <!--로그인-->
