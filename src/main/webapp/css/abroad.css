@@ -1,0 +1,51 @@
+.banner{height:auto;}
+
+.product_wrap{width:1315px; height:auto; margin-left:300px; margin-top:10px;}
+
+.category_wrap{width:1050px; height:130px; margin:0 auto;}
+.category li{ display:block; width:200px; height:50px; background:#f7f7f7; border-radius:30px; text-align:center; line-height:50px; font-weight:600; cursor:pointer; transition:all 0.05s;}
+.category li:nth-child(1) {background:#f7f7f7; color:#6255f6; font-weight:500;}
+
+.pr_title{padding:0 50px;}
+.pr_txt{height:13px; line-height:12px; color:#282828; font-size:15px;}
+.pr_txt span{color:#6255f6;}
+.pr_txt img{margin-right:5px;}
+.pr_list{line-height:15px; font-size:15px; color:#dcdbe9;}
+.pr_list>li:nth-of-type(2n){margin:0 10px;}
+.pr_list>li:last-child{color:#6255f6;}
+.pr_list img{height:18px;}
+
+
+.product{flex-wrap:wrap;}
+.cate{flex-wrap:wrap; margin-top:30px;}
+.tv_pro{width:380px; height:auto; margin-bottom:60px; margin-left:43px;}
+.pc_pro{width:380px; height:auto; margin-bottom:60px; margin-left:43px;}
+.game_pro{width:380px; height:auto; margin-bottom:60px; margin-left:43px;}
+.beam_pro{width:380px; height:auto; margin-bottom:60px; margin-left:43px;}
+
+.p_img{width:380px; height:260px; background:#cfcfcf;  overflow:hidden;  border-radius:20px; }
+.p_img>li>img{width:480px;}
+.p_text{flex-wrap:wrap; color:#282828;}
+.p_text>li{width:380px; height:60px; line-height:60px;  font-size:21px; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
+.p_text>li:first-child{height:50px; line-height:60px;}
+.p_text>li>span{color:#6255f6;}
+.p_text .star{color:#fffb00;}
+.p_text .black{color:#282828; font-size:17px;}
+.p_text>li:last-child{height:50px; line-height:60px;}
+
+.cart{width:380px; height:80px;}
+.cart>li{width:160px; height:45px; background:#f7f7f7; line-height:40px; border-radius:20px; font-weight:300; cursor:pointer; transition:all 0.05s;}
+.cart>li:hover{background:#6255f6; color:#fff;}
+.none2{display:none;}
+.cart>li:hover .none2{display: block;}
+.cart>li img{height:20px;}
+
+.cart>li .bk2{display:none;}
+.cart>li:hover .bk1{display:none;}
+.cart>li:hover .bk2{display:block;}
+
+.cart>li .heart{height:16px;}
+.cart>li .heart2{display:none;}
+.cart>li:hover .heart1{display:none;}
+.cart>li:hover .heart2{display:block;}
+

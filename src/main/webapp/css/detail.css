@@ -1,0 +1,73 @@
+.detail_wrap{width:1315px; height:auto; margin-left:300px; margin-top:0px; background:#fff;}
+
+.detail{width:1050px; padding:20px; margin-right:100px;}
+
+.dt_img{width:600px; height:500px; border-radius:20px; overflow:hidden;}
+.dt_img img{width:600px;}
+.mini_img>li{height:100px;}
+.mini_img img{width:80px; margin-left:50px; opacity:0.8;}
+
+.dt_info{width:430px; height:500px; background:#fff;}
+#lnb{ position:relative; top:0; left:100px;}
+#lnb.fixed{position: fixed; top:0px; left:1160px;; margin-top:50px;}
+#lnb.absolute{position:absolute; top:3600px;}
+
+
+.info_tit>li{font-weight:bold; font-size:22px; height:80px;}
+.info_tit>li>span{color:#6255f6;}
+.info_tit>li:first-child{color:#282828;}
+.info_tit>li:nth-child(2){font-weight:300; color:#adadad; font-size:16px; height:70px;}
+.info_tit>li:last-child{height:60px; color:#282828;}
+
+.info_wrap>h5{width:400px; padding:0 10px; height:50px; line-height:50px; border-bottom:1px solid #eeeeee;}
+.info_wrap>h5{ border-top:1px solid #cccccc;}
+.product_info>li{font-size: 14px; color:#adadad; padding:0 15px; line-height:25px; width:400px;}
+.product_info>li:first-child{margin-top:15px;}
+.product_info>li:last-child{padding-bottom:10px; border-bottom:1px solid #eeeeee;}
+
+.cnt_wrap{width:420px; height:130px; border-bottom:1px solid #eeeeee;}
+.cnt_wrap>h5{width:400px; padding:0 10px; height:50px; line-height:50px;}
+.pro_cnt{width:420px; padding:0 20px; height:60px; border-radius:15px; background:#f5f5fa; box-sizing: border-box;}
+.pro_cnt>.f>span{color:#64646b; background:#fff; width:20px; height:20px; border-radius:100%; border:rgba(98, 85, 246, 0.2) solid 1px; cursor:pointer; text-align:Center; line-height:18px;}
+.pro_cnt>.f>input{border:1px solid #cccccc;; width:50px;  margin:0 10px; text-align:center; font-weight:bold; font-family:'The Jamsil OTF 5 Bold'; font-size:15px; border-radius:3px;}
+.pro_cnt>.f>input[type=number]::-webkit-inner-spin-button {
+	opacity: 1;}
+.pro_cnt>.f>input:focus{outline:none;}
+.person{font-size:16px;}
+
+.pro_cnt>.cnt_price{font-size:16px; font-weight:bold; color:#282828}
+
+.price_wrap{width:400px; border-bottom:1px solid #eee eee; padding:0 10px;}
+.price1{font-size:14px; color:#64646b; line-height:50px;}
+.price2{font-size:18px; color:#000; line-height:40px; font-weight:bold;}
+
+.buy_wrap{width:400px; padding:0 10px; background:#fff;}
+.buy_wrap>ul{flex-wrap:wrap; font-family:'The Jamsil OTF 5 Bold'; margin:15px 0;}
+.buy_wrap>ul>li{width:195px; height:60px; border:rgba(98, 85, 246, 0.2) solid 1px; border-radius:30px; font-weight: bold; text-align:center; line-height:60px; transition:all 0.1s;}
+.buy_wrap>ul>li:hover{cursor: pointer; border:rgba(98, 85, 246,0.6) solid 1px;}
+.buy_wrap>ul>li:first-child{width:400px; border-radius:30px; height:60px; background:#6255f6; color:#74eb8b;flex-wrap:wrap; margin-bottom:10px;}
+.buy_wrap>ul>li:last-child{color:#74eb8b;}
+
+.detail_contents{width:600px; height:auto; margin-top:150px; overflow:hidden; margin-bottom:60px;}
+.dc_title{height:100px; font-family: 'The Jamsil OTF 3 Regular'; font-size:23px; border-top:1px solid #cccccc; letter-spacing:3px; text-align:center; line-height:100px; border-bottom:1px solid #eeeeee;}
+.detail_contents img{width:600px; margin-top:50px;}
+
+.review_wrap{width:1050px; height:auto; margin-left:400px; margin-top:0px; margin-bottom:100px;} 
+.review>h1{font-size:18px; font-family:'The Jamsil OTF 3 Regular'; text-align:left; height:35px;  border-bottom:1px solid #eeeeee; padding:0 20px; line-height:30px; position:relative;}
+.review>h1>span{display:block; width:73px; height:8px; background:#74eb8b; position:absolute; top:18px; border-radius:5px; left:18px; z-index:-1;}
+.review_tit{border-top:1px solid #cccccc; color:#282828; font-size:16px; line-height:50px; border-bottom:1px solid #eeeeee; text-align:center;}
+.review_tit>li:first-child{width:130px;}
+.review_tit>li:nth-child(2){width:550px;}
+.review_tit>li:nth-child(3){width:200px;}
+.review_tit>li:last-child{width:160px;}
+
+
+.review_txt{ font-weight:300;  font-size:16px;  flex-wrap:nowrap; color:#282828; border-bottom:1px solid #eee; text-align:center; padding: 10px 0; }
+.review_txt>li:first-child{width:130px;}
+.review_txt>li:nth-child(2){width:550px;}
+.review_txt>li:nth-child(3){width:200px;}
+.review_txt>li:last-child{width:160px;}
+
+
+.star{color:#fffb00;}
+.black{color:#282828; font-size:14px;}

@@ -1,0 +1,27 @@
+.wrap{height:100vh; overflow:hidden;}
+
+.bucket_wrap{width:1330px; height:auto; margin-left:300px;padding-bottom:100px;}
+
+.bucket{width:1250px; height:auto; flex-wrap:wrap;}
+
+
+
+.bucket_info{width:600px; height:200px;}
+.bucket_info>.arrow{width:20px; height:200px; line-height:120px;}
+.bucket_info>ul{width:110px;flex-wrap:wrap;}
+.bucket_info>ul p{width:110px; text-align:center; font-size:13px; font-weight:500; line-height:35px;}
+.bucket_info>ul img{width:30px; margin:0 auto; margin-top:28px; opacity:0.3}
+.bucket_info>ul>li:first-child{width:110px; height:110px; border-radius:100%;border:rgba(98, 85, 246, 0.2) solid 1px; flex-wrap:wrap;}
+.bucket_info>ul>li:last-child{width:110px; height:50px; line-height:50px; text-align:center; color:#aeaeba; font-size:15px;}
+
+.complete>li:first-child{background:#6255f6; color:#fff;}
+.complete>li>img{opacity:1}
+
+.complete_wrap{width:600px; height:430px; border:1px solid #f5f5fa; border-radius:30px; padding:50px 50px; text-align:center; background:#fff; }
+.comple>h1{width:600px; height:30px; text-align:center; font-family:'The Jamsil OTF 2 Light'; font-size:30px;}
+.comple>li:nth-child(2){height:250px;}
+.comple>li:nth-child(3){ color:#282828;}
+.comple>li>img{width:155px;}
+.com_my{height:160px;}
+.com_my>li{width:230px; line-height:60px; background:#f5f5fa; border-radius:50px; font-weight:500; cursor:pointer; transition:all 0.1s;}
+.com_my>li:hover{background:#6255f6; color:#fff;}

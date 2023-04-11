@@ -1,0 +1,283 @@
+/* 크기랑 높이 원하는대로 설정하고 background 지우면돼~ */
+.joinus_wrap{width:500px; height:800px; background:white; margin:0 auto;} 
+
+#container .c_join .member_cont {
+    width:500px;
+}
+
+
+th, td, button {
+    font-size: 12px;
+    font-family: Nunito,Noto Sans KR;
+    color: #64646b;
+}
+
+#container .c_join .member_cont h3 {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    margin-left: 10px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #6255f6;
+    letter-spacing: -0.5px;
+    line-height: 30px;
+}
+
+#container .c_join .member_cont h3:before {
+    content: "";
+    position: absolute;
+    left: -3px;
+    right: -3px;
+    bottom: 7px;
+    z-index: -1;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #74eb8b;
+}
+
+table {
+    position: relative;
+}
+
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+
+#container .c_join .member_cont td .idCheck {
+    min-width: 110px;
+    position: relative;
+    width: 90px;
+    height: 40px;
+    color:#6255f6;
+    background-color: #fff;
+    border: rgba(98, 85, 246, 0.2) solid 1px !important;
+    border-radius: 20px;
+    margin-top: 5px !important;
+    padding: 0 15px !important;
+    font-size: 12px;
+    line-height: 37px;
+
+}
+
+
+#container .c_join .member_cont td .idCheck {
+    position: absolute;
+    right: 18px;
+    top: 25px;
+    padding: 0 15px !important; 
+    font-weight: 700;
+}
+
+/* button {
+    width: 90px;
+    height: 40px;
+    border-radius: 20px;
+    position: absolute;
+    right: 18px;
+    top: 27px;
+    padding: 0 15px;
+    font-weight: 700;
+} */
+
+#container .c_join .form_element label:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    margin: 3px 10px 3px 0;
+    border: #efeff0 solid 1px;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #aeaeba;
+}
+
+#container .c_join .form_element label {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 !important;
+    background: none !important;
+    font-size: 14px;
+    font-weight: 400;
+    color: #64646b;
+    letter-spacing: -0.5px;
+    line-height: 30px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#container .c_join .member_cont td input[type="text"], #container .c_join .member_cont td input[type="password"] {
+    
+    height: 50px;
+    padding: 0 20px;
+    padding-left: 115px;
+    font-size: 14px !important;
+    line-height: 50px;
+}
+
+#container .c_join .member_cont td input[type="text"], #container .c_join .member_cont td input[type="password"] {
+    display: block;
+    box-sizing: border-box;
+    width: 310%;
+    height: 60px;
+    margin: 0 !important;
+    padding: 0 30px;
+    padding-left: 130px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    background-color: #f5f5fa;
+    font-size: 16px !important;
+    font-weight: 540;
+    color: #141415;
+    letter-spacing: -0.5px;
+    line-height: 60px;
+    text-align: left;
+}
+
+#container .c_join .c_tip {
+    margin: 5px 0 5px 10px;
+    padding: 0 0 0 15px;
+    line-height: 20px !important;
+}
+
+#container .c_tip {
+    /* display: inline-block; */
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    position: relative;
+    padding-left: 15px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #aeaeba;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    text-align: left;
+    word-wrap: normal;
+    word-break: keep-all;
+}
+
+.aaaa{
+    color: #aeaeba;
+}
+
+/* #container .c_join .member_cont th {
+    left: 20px;
+    height: 50px;
+    line-height: 50px;
+} */
+
+/* #container .c_join .member_cont {
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    left: 150px;
+    top: 0;
+    z-index: 1;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: #aeaeba;
+    letter-spacing: 0;
+    line-height: 60px;
+    text-align: left;
+} */
+
+/* th>.t2  {
+    position: relative;
+    top: 80px;
+} */
+
+.important {
+    position: relative;
+    top: 38px;
+    left: 23px;
+}
+
+#container .c_join .cj_btn li {
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* .btn_wrap li {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0;
+} */
+
+/* .btn_wrap li {
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
+    box-sizing: border-box;
+    margin-left: 10px;
+} */
+
+/* ul, li {
+    list-style: none;
+} */
+
+/* .btn.big {
+    min-width: 200px;
+    height: 50px;
+    padding: 0 25px;
+    font-size: 14px;
+    line-height: 48px;
+} */
+
+.btn.full {
+    width: 100%;
+}
+
+.btn.t1 {
+    border-color: #6255f6 !important;
+    background-color: #6255f6 !important;
+    color: #74eb8b !important;
+}
+
+.btn.big {
+    height: 60px;
+    padding: 0 30px !important;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 58px;
+    letter-spacing: -0.5px;
+}
+
+.btn {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    box-sizing: border-box;
+    min-width: 120px;
+    height: 40px;
+    margin: 0 !important;
+    padding: 0 25px !important;
+    border: rgba(98, 85, 246, 0.2) solid 1px !important;
+    border-radius: 40px;
+    background: none !important;
+    background-color: #fff !important;
+    color: #6255f6 !important;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 38px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+
+button:hover{cursor:pointer;}

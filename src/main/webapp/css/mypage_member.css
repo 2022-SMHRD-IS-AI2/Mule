@@ -1,0 +1,32 @@
+.mypage_wrap{width:1330px; height:auto; margin-left:340px;padding-bottom:100px;}
+
+.mypage{width:1250px; height:auto; flex-wrap:wrap;}
+
+.mypage_info{width:600px; height:200px;}
+.mypage_info>ul{width:110px;flex-wrap:wrap; cursor: pointer;}
+.mypage_info>ul p{width:110px; text-align:center; font-size:13px; font-weight:500; line-height:35px;}
+.mypage_info>ul img{width:45px; margin:0 auto; margin-top:23px;}
+.mypage_info>ul>li:first-child{width:110px; height:110px; border-radius:100%;border:rgba(98, 85, 246, 0.2) solid 1px; flex-wrap:wrap;}
+.mypage_info>ul>li:last-child{width:110px; height:50px; line-height:50px; text-align:center; color:#282828; font-size:15px;}
+
+.member>li:first-child{background:#6255f6; color:#fff;}
+.member>li>img{opacity:1}
+
+.member_wrap{width:1250px; height:auto; margin-top:50px;text-align:center; font-size:16px;}
+.member_wrap>h4{ font-family: 'The Jamsil OTF 3 Regular'; margin-bottom:15px; margin-left:10px; position:relative;}
+.member_wrap>h4>.underline{width:98px; height:10px; border-radius:5px; background:#74eb8b; position:absolute; top:12px; left:-5px;}
+
+.member1{width:1250px; height:auto; border-top:1px solid #ccc; color:#282828; text-align:left;}
+.member_title>li{width:150px; background:#f5f5fa; padding-left:30px; line-height:60px; border-bottom:1px solid #eee;}
+.member_input>li{width:1070px; background:#fff; padding:0 20px; box-sizing:border-box; line-height:60px; border-bottom:1px solid #eee;}
+.member_input>li>input{width:150px; height:40px; border:none; background:#f5f5fa; border-radius:30px; padding:0 15px;}
+.member_input>li>input:focus{outline:none;}
+.member_input>li:nth-child(1)>input{width:200px;}
+.member_input>li:nth-child(2)>input{width:350px;}
+
+.delete_wrap>p{font-size:13px; margin:5px; color:#aeaeba; text-decoration:underline; cursor: pointer;}
+
+.order_wrap>ul{width:450px; height:130px; }
+.order_wrap>ul>li{width:180px; height:50px; color:#6255f6; border-radius:50px; line-height:50px; text-align:center; background:#fff; font-size:17px; cursor:pointer; transition:all 0.1s;}
+.order_wrap>ul>li{background:#6255f6; color:#fff;}
+.order_wrap>ul>li:hover{background:#6255f6; color:#74eb8b; font-weight:400;}

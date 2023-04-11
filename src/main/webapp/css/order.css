@@ -1,0 +1,70 @@
+.bucket_wrap{width:1330px; height:auto; padding-bottom:100px; margin-left:300px;}
+
+.bucket{width:1250px; height:auto; flex-wrap:wrap;}
+
+
+
+.bucket_info{width:600px; height:200px;}
+.bucket_info>.arrow{width:20px; height:200px; line-height:120px;}
+.bucket_info>ul{width:110px;flex-wrap:wrap;}
+.bucket_info>ul p{width:110px; text-align:center; font-size:13px; font-weight:500; line-height:35px;}
+.bucket_info>ul img{width:30px; margin:0 auto; margin-top:28px; opacity:0.3}
+.bucket_info>ul>li:first-child{width:110px; height:110px; border-radius:100%;border:rgba(98, 85, 246, 0.2) solid 1px; flex-wrap:wrap;}
+.bucket_info>ul>li:last-child{width:110px; height:50px; line-height:50px; text-align:center; color:#aeaeba; font-size:15px;}
+
+.order>li:first-child{background:#6255f6; color:#fff;}
+.order>li>img{opacity:1}
+
+.cart_wrap{width:1250px; height:auto; margin-top:50px;text-align:center; font-size:16px;}
+.cart_wrap>h4{ font-family: 'The Jamsil OTF 3 Regular'; margin-bottom:15px; margin-left:10px; position:relative;}
+.cart_wrap>h4>.underline{width:100px; height:10px; border-radius:5px; background:#74eb8b; position:absolute; top:12px; left:-5px;}
+.cart_title{border-top:1px solid #ccc; line-height:60px; border-bottom:1px solid #eee; padding:0 20px 0 110px;}
+.cart_title>li{color:#282828;}
+.cart_title>li:first-child{width:700px;}
+.cart_title>li:nth-child(2){width:100px;}
+.cart_title>li:nth-child(3){width:150px;}
+.cart_title>li:nth-child(4){width:150px;}
+
+.cart_list {color:#282828; padding:0 20px; line-height:100px; border-bottom:1px solid #eee;}
+
+.cart_list>li:nth-child(1){width:700px;}
+.cart_list>li:nth-child(1) p{width:600px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.cart_list>li:nth-child(1) img{height:70px; margin-right:30px; }
+.cart_list>li:nth-child(2){width:100px;}
+.cart_list>li:nth-child(3){width:150px;}
+.cart_list>li:nth-child(4){width:150px;}
+
+.cart_list input{border:1px solid #cccccc;; width:50px;  margin:0 10px; text-align:center; font-weight:bold; font-family:'The Jamsil OTF 5 Bold'; font-size:15px; border-radius:3px;}
+.cart_list input[type=number]::-webkit-inner-spin-button {
+	opacity: 1;}
+.cart_list input:focus{outline:none;}
+
+.cart_total{background:#f5f5fa; height:80px; padding:0 15px; font-size:18px; line-height:80px;}
+.cart_total>li{margin-right:50px; color:#aeaeba; font-size:16px;}
+.cart_total>ul>li{margin-right:50px; font-weight:bold; color:#282828;}
+.cart_total>ul>li:last-child{font-size:22px; color:#6255f6;}
+
+.order_wrap{width:1250px; height:auto; margin-top:100px;text-align:center; font-size:16px;}
+.order_wrap>h4{ font-family: 'The Jamsil OTF 3 Regular'; margin-bottom:15px; margin-left:10px; position:relative;}
+.order_wrap>h4>.underline{width:100px; height:10px; border-radius:5px; background:#74eb8b; position:absolute; top:12px; left:-5px;}
+
+.order1{width:1250px; height:auto; border-top:1px solid #ccc; color:#282828; text-align:left;}
+.order_title>li{width:150px; background:#f5f5fa; padding-left:30px; line-height:60px; border-bottom:1px solid #eee;}
+.order_input>li{width:1070px; background:#fff; padding:0 20px; box-sizing:border-box; line-height:60px; border-bottom:1px solid #eee;}
+.order_input>li:last-child{color:#6255f6; font-weight:bold; padding-left:30px; font-size:16px;}
+.order_input>li>input{width:150px; height:40px; border:none; background:#f5f5fa; border-radius:30px; padding:0 15px;}
+.order_input>li>input:focus{outline:none;}
+.order_input>li:nth-child(3)>input{width:200px;}
+.order_input>li:nth-child(2)>input{width:350px;}
+
+.pay{width:1250px; height:auto; margin-top:100px;text-align:center; font-size:16px;}
+.pay>h4{ font-family: 'The Jamsil OTF 3 Regular'; margin-bottom:15px; margin-left:10px; position:relative;}
+.pay>h4>.line2{width:140px; height:10px; border-radius:5px; background:#74eb8b; position:absolute; top:12px; left:-5px;}
+
+.pay_wrap{width:1250px;}
+.pay_wrap>ul{width:450px; height:130px; }
+.pay_wrap>ul>li{width:180px; height:50px; color:#6255f6; border-radius:50px; line-height:50px; text-align:center; background:#fff; font-size:17px; cursor:pointer; transition:all 0.1s;}
+.pay_wrap>ul>li:first-child{background:#f5f5fa;}
+.pay_wrap>ul>li:last-child{background:#6255f6; color:#fff;}
+.pay_wrap>ul>li:hover{background:#6255f6; color:#fff;}
+.pay_wrap>ul>li:last-child:hover{background:#6255f6; color:#74eb8b; font-weight:bold;}

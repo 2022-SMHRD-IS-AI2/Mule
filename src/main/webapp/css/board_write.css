@@ -1,0 +1,132 @@
+.board_wrap{width:1315px; height:auto; margin-left:300px; margin-top:10px;}
+
+.category_wrap{width:1050px; height:100px; margin:0 auto;}
+.category li{ display:block; width:200px; height:50px; background:#f7f7f7; border-radius:30px; text-align:center; line-height:50px; font-weight:600; cursor:pointer; transition:all 0.05s;}
+.category li:nth-child(1) {background:#f7f7f7; color:#6255f6; font-weight:500;}
+
+html {
+    font-size: 10px;
+}
+
+
+
+.bt_wrap {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.bt_wrap a {
+    display: inline-block;
+    min-width: 85px;
+    margin-top: 60px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid rgba(98, 85, 246, 0.2);
+    color:#6255f6;
+    border-radius: 30px;
+    font-size: 1.4rem;
+}
+
+
+.bt_wrap input {
+    display: inline-block;
+    min-width: 105px;
+    margin-top: 60px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #6255f6;
+    border-radius: 30px;
+    font-size: 1.4rem;
+    background-color: #6255f6;
+    color:#74eb8b;
+				cursor:pointer;
+}
+
+
+.bt_wrap a:first-child {
+    margin-left: 0;
+}
+
+.board_write {
+	width:1250px; 
+	margin-left:40px;
+    border-top: 1px solid #ccc;
+    color:#282828;
+}
+
+.board_write .title,
+.board_write .info {
+    padding: 15px;
+}
+
+.board_write .info {
+    border-top: 1px dashed #eee;
+    border-bottom: 1px solid #ccc;
+    font-size: 0;
+}
+
+.board_write .title dl {
+    font-size: 0;
+}
+
+.board_write .info dl {
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+}
+
+.board_write .title dt,
+.board_write .title dd,
+.board_write .info dt,
+.board_write .info dd {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.4rem;
+}
+
+.board_write .title dt,
+.board_write .info dt {
+    width: 100px;
+    color:#282828;
+    font-size: 14px;
+}
+
+.board_write .title dd {
+    width: calc(100% - 100px);
+}
+
+.board_write .title input[type="text"],
+.board_write .info input[type="text"],
+.board_write .info input[type="password"] {
+    vertical-align: middle;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border:none;
+    outline: none;
+    color: #282828;
+    line-height: 20px !important;
+    text-align: left;
+}
+
+.board_write .title input[type="text"] {
+    width: 80%;
+}
+
+.board_write .cont {
+    border-bottom: 1px solid #ccc;
+}
+
+.board_write .cont textarea {
+    display: block;
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: 0;
+    outline: none;
+    resize: none;
+    font-size: 15px;
+}

@@ -1,0 +1,281 @@
+/* 크기랑 높이 원하는대로 설정하고 background 지우면돼~ */
+.product_wrap{width:650px; height:1300px; background:white; margin:0 auto; margin-left: 500px;}
+
+#container .cs_title h3 {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    margin-left: 10px;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #6255f6;
+    letter-spacing: -0.5px;
+    line-height: 30px;
+    left:100px;
+    bottom: 20px;
+}
+
+/* .cs_title{
+    text-align: center;
+} */
+
+#container .cs_title h3:before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    right: -5px;
+    bottom: 3px;
+    z-index: -1;
+    height: 7px;
+    border-radius: 3px;
+    background-color: #74eb8b;
+}
+
+th, td, button {
+    font-size: 15px;
+    font-family: Nunito,Noto Sans KR;
+    color: #64646b;
+}
+ 
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+
+table {
+    position: relative;
+}
+
+
+.boad-content1-input1{
+    width: 650px;  
+    /* product_wrap width값 수정하면 이것도 같이 수정해야함! */
+    height: 70px;
+    margin-top: 15px;
+    display: flex;  
+    justify-content: flex-start;  
+    align-items: center;   
+}
+
+.boad-content1-input2{
+    width: 650px;  
+    /* product_wrap width값 수정하면 이것도 같이 수정해야함! */
+    height: 70px;
+    display: flex;  
+    justify-content: flex-start;  
+    align-items: center;   
+    margin-top: 85px;
+}
+
+#container .cs_title .base_info_regi td input[type="text"]{
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    width: 65%;
+    height: 60px;
+    background-color: #f5f5fa;
+    padding-left: 150px;
+    font-size:15px;
+    font-weight: 540;
+    color:#141415;
+    letter-spacing: -0.5px;
+    line-height: 60px;
+}
+
+#container .cs_title .base_info_regi td textarea{
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    width: 440px;
+    height: 200px;
+    background-color: #f5f5fa;
+    padding-left: 140px;
+    font-size:15px;
+    font-weight: 550;
+    color:#141415;
+    letter-spacing: -0.5px;
+    line-height: 30px;
+    /* resize: none; */
+}
+
+.regi-select{
+    width: 572px;
+    height: 60px;
+    background-color: #f5f5fa;
+    /* border: 1px solid #C4C4C4; */
+    border: none;
+    box-sizing: border-box;
+    border-radius: 30px;
+    padding: 12px 100px;
+    font-family: Nunito,Noto Sans KR;
+    /* font-style: normal; */
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    padding-left: 150px;
+}
+
+.regi-select:focus{
+    /* border: 1px solid #9B51E0; */
+    border: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+    /* outline: 3px solid #F8E4FF; */
+    outline: none;
+    border-radius: 30px;
+}
+
+.regi{
+    /* position: absolute; */
+    position: relative;
+    width: 125px;
+    height: 50px;
+    /* padding-top: 12px; */
+    /* padding-left: 15px; */
+    box-sizing: border-box;   
+    /* top: 38px; */
+    top: 14px;
+    left: 135px;
+}
+
+#container .cs_title .base_info_regi td input[type="file"]{
+    border:none;
+    border-radius: 30px;
+    outline: none;
+    width: 410px;
+    height: 60px;
+    background-color:#f5f5fa;
+    padding-left: 160px;
+    font-size:13px;
+    color:#141415;
+    letter-spacing: -0.5px;
+    line-height: 60px;
+    font-weight: 530;
+    cursor: pointer;
+    
+  }
+
+.btn.full {
+    width: 80%;
+}
+
+.btn {
+    display: block;
+    vertical-align: middle;
+    /* position: relative; */
+    box-sizing: border-box;
+    min-width: 120px;
+    height: 60px;
+
+    /* margin: auto!important; */
+    padding: 0 25px !important;
+    
+    border: rgba(98, 85, 246, 0.2) solid 1px !important;
+    border-radius: 40px;
+    background: none !important;
+    background-color: #6255f6 !important;
+    color:#74eb8b;
+    
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 58px;
+    letter-spacing: -0.5px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+
+.btn{
+    top : 93px;
+    left : 120px;
+}
+
+
+
+/* border: rgba(98, 85, 246, 0.2) solid 1px !important; */
+
+/* .boad-content1-input1 input[type="text"] {width: 300px;height: 20px;} */
+
+/* .boad-content1{
+    margin-top: 30px;
+    width: 600px;
+    height: 1200px;     
+} */
+
+/* .regi{
+    position:relative;
+    left: 50px;
+} */
+
+/* 
+.regi-select{
+    align: center;
+    width: 300px;
+    height: 25px;
+} */
+
+/* .boad-content1-input2 textarea{
+    width: 500px;
+    height: 400px;
+} */
+
+/* #container .cs_title .boad-content1-input1 input[type="text"] {
+    display: block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: 82%;
+    height: 55px;
+    margin: 0 !important;
+    padding: 0 30px;
+    /* padding-left: 130px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    background-color: #f5f5fa;
+    font-size: 16px !important;
+    font-weight: 540;
+    color: #141415;
+    letter-spacing: -0.5px;
+    line-height: 60px;
+    /* text-align: center; */
+
+
+/* .regi {
+    margin:auto;
+    position: relative;
+    top: 38px;
+    left: 23px;
+    font-size: 14px;
+    text-align: center;
+} */
+
+/* #container .cs_title .input[type="text"]{ 
+    height: 50px;
+    padding: 0 20px;
+    padding-left: 115px;
+    font-size: 14px !important;
+    line-height: 50px;
+} */
+
+/* .input{
+    display: block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: 310%;
+    height: 60px;
+    margin: 0 !important;
+    padding: 0 30px;
+    padding-left: 130px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    background-color: #f5f5fa;
+    font-size: 16px !important;
+    font-weight: 540;
+    color: #141415;
+    letter-spacing: -0.5px;
+    line-height: 60px;
+    text-align: left;
+} */
