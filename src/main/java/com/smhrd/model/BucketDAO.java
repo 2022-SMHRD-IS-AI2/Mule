@@ -14,7 +14,7 @@ public class BucketDAO {
 	// true 넣으면 outo commit
 	SqlSession sqlSession = sqlSessionFactory.openSession(true);
 	
-	//해외공구상품 장바구니 업로드
+	//장바구니 업로드
 	public int BucketUpload(BucketVO vo) {
 		
 		int cnt = sqlSession.insert("BucketUpload",vo);

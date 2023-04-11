@@ -45,6 +45,11 @@
                 <span class="boad-content1-span">반품기간</span>
                 <input type="date" name="ReturnPeriod">
             </div>
+            
+             <div class="boad-content1-input1"> 
+                <span class="boad-content1-span">구매일자</span>
+                <input type="date" name="buyDate">
+            </div>
            
             
             <div class="boad-content1-submit">

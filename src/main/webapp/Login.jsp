@@ -11,7 +11,7 @@
      	<form action="LoginCon" method="post">
 			<li><input type="text"  placeholder="Email을 입력하세요" name="id" ></li>
 			<li><input type="password"  placeholder="PW를 입력하세요" name="pw" ></li>
-			<li><input type="submit" value="LogIn" class="button fit"></li>
+			<li><input type="submit" valu ="LogIn" class="button fit"></li>
 		</form>
 
 </body>

@@ -19,14 +19,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 	 <!-- 아이디 중복체크  -->
      <select id ="idCheck" parameterType = "String" resultType="boolean">
-      select case when count(*)>0 then 1
+      	select case when count(*)>0 then 1
                   else 0
                end result
-      from m_user where u_id=#{id}
-   </select>
+      	from m_user where u_id=#{id}
+   	</select>
+   
+   	<!-- 회원정보수정  -->
+  	    <update id="userModify" parameterType="com.smhrd.model.UserVO" >
+			update m_user set u_pw=#{u_pw}, u_addr=#{u_addr} where u_id=#{u_id}
+		</update>
 	
 	
-   
-   
-   
 </mapper>

@@ -28,6 +28,7 @@
    	<a href="Bucket.jsp">장바구니</a>
     <a href="OrderList.jsp">마이페이지</a>
     <a href="UsedProdMain.jsp">중고거래</a>
+    <a href="WishList.jsp">위시리스트</a>
     
 	<%List<ProductVO> Pvo = (new ProductDAO()).OPshow(); %>
 	

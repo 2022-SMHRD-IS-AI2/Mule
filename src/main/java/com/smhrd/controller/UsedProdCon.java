@@ -50,25 +50,19 @@ public class UsedProdCon extends HttpServlet {
 		
 		//DB에 저장하기 위해서 등록한 상품정보 가져오기
 		String prod_Name=multi.getParameter("prodName"); //상품명
-		System.out.println(prod_Name);
 		String price= multi.getParameter("prodPrice"); 	//상품가격
 		int prod_Price=Integer.parseInt(price);
-		System.out.println(prod_Price);
 		String prod_Title= multi.getFilesystemName("prodTitle"); //썸네일
-		System.out.println(prod_Title);
 		String prod_Img1= multi.getFilesystemName("prodImg1"); //이미지(제작과정 이미지 파일)
-		System.out.println(prod_Img1);
 		String prod_Img2= multi.getFilesystemName("prodImg2"); //이미지(제작과정 이미지 파일)
-		System.out.println(prod_Img2);
 		String prod_Desc= multi.getParameter("prodDesc"); //상품설명
-		System.out.println(prod_Desc);
 		String Return_Period= multi.getParameter("ReturnPeriod"); //반품기간	
-		System.out.println(Return_Period);
+		String buy_date= multi.getParameter("buy_date"); //구매일자	
 		
 		
 		ProductVO vo= new ProductVO(
 				prod_Name,prod_Price,prod_Title,prod_Img1,prod_Img2,
-				prod_Desc,seller_id,Return_Period); 
+				prod_Desc,seller_id,Return_Period,buy_date); 
 		
 		int cnt = new ProductDAO().UPupload(vo);
 		

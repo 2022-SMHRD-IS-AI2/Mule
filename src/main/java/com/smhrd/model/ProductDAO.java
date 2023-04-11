@@ -66,10 +66,21 @@ public class ProductDAO {
 		}
 		
 		
-	    // 로그인한 사람 해외공구상품 장바구니 조회
+	    // 로그인한 사람의 장바구니 조회
 		public List<ProductVO> Bucket(String U_id) {
 
 			List<ProductVO> vo = sqlSession.selectList("com.smhrd.model.ProductDAO.Bucket", U_id);
+			sqlSession.close();
+			
+
+			return vo;
+		}
+		
+		
+		// 로그인한 사람의 위시리스트 조회
+		public List<ProductVO> WishList(String U_id) {
+
+			List<ProductVO> vo = sqlSession.selectList("com.smhrd.model.ProductDAO.WishList", U_id);
 			sqlSession.close();
 			
 
@@ -109,6 +120,16 @@ public class ProductDAO {
 			sqlSession.close();
 				
 			return vo;
+			}
+			
+			
+			// 로그인한 유저의 상품 판매내역 조회
+			public List<ProductVO> salesList(String U_id) {
+				
+			List<ProductVO> vo = sqlSession.selectList("com.smhrd.model.ProductDAO.salesList", U_id);
+			sqlSession.close();
+				
+				return vo;
 			}
 		
 

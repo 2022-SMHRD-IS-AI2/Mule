@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into product values(
 		product_SEQ.nextval,#{prod_name},#{prod_cate},#{prod_price},#{prod_title},
 		#{prod_img1},#{prod_img2},#{prod_desc},'0','0',sysdate,#{number_of_people},
-		#{customs_clearance_num},#{seller_id},'0', #{return_period},'0')
+		#{customs_clearance_num},#{seller_id},'0', #{return_period},'0',sysdate)
 	</insert>
 	
 	<!--중고거래상품 등록 -->
@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into product values(
 		product_SEQ.nextval,#{prod_name},'N',#{prod_price},#{prod_title},
 		#{prod_img1},#{prod_img2},#{prod_desc},'0','0',sysdate,'0',
-		'0',#{seller_id},'1', #{return_period},'0')
+		'0',#{seller_id},'1', #{return_period},'0',#{buy_date})
 	</insert>
 	
 	 <!--해외공구상품 출력-->
@@ -47,6 +47,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		AND T.u_id = #{u_id} 
   	 </select>
   	 
+  	 <!-- 로그인한 유저의 위시리스트 조회  -->
+  	 <select id = "WishList" resultType="com.smhrd.model.ProductVO" parameterType = "String">
+		select T1.*, T.* from PRODUCT T1
+		JOIN WishList T
+		ON T1.PROD_NUM = T.PROD_NUM
+		AND T.u_id = #{u_id} 
+  	 </select>
+  	 
   	<!--장바구니에 담아놓은 상품 결제완료시 구매한 사람 수 업데이트 -->
 	<update id="buyerCntUpdate">
  	UPDATE product p
@@ -62,6 +70,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		JOIN m_order T
 		ON T1.PROD_NUM = T.PROD_NUM
 		AND T.U_ID = #{u_id}
+	</select> 
+	
+	<!-- 로그인한 유저의 상품 판매내역 조회 -->
+	<select id="salesList" resultType="com.smhrd.model.ProductVO" parameterType = "String">
+	   	select * from PRODUCT where seller_id=#{u_id} 
 	</select> 
 	
 </mapper>	

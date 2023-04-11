@@ -21,8 +21,6 @@ public class LoginCon extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
-		
-		
 		//데이터베이스에 한번에 값 넣어주기
 		UserVO vo = new UserVO(id, pw);
 		System.out.println(vo);

@@ -40,6 +40,7 @@ public class ProductVO {
     private int amount;
     private int bucket_num;
     private int buyer_cnt;
+    private String buy_date;
     private String order_date;
     private String delivery_progress;
     private String payment_status;
@@ -48,8 +49,8 @@ public class ProductVO {
     private String review_status;
     private int Order_num;
     
-	public ProductVO(String prod_name,int prod_price,String prod_title, 
-					String prod_img1,String prod_img2, String prod_desc,String seller_id,String return_period) {
+	public ProductVO(String prod_name,int prod_price,String prod_title, String prod_img1,
+			String prod_img2, String prod_desc,String seller_id,String return_period,String buy_date) {
 		
 		this.prod_name =prod_name;
 		this.prod_price =prod_price;
@@ -59,6 +60,7 @@ public class ProductVO {
 		this.prod_desc =prod_desc;
 		this.seller_id =seller_id;
 		this.return_period =return_period;
+		this.buy_date = buy_date;
 	}
     
     

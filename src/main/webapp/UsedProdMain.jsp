@@ -35,6 +35,9 @@
 		<%=Pvo.get(i).getProd_price()%>
 		 <a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
 		<img src="./Prod/<%=Pvo.get(i).getProd_title()%>" alt=""></a>
+		<%=Pvo.get(i).getBuy_date()%>
+		<%=Pvo.get(i).getReturn_period()%>
+		
     <%} %>
     
 	

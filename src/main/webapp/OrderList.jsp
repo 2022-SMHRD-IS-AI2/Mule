@@ -64,6 +64,9 @@
 	 	<%}%>
 	 <%}%>
   <%}%>
+  
+  	<a href="SalesList.jsp">판매내역</a>
+   	<a href="UserModify.jsp">회원정보수정</a>
   	
 </body>
 </html>

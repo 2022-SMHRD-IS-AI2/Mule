@@ -43,6 +43,11 @@
       <button type="submit">장바구니 담기</button>
    </form>
    
+   <form action="WishListCheckCon" method="post" >
+      <input hidden name="prod_num" value="<%=Pvo.getProd_num()%>">
+      <button type="submit">찜하기</button>
+   </form>
+   
    <% //리뷰내용 출력
    
    for(int i=0; i<Rvo.size(); i++){%>

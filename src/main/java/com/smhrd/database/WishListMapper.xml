@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.model.WishListDAO">
+	
+	<!--찜하기 클릭 시 해당상품이 이미 있는지 확인하기-->
+	<select id = "wishListCheck" resultType="boolean" parameterType="com.smhrd.model.WishListVO">
+		select case when count(*)>0 then 1
+              else 0
+              end result
+      from WishList where u_id=#{u_id} and prod_num=#{prod_num} 
+  	 </select>
+  	 
+	<!-- 위시리스트 업로드 -->
+	<insert id="wishListUpload" parameterType="com.smhrd.model.WishListVO">
+		insert into WishList values(
+		wishlist_SEQ.nextval,#{prod_num},sysdate,#{u_id})
+	</insert>
+	
+</mapper>
