@@ -19,7 +19,7 @@ import lombok.Setter;
 public class OrderVO {
 
 	private int order_num;
-	@NonNull private int prod_num;
+	@NonNull private String prod_num;
     private Timestamp order_date;
     @NonNull private String u_id;
     @NonNull private int amount;

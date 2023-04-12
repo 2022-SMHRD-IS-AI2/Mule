@@ -21,12 +21,12 @@ public class BucketVO {
 
 	
 	private BigDecimal BUCKET_NUM;
-	@NonNull private int prod_num;
+	@NonNull private String prod_num;
 	private Timestamp BUCKET_DATE;
 	@NonNull private String U_id;
 	@NonNull private int amount;
 	
-	public BucketVO(int prod_num,  String u_id) {
+	public BucketVO(String prod_num,  String u_id) {
 		this.prod_num = prod_num;
 		this.U_id = u_id;
 	}

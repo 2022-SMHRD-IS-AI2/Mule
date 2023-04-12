@@ -46,6 +46,8 @@ public class OpCon extends HttpServlet {
 		MultipartRequest multi = new MultipartRequest(request, path, maxSize,encoding,rename);
 		
 		//DB에 저장하기 위해서 등록한 상품정보 가져오기
+		
+		String prod_Num=multi.getParameter("prodNum"); //상품코드
 		String prod_Name=multi.getParameter("prodName"); //상품명
 		String prod_Cate=multi.getParameter("prodCate"); //상품 카테고리
 		String price= multi.getParameter("prodPrice"); 	//상품가격
@@ -61,7 +63,7 @@ public class OpCon extends HttpServlet {
 		String Return_Period= multi.getParameter("ReturnPeriod"); //반품기간	
 		
 		ProductVO vo= new ProductVO(
-				prod_Name,prod_Cate,prod_Price,prod_Title,prod_Img1,prod_Img2,
+				prod_Num,prod_Name,prod_Cate,prod_Price,prod_Title,prod_Img1,prod_Img2,
 				prod_Desc,num_Of_People,customs_Clearance_Num,seller_id,Return_Period); 
 		
 		int cnt = new ProductDAO().OPupload(vo);

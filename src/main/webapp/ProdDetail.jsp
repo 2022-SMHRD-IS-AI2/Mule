@@ -17,7 +17,7 @@
    <% 
    
    // 사용자가 클릭한 상품의 대한 상품 상세페이지 상품번호를 이용하여 받아오기
-   int prod_num = Integer.parseInt(request.getParameter("prod_num"));
+   String prod_num = request.getParameter("prod_num");
    ProductVO Pvo = new ProductDAO().ShowProdDetail(prod_num);
    
    // 해당 상품의 리뷰내용 불러오기 

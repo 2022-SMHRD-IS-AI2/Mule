@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script src = 'https://code.jquery.com/jquery-3.6.1.min.js'></script>
-<title>소비자 구매패턴 분석을 활용한 해외구매대행 플랫폼 MULE</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/joinus.css">
+	<script src = 'https://code.jquery.com/jquery-3.6.1.min.js'></script>
+	<title>소비자 구매패턴 분석을 활용한 해외구매대행 플랫폼 MULE</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/joinus.css">
+	<script src = 'https://code.jquery.com/jquery-3.6.1.min.js'></script>
 </head>
 <body>
 
@@ -54,145 +54,47 @@
 				</div>
 				
 				<div class="joinus_wrap">
-					<div id="container">	
-						<div class="cs_box t1 c_join">
-							<div class="join_base_wrap">
-								<div class="member_cont">	
-									<div class="base_info_box">
-										<h3>기본정보</h3>
-										<div class="base_info_sec">
-											<table border="0" cellpadding="0" cellspacing="0">
-												<colgruop>
-													<col width="25%">
-													<col width="75%">
-												</colgruop>
-												<tbody>
-													<tr>
-														<td>
-															<div class="">
-																<button type="button" id= "IdCheck" >중복확인하기</button>
-																<!-- <a href="" class="btn floating">중복확인하기</a> -->
-																<!-- <div class="pr">
-																	<input type="checkbox" name="smsF1" value="y">
-																	<label for="smsF1">
-																		정보/이벤트 SMS 수신에 동의합니다.
-																	</label>
-																</div>	 -->
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<div class="id">
-																<span class="important" id="dcid" name="id">아이디</span>
-																<input type="text">
-																</input>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td class="member_password">
-															<div class="pw">
-																<span class="important">비밀번호</span>
-																<input type="password" autocomplete="off" name="pw">
-																</input>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td>
-															<div class="nick">
-																<span class="important">이름</span>
-																<input type="text" name="name">
-																<!-- <div contenteditable="false">
-																</div> -->
-															</input>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td class="memeber_nick">
-														<div class="nick">
-															<span class="important">닉네임</span>
-															<input type="text" name="nick">
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td class="memeber_address">
-														<div class="address">
-															<span class="important">주소</span>
-															<input type="text" name="address">
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td class="member_phone">
-														<div class="tell">
-													<!-- <input type="text" id="cellPhone" name="cellPhone"
-														maxlength="12" data-pattern="gdNum" value readonly>
-													</input> -->
-															<span class="important">휴대폰번호</span>
-															<input type="text" name="tel" maxlength="11">
-															</input>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td class="member_gender">
-														<div class="gender">
-															<span class="important">성별</span>
-															<input type="radio" name="gender" value="female">여성
-  															<input type="radio" name="gender" value="male">남성
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td class="member_age">
-														<div class="age">
-															<span class="important">나이</span>
-															 <input type="number" min="1" max="99" name="age">
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<td class="member_job">
-														<div class="job">
-															<span class="important">직업</span>
-															    <select name ="job" >
-	            														<option>전문직</option>
-	            														<option>공무원</option>
-													            		<option>프리랜서</option>
-													            		<option>자영업</option>
-													            		<option>종교인</option>
-													            		<option>주부</option>
-													            		<option>학생</option>
-													            		<option>기타</option>
-            													</select>
-														</div>
-													</td>
-												</tr>
-												
-												<!-- <li></li> -->
-												</tbody>
-											</table>
-										</div>
-									</div>
-									<div class="cj_btn btn_wrap">
-										<ul>
-											<li>
-												<button type="button" class="btn big full t1 js_btn_join" value="회원가입">JOIN</button>
-											</li>
-											<li>
-												<button type="button" class="btn big full">CANCEL</button>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>	
+					<div class="join_tit">
+						<h4>기본정보<span class="line"></span></h4>
 					</div>
-				</div>
+					
+						<form action="JoinCon" method="post">
+							<div class="join_wrap">
+								<ul class="info">
+									<li class="f ac pr"><span>아이디</span><input type="text" name="id" id="dcid">
+									<button type="button"class="pa" id= "IdCheck">중복확인하기</button></li>
+									<li class="f ac"><span>비밀번호</span><input type="password" name="pw"></li>
+									<li class="f ac"><span>이름</span><input type="text" name="name"></li>
+									<li class="f ac"><span>닉네임</span><input type="text" name="nick"></li>
+									<li class="f ac"><span>주소</span><input type="text" name="address"></li>
+									<li class="f ac"><span>휴대폰번호</span><input type="text" name="tel" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></li>
+								</ul>
+								<ul class="info2 fb ac">
+									<li class="f ac"><p>성별</p>&nbsp;<input type="radio" name="gender">여성&nbsp;&nbsp;&nbsp;<input type="radio" name="gender"> 남성</li>
+									<li class="f ac"><p>나이</p><input type="number" min="1" max="99" value="20" name="age"></li>
+									<li class="f ac"><p>직업</p>
+									<select name="job" id="">
+										<option>선택하기</option>
+										<option>전문직</option>
+										<option>공무원</option>
+										<option>프리랜서</option>
+										<option>자영업</option>
+										<option>종교인</option>
+										<option>주부</option>
+										<option>학생</option>
+										<option>기타</option>
+									</select>
+									</li>
+								</ul>
+								</form>
+								<ul class="join_btn">
+									<li><button type="submit" >JOIN US</button></li>
+									<li><button>CANCLE</button></li>
+								</ul>
+							</div>
+						</form>
+
+					</div>
 
 			<div class="quick_wrap pf fc ac">
 				<ul class="quick">
@@ -222,11 +124,6 @@
 	</div>
 	<!-- wrap end -->
 	
-      <form class="input2" action="JoinCon" method="post">
-       
-        </form>
-            
-            
        <script>
        		let button = document.querySelector("#IdCheck");
       	 	console.log("버튼제대로눌림")

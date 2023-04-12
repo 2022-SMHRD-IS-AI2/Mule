@@ -26,7 +26,7 @@ public class BucketCon extends HttpServlet {
 		
 		String u_id=loginUser.getU_id();
 		
-		int prod_num = Integer.parseInt(request.getParameter("prod_num"));
+		String prod_num = request.getParameter("prod_num");
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		
 		BucketVO vo = new BucketVO(prod_num,u_id,amount);	
@@ -38,7 +38,8 @@ public class BucketCon extends HttpServlet {
 		}else {
 			System.out.println("장바구니 업로드 실패");
 		}
-		response.sendRedirect("ProdDetail.jsp?prod_num="+prod_num);
+		String referer = request.getHeader("Referer");
+		response.sendRedirect(referer);
 		
 	}
 

@@ -21,7 +21,7 @@ public class WishListVO {
 
 	
 	private BigDecimal WishList_NUM;
-	@NonNull private int prod_num;
+	@NonNull private String prod_num;
 	private Timestamp WishList_DATE;
 	@NonNull private String U_id;
 	

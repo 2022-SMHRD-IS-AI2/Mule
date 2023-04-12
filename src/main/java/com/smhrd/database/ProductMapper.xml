@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--해외공구상품 등록 -->
 	<insert id="OPupload" parameterType="com.smhrd.model.ProductVO">
 		insert into product values(
-		product_SEQ.nextval,#{prod_name},#{prod_cate},#{prod_price},#{prod_title},
+		#{prod_num},#{prod_name},#{prod_cate},#{prod_price},#{prod_title},
 		#{prod_img1},#{prod_img2},#{prod_desc},'0','0',sysdate,#{number_of_people},
 		#{customs_clearance_num},#{seller_id},'0', #{return_period},'0',sysdate)
 	</insert>
@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--중고거래상품 등록 -->
 	<insert id="UPupload" parameterType="com.smhrd.model.ProductVO">
 		insert into product values(
-		product_SEQ.nextval,#{prod_name},'N',#{prod_price},#{prod_title},
+		#{prod_num},#{prod_name},'N',#{prod_price},#{prod_title},
 		#{prod_img1},#{prod_img2},#{prod_desc},'0','0',sysdate,'0',
 		'0',#{seller_id},'1', #{return_period},'0',#{buy_date})
 	</insert>
@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	 <!--상품 상세정보 페이지 -->
-	<select id="ShowProdDetail" resultType="com.smhrd.model.ProductVO" parameterType="int">
+	<select id="ShowProdDetail" resultType="com.smhrd.model.ProductVO" parameterType="String">
 		select * from PRODUCT where prod_num=#{prod_num}
 	</select>
 	

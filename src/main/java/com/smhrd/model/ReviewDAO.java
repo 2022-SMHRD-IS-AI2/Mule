@@ -23,13 +23,23 @@ public class ReviewDAO {
 	  
 	  // 사용자가 입력한 리뷰 각 상품상세페이지에 출력 
 	  
-	  public List<ReviewVO> showReview(int prod_num) {
+	  public List<ReviewVO> showReview(String prod_num) {
 	  
 	  List<ReviewVO> vo = sqlSession.selectList("com.smhrd.model.ReviewDAO.showReview",prod_num);
 	  sqlSession.close();
 	  
 	  return vo; 
 	  }
+	  
+	  
+	   // 특정 상품에 대한 리뷰평점 합계 구하기
+	  	public ReviewVO avgRating(String prod_num) {
+			
+		ReviewVO vo  = sqlSession.selectOne("com.smhrd.model.ReviewDAO.avgRating",prod_num);
+		sqlSession.close();
+			
+		return vo;
+		}
 	  
 
 }

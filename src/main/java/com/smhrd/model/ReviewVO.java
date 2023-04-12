@@ -17,11 +17,12 @@ import lombok.RequiredArgsConstructor;
   public class ReviewVO {
   
   private BigDecimal REVIEW_NUM;
-  @NonNull private int PROD_NUM;
+  @NonNull private String PROD_NUM;
   @NonNull private String REVIEW_CONTENT; 
   private Timestamp REVIEW_DATE;
   @NonNull private String U_ID;
   @NonNull private int REVIEW_RATINGS;
+  private int avg_rating;
 
   }
 

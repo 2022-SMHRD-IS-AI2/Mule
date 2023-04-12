@@ -28,7 +28,7 @@ public class ReviewCon extends HttpServlet {
 
 		String review_content = request.getParameter("review_content");
 		int rating = Integer.parseInt(request.getParameter("rating"));
-		int prod_num = Integer.parseInt(request.getParameter("prod_num"));
+		String prod_num = request.getParameter("prod_num");
 		int order_num = Integer.parseInt(request.getParameter("order_num"));
 		
 		  ReviewVO vo = new ReviewVO(prod_num,review_content, u_id, rating);

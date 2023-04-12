@@ -25,7 +25,7 @@ public class ReviewStatusCon extends HttpServlet {
 		
 		String u_id=loginUser.getU_id();
 		int order_num = Integer.parseInt(request.getParameter("order_num"));
-		int prod_num = Integer.parseInt(request.getParameter("prod_num"));
+		String prod_num = request.getParameter("prod_num");
 		
 		OrderVO vo = new OrderVO(u_id,order_num);
 		int cnt = new OrderDAO().reviewStatusUpdate(vo);

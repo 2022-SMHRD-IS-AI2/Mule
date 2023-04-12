@@ -24,7 +24,7 @@ public class WishListCon extends HttpServlet {
 		UserVO loginUser=(UserVO)session.getAttribute("loginUser"); 
 		
 		String u_id=loginUser.getU_id();
-		int prod_num = Integer.parseInt(request.getParameter("prod_num"));
+		String prod_num = request.getParameter("prod_num");
 		
 		WishListVO vo = new WishListVO(prod_num,u_id);	
 		int cnt = new WishListDAO().wishListUpload(vo);
@@ -35,7 +35,8 @@ public class WishListCon extends HttpServlet {
 		}else {
 			System.out.println("위시리스트 업로드 실패");
 		}
-		response.sendRedirect("ProdDetail.jsp?prod_num="+prod_num);
+		String referer = request.getHeader("Referer");
+		response.sendRedirect(referer);
 	}
 
 }

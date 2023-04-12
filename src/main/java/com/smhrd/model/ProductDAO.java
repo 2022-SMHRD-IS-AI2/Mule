@@ -57,7 +57,7 @@ public class ProductDAO {
 		
 		
 		// 각 세부 상품정보 조회
-		public ProductVO ShowProdDetail(int prod_num) {
+		public ProductVO ShowProdDetail(String prod_num) {
 			
 			ProductVO vo = sqlSession.selectOne("com.smhrd.model.ProductDAO.ShowProdDetail",prod_num);
 			sqlSession.close();
@@ -112,6 +112,7 @@ public class ProductDAO {
 			}
 			return cnt;
 		}
+		
 		
 		   // 로그인한 유저의 상품 주문내역 조회
 			public List<ProductVO> orderList(String U_id) {

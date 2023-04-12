@@ -49,6 +49,7 @@ public class UsedProdCon extends HttpServlet {
 		MultipartRequest multi = new MultipartRequest(request, path, maxSize,encoding,rename);
 		
 		//DB에 저장하기 위해서 등록한 상품정보 가져오기
+		String prod_Num=multi.getParameter("prodNum"); //상품코드
 		String prod_Name=multi.getParameter("prodName"); //상품명
 		String price= multi.getParameter("prodPrice"); 	//상품가격
 		int prod_Price=Integer.parseInt(price);
@@ -61,7 +62,7 @@ public class UsedProdCon extends HttpServlet {
 		
 		
 		ProductVO vo= new ProductVO(
-				prod_Name,prod_Price,prod_Title,prod_Img1,prod_Img2,
+				prod_Num,prod_Name,prod_Price,prod_Title,prod_Img1,prod_Img2,
 				prod_Desc,seller_id,Return_Period,buy_date); 
 		
 		int cnt = new ProductDAO().UPupload(vo);

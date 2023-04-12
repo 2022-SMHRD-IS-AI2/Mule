@@ -12,9 +12,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<!--사용자가 입력한 리뷰 각 상품상세페이지에 출력 -->
-	<select id="showReview" resultType="com.smhrd.model.ReviewVO" parameterType = "int">
+	<select id="showReview" resultType="com.smhrd.model.ReviewVO" parameterType = "String">
 		select * from REVIEW where PROD_NUM=#{PROD_NUM}
 		order by review_date desc
+	</select> 
+	
+	<!--특정 상품에 대한 리뷰평점 합계 구하기 -->
+	<select id="avgRating" resultType="com.smhrd.model.ReviewVO" parameterType = "String">
+		  	SELECT AVG(review_ratings) AS avg_rating
+			FROM review
+			WHERE prod_num = #{prod_num}
 	</select> 
 	
 </mapper>

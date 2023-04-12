@@ -27,7 +27,7 @@ public class WishListCheckCon extends HttpServlet {
 		UserVO loginUser=(UserVO)session.getAttribute("loginUser"); 
 		
 		String u_id=loginUser.getU_id();
-		int prod_num = Integer.parseInt(request.getParameter("prod_num"));
+		String prod_num = request.getParameter("prod_num");
 		
 		// 데이터베이스에 한번에 값 넣어주기
 	    WishListVO vo = new WishListVO(prod_num,u_id);
@@ -35,6 +35,7 @@ public class WishListCheckCon extends HttpServlet {
 	      
 	    if(check==true) {
 			System.out.println("위시리스트에 있는 상품");
+			
 				
 		}else {
 				System.out.println("위시리스트에 없는 상품");

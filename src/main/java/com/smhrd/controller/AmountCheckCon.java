@@ -27,7 +27,7 @@ public class AmountCheckCon extends HttpServlet {
 		UserVO loginUser=(UserVO)session.getAttribute("loginUser"); 
 		
 		String u_id=loginUser.getU_id();
-		int prod_num = Integer.parseInt(request.getParameter("prod_num"));
+		String prod_num = request.getParameter("prod_num");
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		
 	     // 데이터베이스에 한번에 값 넣어주기

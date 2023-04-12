@@ -21,7 +21,7 @@ import lombok.Setter;
 
 public class ProductVO {
 
-    private BigDecimal prod_num;
+	@NonNull private String prod_num;
     @NonNull private String prod_name;
     @NonNull private String prod_cate;
     @NonNull private int prod_price;
@@ -49,9 +49,10 @@ public class ProductVO {
     private String review_status;
     private int Order_num;
     
-	public ProductVO(String prod_name,int prod_price,String prod_title, String prod_img1,
+	public ProductVO(String prod_num,String prod_name,int prod_price,String prod_title, String prod_img1,
 			String prod_img2, String prod_desc,String seller_id,String return_period,String buy_date) {
 		
+		this.prod_num =prod_num;
 		this.prod_name =prod_name;
 		this.prod_price =prod_price;
 		this.prod_title =prod_title;

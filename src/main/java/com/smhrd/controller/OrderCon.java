@@ -39,8 +39,9 @@ public class OrderCon extends HttpServlet {
       
       
       for (int i = 0; i < cnts.length; i++) { // 배열 크기만큼 반복
+    	  
           int num= Integer.parseInt(cnts[i]);
-          int prodNum = Integer.parseInt( prodNums[i]);
+          String prodNum = prodNums[i];
          
              OrderVO O_vo = new OrderVO(prodNum,u_id,num);   
              int O_cnt = new OrderDAO().orderUpload(O_vo);
