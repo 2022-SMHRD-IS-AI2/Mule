@@ -35,7 +35,7 @@ public class ReviewDAO {
 	   // 특정 상품에 대한 리뷰평점 합계 구하기
 	  	public ReviewVO avgRating(String prod_num) {
 			
-		ReviewVO vo  = sqlSession.selectOne("com.smhrd.model.ReviewDAO.avgRating",prod_num);
+	  	ReviewVO vo  = sqlSession.selectOne("com.smhrd.model.ReviewDAO.avgRating",prod_num);
 		sqlSession.close();
 			
 		return vo;

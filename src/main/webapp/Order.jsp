@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.smhrd.model.ProductVO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
@@ -25,6 +26,10 @@
 	int total_amount = (int)request.getAttribute("total_amount"); // 총 상품 수량
 	int amount = total_amount-1;
 	int paid_amount = (int)request.getAttribute("paid_amount"); //  총 결제 금액
+	
+	// 가격 천다위 쉼표로 나타내기 
+    DecimalFormat formatter = new DecimalFormat("#,###");
+    String paid_Amount = formatter.format(paid_amount);
 	%>
 	
 	
@@ -140,7 +145,7 @@
 						<li><input type="text" name="recipient"></li>
 						<li><input type="text" name="phone"></li>
 						<li><input type="text" name="address"></li>
-						<li><%=main_prod_name %>외 <%=amount%>개 <%=paid_amount%>원</li>
+						<li><%=main_prod_name %>외 <%=amount%>개   <%=paid_Amount%>원</li>
 					</ul>
 						<input hidden name="main_prod_name" value="<%=main_prod_name %>">
 		  				<input hidden name="total_amount" value="<%=total_amount%>">

@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.smhrd.model.ReviewDAO"%>
 <%@page import="com.smhrd.model.ReviewVO"%>
 <%@page import="com.smhrd.model.ProductVO"%>
@@ -19,9 +20,36 @@
 	<%
 	// 로그인한 회원 불러오기
 	UserVO loginUser=(UserVO)session.getAttribute("loginUser");
-	
+
 	//해외 공구 상품 불러오기
-	List<ProductVO> Pvo = (new ProductDAO()).OPshow(); %>
+	List<ProductVO> Pvo = (new ProductDAO()).OPshow(); 
+	
+ 	//로그인한 회원의 장바구니 수량 불러오기
+ 	int Bsize = 0 ;
+ 	
+	if(loginUser!=null) {
+		String u_id=loginUser.getU_id();
+  		List<ProductVO> Bvo = new ProductDAO().Bucket(u_id);
+		
+	 	if(Bvo!=null){
+	 		Bsize=Bvo.size();	
+	 	}
+	}
+	
+  	//로그인한 회원의 위시리스트 수량 불러오기
+	int Wsize = 0 ;
+  	
+  	if(loginUser!=null) {
+	  	String u_id=loginUser.getU_id();
+	  	List<ProductVO> Wvo = new ProductDAO().WishList(u_id);
+	  	
+	 	if(Wvo!=null){
+	 		Wsize=Wvo.size();	
+	 	}
+  	}
+  	
+ 	
+	%>
 
 	<div class="back_wrap pf">
 		<div class="line_left pf"></div>
@@ -90,14 +118,14 @@
 					if(loginUser==null) {%>
 						<li><a href="LoginCheck.jsp"><img src="img/bucket.png"></a></li>
 					<%}else {%>
-						<li><a href="Bucket.jsp"><img src="img/bucket.png"></a></li>
+						<li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
 					<%} %>
 					
 					<%//위시리스트 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
 					if(loginUser==null) {%>
 						<li><a href="LoginCheck.jsp"><img src="img/heart.png"></a></li>
 					<%}else {%>
-						<li><a href="WishList.jsp"><img src="img/heart.png"></a></li>
+						<li><a href="WishList.jsp"><img src="img/heart.png"><%=Wsize%></a></li>
 					<%} %>
 					
 					<%//마이페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
@@ -131,14 +159,22 @@
 			<div class="tv_pro">
 				<ul class="p_img fc ac">
 					<li><a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
-						<img src="./Prod/<%=Pvo.get(i).getProd_title()%>" alt=""></a></li>
+						<img src="./Prod/<%=Pvo.get(i).getProd_title()%>"></a></li>
 				</ul>
 				<ul class="p_text f ac">
 					<li><span><b>[<%=Pvo.get(i).getProd_cate() %>]</b></span>
 							  <b><%=Pvo.get(i).getProd_name() %></b></li>
-					<li class="fb">
+							  
+				<li class="fb">
 					<ul>
-						<li><b><%=Pvo.get(i).getProd_price()%>원</b></li>
+					<% // 가격 천다위 쉼표로 나타내기 
+					
+					int price = Pvo.get(i).getProd_price();
+				    DecimalFormat formatter = new DecimalFormat("#,###");
+				    String Prod_price = formatter.format(price);
+					
+					%>
+						<li><b><%=Prod_price%>원</b></li>
 					</ul>
 					
 					<% //리뷰
@@ -146,17 +182,17 @@
 					ReviewVO rvo = new ReviewDAO().avgRating(prod_num);
 					  
 					if(rvo!=null){
-					  int avg = rvo.getREVIEW_RATINGS();
-					  int avg2 = (int) avg;
+					  float avg = rvo.getAvg_rating();
+					  int avg2 = (int) avg;%>
 					  
-					  for(int j=0; j<=avg2; i++){%>
-						<ul class="star f">
-						<li>★</li>
-					<%}%>
+					<ul class="star f">
+						  <% for(int j=0; j<avg2; j++){%>
+							<li>★</li>
+						<%}%>
 						<li class="black"><%=avg%></li>
 						<li class="black">점</li>
-					</ul>
 					<%}%>
+					</ul>
 				</li>
 				
 					<% int num = 1; %>
@@ -187,7 +223,7 @@
 
 			</div>
 			<!-- product end -->
-		</section>s
+		</section>
 	</div>
 	<!-- wrap end -->
 

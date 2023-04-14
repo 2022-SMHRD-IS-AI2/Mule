@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Date"%>
@@ -136,12 +137,18 @@
 	 					Date orderDate = new Date(orderTimestamp.getTime()); // Timestamp에서 Date로 변환
 	 					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	 					String OrderDate = dateFormat.format(orderDate); // 날짜 포맷을 적용한 문자열을 생성
+	 					
+	 					// 가격 천다위 쉼표로 나타내기 
+						int price = Pvo.get(i).getProd_price();
+					    DecimalFormat formatter = new DecimalFormat("#,###");
+					    String Prod_price = formatter.format(price);
 	 				%>
+	 				
 					<ul class="check_list fb">
 						<li><%=OrderDate%></li>
 						<li class="f ac"><span>	<img src="./Prod/<%= Pvo.get(i).getProd_title() %>"></span>
 						<p><%=Pvo.get(i).getProd_name()%></p></li>
-						<li><%=Pvo.get(i).getProd_price()%>/<%=Pvo.get(i).getAmount()%></li>
+						<li><%=Prod_price%>원 /<%=Pvo.get(i).getAmount()%>개</li>
 						
 					   <% // 상품 배송상태/ 결제상태/ 반품여부 확인
 						if(Pvo.get(i).getDelivery_progress().equals("N")){%>

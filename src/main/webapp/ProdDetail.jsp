@@ -1,3 +1,7 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Date"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.smhrd.model.UserVO"%>
 <%@page import="com.smhrd.model.ReviewDAO"%>
 <%@page import="java.util.List"%>
@@ -35,11 +39,11 @@
    List<ReviewVO> Rvo = new ReviewDAO().showReview(prod_num);
    %>
    
-  <div class="back_wrap pf">
-	<div class="line_left pf"></div>
-	<div class="line_right pf"></div>
-	<div class="withmule pf"><img src="img/width_back.png"></div>
-</div>
+	 <div class="back_wrap pf">
+		<div class="line_left pf"></div>
+		<div class="line_right pf"></div>
+		<div class="withmule pf"><img src="img/width_back.png"></div>
+	</div>
 
 	<div class="wrap">
 		<header class="header fb ae">
@@ -95,6 +99,7 @@
 			</div>
 		</nav>
 
+
 		<section class="detail_wrap fa" id="scroll">
 			<div class="detail">
 				<div class="detail_title fb">
@@ -111,29 +116,57 @@
 						<%if(Pvo.getProd_check().equals("0")){%>
 							<li><span>[<%=Pvo.getProd_cate()%>]</span>
 						<%} else{%>
+						
 							<li><span>[중고상품]</span>
 						<%}%>
 						<%=Pvo.getProd_name()%></li>
 						<li><%=Pvo.getProd_desc()%></li>
-						<li><%=Pvo.getProd_price()%>원</li>
+						
+								
+					<% // 가격 천다위 쉼표로 나타내기 
+					
+					int price = Pvo.getProd_price();
+				    DecimalFormat formatter = new DecimalFormat("#,###");
+				    String Prod_price = formatter.format(price);%>
+						
+						<li><%=Prod_price%>원</li>
 					</ul>
-					<div class="info_wrap">
-						<h5 class="fb ac"><p>배송안내</p><span><img src="img/detail_btn.png"></span></h5>
-						<ul class="delivery_info">
-							<li></li>
-						</ul>
-					</div>
+					
+					<%if(Pvo.getProd_check().equals("0")){%>
+						<div class="info_wrap">
+							<h5 class="fb ac"><p>통관번호</p><span><%=Pvo.getCustoms_clearance_num()%></span></h5>
+							<ul class="delivery_info">
+								<li></li>
+							</ul>
+						</div>
+					<%} else{%>
+						<div class="info_wrap">
+							<h5 class="fb ac"><p>배송안내</p><span><img src="img/detail_btn.png"></span></h5>
+							<ul class="delivery_info">
+								<li></li>
+							</ul>
+						</div>
+					<%}%>
 					<!-- info_tit end -->
 
 					<div class="cnt_wrap">
-						<h5 class="fb ac"><p>상품수량 & 인원수</p></h5>
+						<%if(Pvo.getProd_check().equals("0")){%>
+							<h5 class="fb ac"><p>상품수량 & 인원수</p></h5>
+						<%} else{%>
+							<h5 class="fb ac"><p>상품수량</p></h5>
+						<%}%>
 						<ul class="pro_cnt fb ac">
 							<li class="f">
 									<form action="AmountCheckCon" method="post">
 										<input type="number" value="1" min="1" max="10" class="cnt" id="quantity" name="amount" onfocus="this.blur()">
 										<input hidden name="prod_num" value="<%=Pvo.getProd_num()%>">
 							</li>
-							<li class="person"><span><%=Pvo.getBuyer_cnt()%></span> / <%=Pvo.getNumber_of_people()%>명</li>
+							
+							<%if(Pvo.getProd_check().equals("0")){%>
+								<li class="person"><span><%=Pvo.getBuyer_cnt()%></span> / <%=Pvo.getNumber_of_people()%>명</li>
+							<%} else{%>
+								<li class="person"></li>
+							<%}%>
 						</ul>
 					</div>
 					<!-- cnt_wrap end -->
@@ -141,11 +174,11 @@
 					<div class="price_wrap">
 							<ul class="price1 fb">
 								<li>총 상품금액</li>
-								<li id="totalPrice1"><%=Pvo.getProd_price()%>원</li>
+								<li id="totalPrice1"><%=Prod_price%>원</li>
 							</ul>
 							<ul class="price2 fb">
 								<li>총 합계금액</li>
-								<li id="totalPrice2"><%=Pvo.getProd_price()%>원</li>
+								<li id="totalPrice2"><%=Prod_price%>원</li>
 							</ul>
 					</div>
 					<!-- price_wrap end -->
@@ -183,25 +216,34 @@
 					<li>평점</li>
 					<li>등록일</li>
 				</ul>
-
+				
+				<%for(int i=0; i<Rvo.size(); i++){ %>
 				<div class="review_txt_wrap">
 				<ul class="review_txt fb">
-					<li>zzung_712</li>
-					<li>여기는 구매 상품후기를 작성하는 공간 입니다.</li>
-					<li>
-							<ul class="star fc">
+					<li><%=Rvo.get(i).getU_ID() %></li>
+					<li><%=Rvo.get(i).getREVIEW_CONTENT() %></li>
+					
+					<li class="fc">
+						<ul class="star fc">
+							<%for(int j=0; j<Rvo.get(i).getREVIEW_RATINGS(); j++){%>
 								<li>★</li>
-								<li>★</li>
-								<li>★</li>
-								<li>★</li>
-								<li>★</li>
-								<li class="black">&nbsp;&nbsp;5.0</li>
-								<li class="black">점</li>
-							</ul>
-						</li>
-							<li>2023-04-06</li>
+							<%} %>
+						<li class="black">&nbsp;&nbsp;<%=Rvo.get(i).getREVIEW_RATINGS()%></li>
+						<li class="black">점</li>
+						</ul>
+					</li>
+					
+					<%				
+					Timestamp reviewTimestamp = Rvo.get(i).getREVIEW_DATE(); 
+ 					Date reviewDate = new Date(reviewTimestamp.getTime());
+ 					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+ 					String ReviewDate = dateFormat.format(reviewDate); 
+ 					%>
+							<li class="black"><%=ReviewDate%></li>
 				</ul>
 			</div>
+		<%}%>
+			
 			<!-- review_txt_wrap end -->
 
 			<div></div>
@@ -230,20 +272,23 @@
    
    
     <script>
-      $( document ).ready( function() {     
-        $( '#quantity' ).change( function() {
-          let a = $( '#quantity' ).val();
-          let ab = (a * <%=Pvo.getProd_price()%>) + " 원";
-          $( '#totalPrice1' ).text( ab );
-        } );
-      } );
-    </script>
+	  $( document ).ready( function() {     
+	    $( '#quantity' ).change( function() {
+	      let a = $( '#quantity' ).val();
+	      let ab = (a * <%=Pvo.getProd_price()%>).toLocaleString() + " 원";
+	      $( '#totalPrice1' ).text( ab );
+	    } );
+	  } );
+	</script>
+
+
+
     
      <script>
       $( document ).ready( function() {     
         $( '#quantity' ).change( function() {
           let a = $( '#quantity' ).val();
-          let ab = (a * <%=Pvo.getProd_price()%>) + " 원";
+          let ab = (a * <%=Pvo.getProd_price()%>).toLocaleString() + " 원";
           $( '#totalPrice2' ).text( ab );
         } );
       } );

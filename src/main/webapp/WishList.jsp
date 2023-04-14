@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.ProductVO"%>
 <%@page import="java.util.List"%>
@@ -19,7 +20,7 @@
 	UserVO loginUser=(UserVO)session.getAttribute("loginUser"); 
   	String u_id=loginUser.getU_id();
 	
-  	//로그인한 회원의 장바구니 정보 불러오기
+  	//로그인한 회원의 위시리스트 정보 불러오기
   	List<ProductVO> Wvo = new ProductDAO().WishList(u_id);
   	%>
   	
@@ -108,7 +109,14 @@
 						<li><a>X</a></li>
 						<li class="f ac"><span><img src="./Prod/<%= Wvo.get(i).getProd_title() %>"></span>
 						<p><%=Wvo.get(i).getProd_name() %></p></li>
-						<li><%=Wvo.get(i).getProd_price()%></li>
+						
+						<% // 가격 천다위 쉼표로 나타내기 
+						int price = Wvo.get(i).getProd_price();
+					    DecimalFormat formatter = new DecimalFormat("#,###");
+					    String Prod_price = formatter.format(price);
+						%>
+						
+						<li><%=Prod_price%> 원</li>
 						<a href="ProdDetail.jsp?prod_num=<%=Wvo.get(i).getProd_num()%>"><li class="gogo"><span>찜한 상품 보러가기</span></li></a>
 					</ul>
   				<%}%>			

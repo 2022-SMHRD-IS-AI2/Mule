@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.smhrd.model.ProductVO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
@@ -137,6 +138,12 @@
 						    int price = Bvo.get(i).getProd_price();
 						    int totalPrice = amount * price;
 						    totalAmount += totalPrice; // 총 결제 금액 계산
+						    
+							 // 가격 천다위 쉼표로 나타내기 
+							 DecimalFormat formatter = new DecimalFormat("#,###");
+							 String Prod_price = formatter.format(price);
+							 String total_Price = formatter.format(totalPrice);
+							 
 					%>
 					
 					<form class="input2" action="OrderCon" method="post">
@@ -145,36 +152,41 @@
 						<li class="f ac cart_img"><span><img src="./Prod/<%= Bvo.get(i).getProd_title() %>"></span>
 						<%= Bvo.get(i).getProd_name() %></li>
 						<li><input type="number" min="1" max="9999" id="cnt<%= i %>" name="cnt[]" value=<%= amount %>></li>
-						<li><%=Bvo.get(i).getProd_price() %></li>
-						<li><span class="totalPrice" id="totalPrice<%= i %>"><%= totalPrice %> 원</span></li>
+						<li><%=Prod_price%> 원</li>
+						<li><span class="totalPrice" id="totalPrice<%= i %>"><%=total_Price%> 원</span></li>
 					</ul>
 					
-				 	<script>
-					    $(document).ready(function() {
-					      $('#cnt'+<%= i %>).change(function() {
-					        let amount = $('#cnt'+<%= i %>).val();
-					        let totalPrice = amount * <%= price %>; // 상품 하나당 총 결제 금액 계산
-					        $('#totalPrice'+<%= i %>).text(totalPrice + " 원"); 
-					        totalAmount = 0; // 총 결제 금액 초기화
-					        $('.totalPrice').each(function() {
-					          totalAmount += parseInt($(this).text()); // 총 결제 금액 재계산
-					        });
-					        $('#totalAmount').text(totalAmount + " 원"); // 총 결제 금액 저장
-							document.getElementById('_totalAmount').value = totalAmount;
-							console.log(document.getElementById('_totalAmount').value);
+					<script>
+					  $(document).ready(function() {
+					    $('#cnt'+<%= i %>).change(function() {
+					      let amount = $('#cnt'+<%= i %>).val();
+					      let totalPrice = amount * <%= price %>; // 상품 하나당 총 결제 금액 계산
+					      $('#totalPrice'+<%= i %>).text(totalPrice.toLocaleString() + " 원"); // 천단위 쉼표 추가
+					      totalAmount = 0; // 총 결제 금액 초기화
+					      $('.totalPrice').each(function() {
+					        totalAmount += parseInt($(this).text().replace(/,/g, "")); // 총 결제 금액 재계산
 					      });
+					      $('#totalAmount').text(totalAmount.toLocaleString() + " 원"); // 천단위 쉼표 추가
+					      document.getElementById('_totalAmount').value = totalAmount;
+					      console.log(document.getElementById('_totalAmount').value);
 					    });
-		  			</script>
+					  });
+					</script>
 		  			
 		  			<input hidden name="prodNum[]" value="<%=Bvo.get(i).getProd_num()%>">
 		  		<%}%>
 		  
 					<ul class="cart_total fe">
-						<li>총 <span>1</span>개의 상품 금액</li>
+						<li>총 <span><%=Bvo.size()%></span>개의 상품 금액</li>
 						<ul class="fa">
 							<li>TOTAL</li>
 							<li>=</li>
-							<li><span id="totalAmount"><%= totalAmount %>원</li>
+							
+							<% // 가격 천다위 쉼표로 나타내기
+							 DecimalFormat formatter = new DecimalFormat("#,###");
+							String total_Amount = formatter.format(totalAmount); %>
+							
+							<li><span id="totalAmount"><%=total_Amount%>원</li>
 						</ul>
 					</ul>
 					

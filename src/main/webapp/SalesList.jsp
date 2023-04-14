@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -136,13 +137,18 @@
 	 					Date prodDate = new Date(prodTimestamp.getTime()); // Timestamp에서 Date로 변환
 	 					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	 					String ProdDate = dateFormat.format(prodDate); // 날짜 포맷을 적용한 문자열을 생성
+	 					
+	 					// 가격 천다위 쉼표로 나타내기 
+						int price = Pvo.get(i).getProd_price();
+					    DecimalFormat formatter = new DecimalFormat("#,###");
+					    String Prod_price = formatter.format(price);
 	 					%>
 					
 						<ul class="sell_list fb">
 							<li><%=ProdDate%></li>
 							<li class="f ac"><span><img src="./Prod/<%=Pvo.get(i).getProd_title()%>">
 							</span><p><%=Pvo.get(i).getProd_name() %></p></li>
-							<li><%=Pvo.get(i).getProd_price()%></li>
+							<li><%=Prod_price%>원</li>
 							<li><%=Pvo.get(i).getBuyer_cnt()%>개</li>
 							<a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>"><li class="gogo"> <span>내상품보러가기</span></li></a>
 						</ul>

@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.ReviewDAO"%>
+<%@page import="com.smhrd.model.ReviewVO"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.smhrd.model.ProductVO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
@@ -119,16 +122,31 @@
 						
 						<li class="fb">
 							<ul>
-								<li><b><%=Pvo.get(i).getProd_price()%>원</b></li>
+							
+							<% // 가격 천다위 쉼표로 나타내기 
+							int price = Pvo.get(i).getProd_price();
+						    DecimalFormat formatter = new DecimalFormat("#,###");
+						    String Prod_price = formatter.format(price);
+							%>
+							
+								<li><b><%=Prod_price%>원</b></li>
 							</ul>
-								<ul class="star f">
-								<li>★</li>
-								<li>★</li>
-								<li>★</li>
-								<li>★</li>
-								<li>★</li>
-								<li class="black"> 5.0</li>
+									
+							<% //리뷰
+							String prod_num=Pvo.get(i).getProd_num(); 
+							ReviewVO rvo = new ReviewDAO().avgRating(prod_num);
+							  
+							if(rvo!=null){
+							  float avg = rvo.getAvg_rating();
+							  int avg2 = (int) avg;%>
+							  
+							<ul class="star f">
+								  <% for(int j=0; j<avg2; j++){%>
+									<li>★</li>
+								<%}%>
+								<li class="black"><%=avg%></li>
 								<li class="black">점</li>
+							<%}%>
 							</ul>
 						</li>
 						

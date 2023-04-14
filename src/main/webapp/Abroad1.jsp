@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.smhrd.model.ReviewDAO"%>
 <%@page import="com.smhrd.model.ReviewVO"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
@@ -106,63 +107,71 @@
 				</ul>
 			</div>
 
-					<div class="product fb">
-			<div class="cate cate1 f">
-			<%for(int i=0; i<Pvo.size(); i++){ 
-				if(Pvo.get(i).getProd_cate().equals("TV&리모컨")){%>
-			<div class="tv_pro">
-				<ul class="p_img fc ac">
-					<li><a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
-						<img src="./Prod/<%=Pvo.get(i).getProd_title()%>" alt=""></a></li>
-				</ul>
-				<ul class="p_text f ac">
-					<li><span><b>[<%=Pvo.get(i).getProd_cate() %>]</b></span>
-							  <b><%=Pvo.get(i).getProd_name() %></b></li>
+			<div class="product fb">
+				<div class="cate cate1 f">
+				<%for(int i=0; i<Pvo.size(); i++){ 
+					if(Pvo.get(i).getProd_cate().equals("TV&리모컨")){%>
+				<div class="tv_pro">
+					<ul class="p_img fc ac">
+						<li><a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
+							<img src="./Prod/<%=Pvo.get(i).getProd_title()%>" alt=""></a></li>
+					</ul>
+					<ul class="p_text f ac">
+						<li><span><b>[<%=Pvo.get(i).getProd_cate() %>]</b></span>
+								  <b><%=Pvo.get(i).getProd_name() %></b></li>
 					<li class="fb">
-					<ul>
-						<li><b><%=Pvo.get(i).getProd_price()%>원</b></li>
-					</ul>
-					
-					<% //리뷰
-					String prod_num=Pvo.get(i).getProd_num(); 
-					ReviewVO rvo = new ReviewDAO().avgRating(prod_num);
-					  
-					if(rvo!=null){
-					  int avg = rvo.getREVIEW_RATINGS();
-					  int avg2 = (int) avg;
-					  
-					  for(int j=0; j<=avg2; i++){%>
+						<ul>
+							<% // 가격 천다위 쉼표로 나타내기 
+							int price = Pvo.get(i).getProd_price();
+						    DecimalFormat formatter = new DecimalFormat("#,###");
+						    String Prod_price = formatter.format(price);
+							%>
+							
+							<li><b><%=Prod_price%>원</b></li>
+						</ul>
+						
+						<% //리뷰
+						String prod_num=Pvo.get(i).getProd_num(); 
+						ReviewVO rvo = new ReviewDAO().avgRating(prod_num);
+						  
+						if(rvo!=null){
+						  float avg = rvo.getAvg_rating();
+						  int avg2 = (int) avg;%>
+						  
 						<ul class="star f">
-						<li>★</li>
-					<%}%>
-						<li class="black"><%=avg%></li>
-						<li class="black">점</li>
-					</ul>
-					<%}%>
-				</li>
-				
-					<% int num = 1; %>
-					<ul class="cart fa ae"> 
-					<li class="fc ac">
-					<span><a href="AmountCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>&amount=<%=num%>">장바구니&nbsp;</span>
-						<img src="img/bucket.png" class="bk1">
-						<img src="img/w_bucket.png" class="bk2">
-					</a>
-					</li>
-				
-					<li class="fc ac">
-						<span><a href="WishListCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>">찜하기&nbsp; </span>
-						<img src="img/heart.png" class="heart heart1">
-						<img src="img/w_heart.png" class="heart heart2">
-						</a>
+							  <% for(int j=0; j<avg2; j++){%>
+								<li>★</li>
+							<%}%>
+							<li class="black"><%=avg%></li>
+						<%}%>
+							<li class="black">점</li>
+						</ul>
 					</li>
 					
-				</ul>
-				
-				</ul>
-			</div>
-			<%}%>
-		<%}%>	
+						<% // 찜하기, 장바구니
+						
+						int num = 1; %>
+						<ul class="cart fa ae"> 
+						<li class="fc ac">
+						<span><a href="AmountCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>&amount=<%=num%>">장바구니&nbsp;</span>
+							<img src="img/bucket.png" class="bk1">
+							<img src="img/w_bucket.png" class="bk2">
+						</a>
+						</li>
+					
+						<li class="fc ac">
+							<span><a href="WishListCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>">찜하기&nbsp; </span>
+							<img src="img/heart.png" class="heart heart1">
+							<img src="img/w_heart.png" class="heart heart2">
+							</a>
+						</li>
+						
+					</ul>
+					
+					</ul>
+				</div>
+				<%}%>
+			<%}%>	
 			<!-- pro end -->
 
 				

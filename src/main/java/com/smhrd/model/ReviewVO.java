@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
   private Timestamp REVIEW_DATE;
   @NonNull private String U_ID;
   @NonNull private int REVIEW_RATINGS;
-  private int avg_rating;
+  private float avg_rating;
 
   }
 

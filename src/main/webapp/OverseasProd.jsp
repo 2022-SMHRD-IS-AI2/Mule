@@ -114,10 +114,10 @@
 												<div class="boad-content1-input1">
 													<span class="regi">상품카테고리</span>
 													<select class="regi-select" name="prodCate">
-														<option value="tv">TV & 리모컨</option>
-														<option value="pc">PC & ACC</option>
-														<option value="game">게임 & 콘솔</option>
-														<option value="beam">빔프로젝터 & 스피커</option>
+														<option>TV&리모컨</option>
+														<option>PC모니터</option>
+														<option>마우스&키보드</option>
+														<option>빔프로젝터&스피커</option>
 													</select>
 												</div>
 											</div>
@@ -208,7 +208,7 @@
 											<div class="pr_btn_wrap">
 												<ul>
 													<li>
-														<button type="button" class="btn regi full">등 록</button>
+														<button type="submit" class="btn regi full">등 록</button>
 													</li>
 												</ul>
 											</div>

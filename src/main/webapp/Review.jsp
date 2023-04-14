@@ -102,7 +102,7 @@
                          <div class="product-imfor1">가격 : <%=Pvo.getProd_price() %></div>
                          <div class="realstarstar">
                          
-                            <form name="myform" id="myform" method="post" action="./save">
+                            <form name="myform" id="myform" method="post" action="ReviewCon">
                                 <fieldset>
                                     <legend class="product-imfor1">별점</legend>
                                         <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
@@ -114,7 +114,6 @@
                                 
                                   <input hidden name="prod_num" value="<%=prod_num%>">
    								  <input hidden name="order_num" value="<%=order_num%>">
-                            </form>
                         </div>    
                     </div>  
                 </div>
@@ -122,11 +121,12 @@
                 <!-- 별점! ! ! -->
             
                 <div class="contrv">
-                <textarea placeholder="리뷰 작성해주세요."></textarea>
+                <textarea placeholder="리뷰 작성해주세요." name="review_content"></textarea>
                 </div>
                 <div class="bt_wraprv">
                     <input type="submit" value="등록">
                 </div>	
+            </form>
 				
 		
 			<div class="sns_wrap pf">
