@@ -1,8 +1,8 @@
 <%@page import="com.smhrd.model.ReviewDAO"%>
 <%@page import="com.smhrd.model.ReviewVO"%>
+<%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.ProductVO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 	<title>소비자 구매패턴 분석을 활용한 해외구매대행 플랫폼 MULE</title>
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/abroad.css">
 </head>
 <body>
 
@@ -21,7 +21,8 @@
 	UserVO loginUser=(UserVO)session.getAttribute("loginUser");
 	
 	//해외 공구 상품 불러오기
-	List<ProductVO> Pvo = (new ProductDAO()).OPshow(); %>
+	List<ProductVO> Pvo = (new ProductDAO()).OPshow();
+	%>
 
 	<div class="back_wrap pf">
 		<div class="line_left pf"></div>
@@ -64,16 +65,8 @@
 						</ul>
 					</li>
 					<li class="point"><a href="UsedProdMain.jsp">중고거래</a><span class="underline line6 none"></span></li>
-					
-					<%// 게시판 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
-					if(loginUser==null) {%>
-						<li class="point"><a href="LoginCheck.jsp">게시판</a><span class="underline line7 none"></span></li>
-					<%}else {%>
-						<li class="point"><a href="Board.jsp">게시판</a><span class="underline line7 none"></span></li>
-					<%} %>
-					
-					<%// 관리자에게만 보이는 구매대행 상품등록 페이지
-					if(loginUser != null){
+					<li class="point"><a href="Board.jsp">게시판</a><span class="underline line7 none"></span></li>
+					<%if(loginUser != null){
 						if(loginUser.getU_id().equals("admin")){%>
 							<li class="point"><a href="OverseasProd.jsp">상품등록</a><span class="underline line7 none"></span></li>
 						<%} %>
@@ -81,53 +74,42 @@
 				</ul>
 				</div>
 
-			<div class="banner_img"><img src="img/banner.png"></div>
 
 			<div class="quick_wrap pf fc ac">
 				<ul class="quick">
-				
-					<%//장바구니 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
-					if(loginUser==null) {%>
-						<li><a href="LoginCheck.jsp"><img src="img/bucket.png"></a></li>
-					<%}else {%>
-						<li><a href="Bucket.jsp"><img src="img/bucket.png"></a></li>
-					<%} %>
-					
-					<%//위시리스트 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
-					if(loginUser==null) {%>
-						<li><a href="LoginCheck.jsp"><img src="img/heart.png"></a></li>
-					<%}else {%>
-						<li><a href="WishList.jsp"><img src="img/heart.png"></a></li>
-					<%} %>
-					
-					<%//마이페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
-					if(loginUser==null) {%>
-						<li><a href="LoginCheck.jsp"><img src="img/mypage.png"></a></li>
-					<%}else {%>
-						<li><a href="OrderList.jsp"><img src="img/mypage.png"></a></li>
-					<%} %>
-					
-					<%//고객센터 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
-					if(loginUser==null) {%>
-						<li><a href="LoginCheck.jsp"><img src="img/center.png"></a></li>
-					<%}else {%>
-						<li><a href="Center.jsp"><img src="img/center.png"></a></li>
-					<%} %>
+					<li><a href="Bucket.jsp"><img src="img/bucket.png"></a></li>
+					<li><a href="WishList.jsp"><img src="img/heart.png"></a></li>
+					<li><a href="OrderList.jsp"><img src="img/mypage.png"></a></li>
+					<li><a href="Center.jsp"><img src="img/center.png"></a></li>
 				</ul>
 			</div>
 		</nav>
 
 		<section class="product_wrap">
-			<div class="category_wrap f ac">
-				<ul class="category fc ac">
-					<li>BEST 상품</li>
+			<div class="category_wrap">
+				<ul class="category fc">
+					<li>TV&리모컨</li>
 				</ul>
 			</div>
 			<!-- category end -->
 
-			<div class="product fb">
+			<div class="pr_title fb">
+				<ul class="pr_txt f">
+					<li class="f">
+						<img src="img/list.JPG">
+						<span>9개</span>의 상품이 있습니다.</li>
+				</ul>
+				<ul class="pr_list f">
+					<li><img src="img/home.JPG"></li>
+					<li>></li>
+					<li>TV&리모컨</li>
+				</ul>
+			</div>
+
+					<div class="product fb">
 			<div class="cate cate1 f">
-			<%for(int i=0; i<Pvo.size(); i++){ %>
+			<%for(int i=0; i<Pvo.size(); i++){ 
+				if(Pvo.get(i).getProd_cate().equals("TV&리모컨")){%>
 			<div class="tv_pro">
 				<ul class="p_img fc ac">
 					<li><a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
@@ -179,15 +161,16 @@
 				
 				</ul>
 			</div>
+			<%}%>
 		<%}%>	
 			<!-- pro end -->
+
+				
 		</div>
-	<!-- cate1 end -->
-
-
+<!-- cate1 end -->
 			</div>
 			<!-- product end -->
-		</section>s
+		</section>
 	</div>
 	<!-- wrap end -->
 
@@ -202,10 +185,9 @@
 
 		<div class="chat_wrap pf">
 			<ul class="chat fc ac">
-				<li><a class="fc ac" href="Center.jsp"><img src="img/chatbot.png"></a></li>
+				<li><a class="fc ac" href=""><img src="img/chatbot.png"></a></li>
 			</ul>
 		</div>
 	</footer>
-
 </body>
 </html>

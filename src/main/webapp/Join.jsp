@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,17 +12,21 @@
 	<script src = 'https://code.jquery.com/jquery-3.6.1.min.js'></script>
 </head>
 <body>
+	<%
+	// 로그인한 회원 불러오기
+	UserVO loginUser=(UserVO)session.getAttribute("loginUser");
+	%>
 
-<div class="back_wrap pf">
-	<div class="line_left pf"></div>
-	<div class="line_right pf"></div>
-	<div class="withmule pf"><img src="img/width_back.png"></div>
-</div>
+	<div class="back_wrap pf">
+		<div class="line_left pf"></div>
+		<div class="line_right pf"></div>
+		<div class="withmule pf"><img src="img/width_back.png"></div>
+	</div>
 
 	<div class="wrap">
 		<header class="header fb ae">
 			<div class="logo pf">
-				<a href="index.html">
+				<a href="Main.jsp">
 					<img src="img/logo.png">
 				</a>
 			</div>
@@ -29,9 +34,13 @@
 
 			<div class="join_wrap pa">
 				<ul class="join fb ac">
-					<!-- <li><img src="img/dod.jpg"></li>
-					<li><a href="login.html">Login</a></li>
-					<li><a href="join.html">Join</a></li> -->
+					<li><img src="img/dod.jpg"></li>
+						<%if(loginUser != null){%>
+							<li><a href="LogoutCon">Logout</a></li>
+						<%}else{%>
+							<li><a href="Login.jsp">Login</a></li>
+						<%} %>
+					<li><a href="Join.jsp">Join</a></li>
 				</ul>
 			</div>
 		</header>
@@ -42,14 +51,19 @@
 					<h2>해외 구매대행<span class="underline line"></span></h2>
 					<li class="point">상품목록<span class="underline line1 none"></span>
 						<ul>
-							<li><a href="abroad1.html">TV&리모컨</a><span class="underline line2 none"></span></li>
-							<li><a href="abroad2.html">PC모니터</a><span class="underline line3 none"></span></li>
-							<li><a href="abroad3.html">마우스&키보드</a><span class="underline line4 none"></span></li>
-							<li><a href="abroad4.html">빔프로젝터&스피커</a><span class="underline line5 none"></span></li>
+							<li><a href="Abroad1.jsp">TV&리모컨</a><span class="underline line2 none"></span></li>
+							<li><a href="Abroad2.jsp">PC모니터</a><span class="underline line3 none"></span></li>
+							<li><a href="Abroad3.jsp">마우스&키보드</a><span class="underline line4 none"></span></li>
+							<li><a href="Abroad4.jsp">빔프로젝터&스피커</a><span class="underline line5 none"></span></li>
 						</ul>
 					</li>
-					<li class="point"><a href="used.html">중고거래</a><span class="underline line6 none"></span></li>
-					<li class="point"><a href="board.html">게시판</a><span class="underline line7 none"></span></li>
+					<li class="point"><a href="UsedProdMain.jsp">중고거래</a><span class="underline line6 none"></span></li>
+					<li class="point"><a href="Board.jsp">게시판</a><span class="underline line7 none"></span></li>
+					<%if(loginUser != null){
+						if(loginUser.getU_id().equals("admin")){%>
+							<li class="point"><a href="OverseasProd.jsp">상품등록</a><span class="underline line7 none"></span></li>
+						<%} %>
+					<%}%>
 				</ul>
 				</div>
 				
@@ -63,6 +77,7 @@
 								<ul class="info">
 									<li class="f ac pr"><span>아이디</span><input type="text" name="id" id="dcid">
 									<button type="button"class="pa" id= "IdCheck">중복확인하기</button></li>
+									<br><h6 id="resultCheck"></h6>
 									<li class="f ac"><span>비밀번호</span><input type="password" name="pw"></li>
 									<li class="f ac"><span>이름</span><input type="text" name="name"></li>
 									<li class="f ac"><span>닉네임</span><input type="text" name="nick"></li>
@@ -98,10 +113,10 @@
 
 			<div class="quick_wrap pf fc ac">
 				<ul class="quick">
-					<li><a href="bucket.html"><img src="img/bucket.png"></a></li>
-					<li><a href="heart.html"><img src="img/heart.png"></a></li>
-					<li><a href="mypage_check.html"><img src="img/mypage.png"></a></li>
-					<li><a href="center.html"><img src="img/center.png"></a></li>
+					<li><a href="Bucket.jsp"><img src="img/bucket.png"></a></li>
+					<li><a href="WishList.jsp"><img src="img/heart.png"></a></li>
+					<li><a href="OrderList.jsp"><img src="img/mypage.png"></a></li>
+					<li><a href="Center.jsp"><img src="img/center.png"></a></li>
 				</ul>
 			</div>
 		</nav>

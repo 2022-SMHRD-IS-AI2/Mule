@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--중고거래상품 등록 -->
 	<insert id="UPupload" parameterType="com.smhrd.model.ProductVO">
 		insert into product values(
-		#{prod_num},#{prod_name},'N',#{prod_price},#{prod_title},
+		product_SEQ.nextval,#{prod_name},'N',#{prod_price},#{prod_title},
 		#{prod_img1},#{prod_img2},#{prod_desc},'0','0',sysdate,'0',
 		'0',#{seller_id},'1', #{return_period},'0',#{buy_date})
 	</insert>
@@ -76,5 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="salesList" resultType="com.smhrd.model.ProductVO" parameterType = "String">
 	   	select * from PRODUCT where seller_id=#{u_id} 
 	</select> 
+	
+
 	
 </mapper>	

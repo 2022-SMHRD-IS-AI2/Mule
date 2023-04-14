@@ -1,6 +1,3 @@
-<%@page import="com.smhrd.model.ProductVO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,20 +7,19 @@
 <meta charset="UTF-8">
 	<title>소비자 구매패턴 분석을 활용한 해외구매대행 플랫폼 MULE</title>
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/bucket.css">
-	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="css/order_complete.css">
 </head>
-
 <body>
+<div class="back_wrap pf">
+	<div class="line_left pf"></div>
+	<div class="line_right pf"></div>
+	<div class="withmule pf"><img src="img/width_back.png"></div>
+</div>
 	<%
 	// 로그인한 회원 불러오기
-	UserVO loginUser=(UserVO)session.getAttribute("loginUser"); 
-  	String u_id=loginUser.getU_id();
-	
-  	//로그인한 회원의 장바구니 정보 불러오기
-  	List<ProductVO> Bvo = new ProductDAO().Bucket(u_id);
+	UserVO loginUser=(UserVO)session.getAttribute("loginUser");
 	%>
-	
+
 	<div class="back_wrap pf">
 		<div class="line_left pf"></div>
 		<div class="line_right pf"></div>
@@ -85,12 +81,12 @@
 			</div>
 		</nav>
 
-		<section class="bucket_wrap fc">
+		<section class="bucket_wrap">
 			<div class="bucket fc">
 				<div class="bucket_info fb">
 					<ul class="cart">
 						<li>
-							<img src="img/cart_icon2.png">
+							<img src="img/cart_icon1.png">
 							<p>CART</p>
 						</li>
 						<li>장바구니</li>
@@ -112,7 +108,7 @@
 					</ul>
 					<ul class="complete">
 						<li>
-							<img src="img/complete_icon1.png">
+							<img src="img/complete_icon2.png">
 							<p>COMPLETE</p>
 						</li>
 						<li>주문완료</li>
@@ -121,77 +117,17 @@
 				</div>
 				<!-- bucket_info end -->
 
-				<div class="cart_wrap">
-					<ul class="cart_title fb">
-						<li>상품/옵션정보</li>
-						<li>수량</li>
-						<li>상품금액</li>
-						<li>합계금액</li>
+				<div class="complete_wrap">
+					<ul class="comple">
+						<h1>결제 완료<span class="underline"></span></h1>
+						<li class="fc ac"><img src="img/complete_icon3.png"></li>
+						<li>결제가 정상적으로 처리되었습니다.</li>
 					</ul>
-					
-					<% int totalAmount = 0; // 총 결제 금액을 저장할 변수
-	
-					 if(Bvo.size()>0){
-					 	for (int i = 0; i < Bvo.size(); i++) {
-						    int amount = Bvo.get(i).getAmount();
-						    int price = Bvo.get(i).getProd_price();
-						    int totalPrice = amount * price;
-						    totalAmount += totalPrice; // 총 결제 금액 계산
-					%>
-					
-					<form class="input2" action="OrderCon" method="post">
-					<ul class="cart_list fb">
-						<li><a>X</a></li>
-						<li class="f ac cart_img"><span><img src="./Prod/<%= Bvo.get(i).getProd_title() %>"></span>
-						<%= Bvo.get(i).getProd_name() %></li>
-						<li><input type="number" min="1" max="9999" id="cnt<%= i %>" name="cnt[]" value=<%= amount %>></li>
-						<li><%=Bvo.get(i).getProd_price() %></li>
-						<li><span class="totalPrice" id="totalPrice<%= i %>"><%= totalPrice %> 원</span></li>
-					</ul>
-					
-				 	<script>
-					    $(document).ready(function() {
-					      $('#cnt'+<%= i %>).change(function() {
-					        let amount = $('#cnt'+<%= i %>).val();
-					        let totalPrice = amount * <%= price %>; // 상품 하나당 총 결제 금액 계산
-					        $('#totalPrice'+<%= i %>).text(totalPrice + " 원"); 
-					        totalAmount = 0; // 총 결제 금액 초기화
-					        $('.totalPrice').each(function() {
-					          totalAmount += parseInt($(this).text()); // 총 결제 금액 재계산
-					        });
-					        $('#totalAmount').text(totalAmount + " 원"); // 총 결제 금액 저장
-							document.getElementById('_totalAmount').value = totalAmount;
-							console.log(document.getElementById('_totalAmount').value);
-					      });
-					    });
-		  			</script>
-		  			
-		  			<input hidden name="prodNum[]" value="<%=Bvo.get(i).getProd_num()%>">
-		  		<%}%>
-		  
-					<ul class="cart_total fe">
-						<li>총 <span>1</span>개의 상품 금액</li>
-						<ul class="fa">
-							<li>TOTAL</li>
-							<li>=</li>
-							<li><span id="totalAmount"><%= totalAmount %>원</li>
-						</ul>
-					</ul>
-					
-				  <input hidden name="main_prod_name" value="<%=Bvo.get(0).getProd_name() %>">
-				  <input hidden name="amount" value="<%=Bvo.size()%>">
-				  <input name="_totalAmount" id="_totalAmount" value="<%=totalAmount%>" type="hidden">
-				</div>
-				<!-- cart_wrap -->
-
-				<div class="order_wrap">
-					<ul class="fb ae">
-						<li><input type="submit" value="상품 주문 하기"></li>
-			<%}%>
-			        	</form>	      
-						<li><a href="Main.jsp">쇼핑 계속 하기</a></li>
+					<ul class="com_my fc ac">
+						<li><a href="OrderList.jsp">주문 내역 확인 하기</a></li>
 					</ul>
 				</div>
+			
 			</div>
 			<!-- bucket end -->
 		</section>
@@ -211,8 +147,5 @@
 				<li><a class="fc ac" href=""><img src="img/chatbot.png"></a></li>
 			</ul>
 		</div>
-		</div>
-	
-	 
 </body>
 </html>

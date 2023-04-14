@@ -136,6 +136,12 @@
   	<description></description>
   	<servlet-class>com.smhrd.controller.WishListCon</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UserDeleteCon</servlet-name>
+  	<display-name>UserDeleteCon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.UserDeleteCon</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>JoinCon</servlet-name>
   	<url-pattern>/JoinCon</url-pattern>
@@ -223,6 +229,10 @@
   <servlet-mapping>
   	<servlet-name>WishListCon</servlet-name>
   	<url-pattern>/WishListCon</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserDeleteCon</servlet-name>
+  	<url-pattern>/UserDeleteCon</url-pattern>
   </servlet-mapping>
 
 

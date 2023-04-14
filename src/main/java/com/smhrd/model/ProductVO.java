@@ -33,7 +33,7 @@ public class ProductVO {
     private int views;
     private Timestamp prod_date;
     @NonNull private int number_of_people;
-    @NonNull private int customs_clearance_num;
+    @NonNull private String customs_clearance_num;
     @NonNull private String seller_id;
     private String prod_check;
     @NonNull private String return_period;
@@ -41,7 +41,7 @@ public class ProductVO {
     private int bucket_num;
     private int buyer_cnt;
     private String buy_date;
-    private String order_date;
+    private Timestamp order_date;
     private String delivery_progress;
     private String payment_status;
     private String return_status;
@@ -49,10 +49,9 @@ public class ProductVO {
     private String review_status;
     private int Order_num;
     
-	public ProductVO(String prod_num,String prod_name,int prod_price,String prod_title, String prod_img1,
+	public ProductVO(String prod_name,int prod_price,String prod_title, String prod_img1,
 			String prod_img2, String prod_desc,String seller_id,String return_period,String buy_date) {
 		
-		this.prod_num =prod_num;
 		this.prod_name =prod_name;
 		this.prod_price =prod_price;
 		this.prod_title =prod_title;

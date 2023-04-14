@@ -20,7 +20,7 @@ public class OrderCon extends HttpServlet {
 
    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
-	   request.setCharacterEncoding("UTF-8");
+	  request.setCharacterEncoding("UTF-8");
 		
 	   
       HttpSession session = request.getSession();
@@ -29,7 +29,7 @@ public class OrderCon extends HttpServlet {
       String u_id=loginUser.getU_id();
       String main_prod_name = request.getParameter("main_prod_name");
       System.out.println("이름"+main_prod_name);
-      int total_amount = Integer.parseInt(request.getParameter("total_amount"));
+      int total_amount = Integer.parseInt(request.getParameter("amount"));
       System.out.println("수량"+total_amount);
       int paid_amount = Integer.parseInt(request.getParameter("_totalAmount"));
       System.out.println("결제액"+paid_amount);
@@ -46,8 +46,6 @@ public class OrderCon extends HttpServlet {
              OrderVO O_vo = new OrderVO(prodNum,u_id,num);   
              int O_cnt = new OrderDAO().orderUpload(O_vo);
              
-
-               
              if(O_cnt>0) {
                System.out.println("주문내역 업로드 완료");
              }else {
@@ -62,6 +60,7 @@ public class OrderCon extends HttpServlet {
            request.setAttribute("main_prod_name", main_prod_name);
            request.setAttribute("total_amount", total_amount);
            request.setAttribute("paid_amount", paid_amount);
+           request.setAttribute("prodNums", prodNums);
             
            dispatcher.forward(request, response);
       

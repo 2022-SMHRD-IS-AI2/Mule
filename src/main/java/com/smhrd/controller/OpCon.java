@@ -58,8 +58,7 @@ public class OpCon extends HttpServlet {
 		String prod_Desc= multi.getParameter("prodDesc"); //상품설명
 		String numOfPeople= multi.getParameter("numOfPeople"); //인원수
 		int num_Of_People=Integer.parseInt(numOfPeople);
-		String customsClearanceNum= multi.getParameter("customsClearanceNum"); //통관번호
-		int customs_Clearance_Num=Integer.parseInt(customsClearanceNum);
+		String customs_Clearance_Num= multi.getParameter("customsClearanceNum"); //통관번호
 		String Return_Period= multi.getParameter("ReturnPeriod"); //반품기간	
 		
 		ProductVO vo= new ProductVO(

@@ -20,7 +20,7 @@ public class OrderVO {
 
 	private int order_num;
 	@NonNull private String prod_num;
-    private Timestamp order_date;
+    private String order_date;
     @NonNull private String u_id;
     @NonNull private int amount;
     private String delivery_progress;

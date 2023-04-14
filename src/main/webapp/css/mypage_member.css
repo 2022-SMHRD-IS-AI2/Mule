@@ -21,8 +21,8 @@
 .member_input>li{width:1070px; background:#fff; padding:0 20px; box-sizing:border-box; line-height:60px; border-bottom:1px solid #eee;}
 .member_input>li>input{width:150px; height:40px; border:none; background:#f5f5fa; border-radius:30px; padding:0 15px;}
 .member_input>li>input:focus{outline:none;}
-.member_input>li:nth-child(1)>input{width:200px;}
-.member_input>li:nth-child(2)>input{width:350px;}
+.member_input>li:last-child>input{width:200px;}
+.member_input>li:nth-child(3)>input{width:350px;}
 
 .delete_wrap>p{font-size:13px; margin:5px; color:#aeaeba; text-decoration:underline; cursor: pointer;}
 
