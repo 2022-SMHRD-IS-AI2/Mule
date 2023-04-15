@@ -1,3 +1,10 @@
+<%@page import="com.smhrd.model.BoardCommentDAO"%>
+<%@page import="com.smhrd.model.BoardCommentVO"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Date"%>
+<%@page import="java.sql.Timestamp"%>
+<%@page import="com.smhrd.model.BoardDAO"%>
+<%@page import="com.smhrd.model.BoardVO"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.ProductVO"%>
 <%@page import="java.util.List"%>
@@ -10,10 +17,16 @@
 <meta charset="UTF-8">
 	<title>소비자 구매패턴 분석을 활용한 해외구매대행 플랫폼 MULE</title>
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/login_no.css">
+	<link rel="stylesheet" href="css/board_view.css">
 </head>
 <body>
-<%
+<div class="back_wrap pf">
+	<div class="line_left pf"></div>
+	<div class="line_right pf"></div>
+	<div class="withmule pf"><img src="img/width_back.png"></div>
+</div>
+
+	<%
 	// 로그인한 회원 불러오기
 	UserVO loginUser=(UserVO)session.getAttribute("loginUser");
 
@@ -44,7 +57,13 @@
 	 	}
   	}
   	
- 	
+    // 사용자가 클릭한 상품의 대한 상품 상세페이지 상품번호를 이용하여 받아오기
+    int B_num = Integer.parseInt(request.getParameter("B_num"));
+    
+    // 해당 개시글 불러오기
+    BoardVO bvo = new BoardDAO().DetailBoardShow(B_num);
+    // 해당 게시글에 대한 게시글 댓글 불러오기
+   	List<BoardCommentVO> Cvo = new BoardCommentDAO().showCmt(B_num);
 	%>
 
 	<div class="back_wrap pf">
@@ -139,24 +158,92 @@
 			</div>
 		</nav>
 
-			<!--LoginCheck페이지 시작 -->
-			<div class="login_no_wrap">
-                <div class="nolg_wrap">
-					<ul class="nolg">
-						<li class="lg fc ac"><img src="img/login_no.PNG"></li>
-						<li>로그인이 필요한 서비스 입니다.</li>
-					</ul>
-					<ul class="nolg_lg fc ac">
-                        <a href="Login.jsp">
-                            <button id="nolg_btn" class="nolg_big_btn">
-                                로그인 하러 가기
-                            </button>
-                        </a>
-					</ul>
+			<!-- BoardView페이지 시작 -->
+			<div class="board_wrap">
+				<ul class="category fc">
+					<li>게시판</li>
+				</ul>
+				<div class="board_view_wrap">
+					<div class="board_view">
+						<div class="title">
+							<%=bvo.getB_name()%>
+						</div>
+						
+						<div class="info">
+							<dl>
+								<dt>번호</dt>
+								<dd><%=bvo.getB_num()%></dd>
+							</dl>
+							<dl>
+								<dt>작성자</dt>
+								<dd><%=loginUser.getU_nick()%></dd>
+							</dl>
+							<dl>
+							<%Timestamp boardTimestamp = bvo.getB_date(); // 주문일자 정보를 Timestamp 타입으로 받아옴
+		 					Date boardDate = new Date(boardTimestamp.getTime()); // Timestamp에서 Date로 변환
+		 					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		 					String BoardDate = dateFormat.format(boardDate); // 날짜 포맷을 적용한 문자열을 생성 %>
+								
+								<dt>작성일</dt>
+								<dd><%=BoardDate%></dd>
+							</dl>
+						</div>
+						
+						<div class="cont_wrap f">
+							<div class="cont_img fc">
+								<img src="./BoardIMG/<%=bvo.getB_img()%>">
+							</div>
+							 <div class="cont">
+									<%=bvo.getB_content()%>
+							</div>
+						</div>
+					</div>
+
+					<!-- 댓글 보이는 부분 -->
+
+					<div class="cmmt_tit">
+						댓글
+					</div>
+
+					<div class="cmmt_wrap">
+						<%for(int i =0; i<Cvo.size(); i++) {%>
+							<ul class="comment_view f ac">
+								<li class="c_id"><%=Cvo.get(i).getU_id()%></li>
+								<li class="c_commt fb"><span class="cmmt_txt"><%=Cvo.get(i).getBoard_cmt_content()%></span></li>
+									
+								<%Timestamp cmtTimestamp = bvo.getB_date(); // 주문일자 정보를 Timestamp 타입으로 받아옴
+			 					Date cmtDate = new Date(boardTimestamp.getTime()); // Timestamp에서 Date로 변환
+			 					String CmtDate = dateFormat.format(cmtDate); // 날짜 포맷을 적용한 문자열을 생성 %>
+								<li class="c_date"><%=cmtDate%></li>
+							</ul>
+						<%}%>
+						
+					</div>
+					<!-- 댓글 보이는 부분 끝 -->
+
+					<!-- 댓글 작성란 -->
+					<div class="board_view_comment f">
+						<form action="BoardCommentCon" method="POST">
+							<ul class="comment fb ac">
+								<li class="c_id"><%=loginUser.getU_nick()%></li>
+									<li class="c_commt">
+										<input type="text" placeholder="댓글을 입력하세요." name="cmt">
+			  							<input hidden name="Bnum" value="<%=bvo.getB_num()%>">
+										<button type="submit">등록</button>
+									</li>
+							</ul>												
+						</form>
+					</div>
+					<!-- 댓글 작성란 끝 -->
+
+					<div class="bt_wrap fc">
+						<a href="Board.jsp" class="on">목록</a>
+						<!-- <a href="edit.html">수정</a> -->
+					</div>
 				</div>
 			</div>
+			<!-- wrap end -->
 
-	
 		<div class="sns_wrap pf">
 			<ul class="sns fa">
 				<li><a href=""><img src="img/twiter.png"></a></li>

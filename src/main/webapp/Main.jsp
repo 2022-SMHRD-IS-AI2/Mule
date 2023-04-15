@@ -108,8 +108,8 @@
 					<%}%>
 				</ul>
 				</div>
-
-			<div class="banner_img"><img src="img/banner.png"></div>
+				
+				<div class="banner_img"><img src="img/banner.png"></div>
 
 			<div class="quick_wrap pf fc ac">
 				<ul class="quick">
@@ -117,9 +117,14 @@
 					<%//장바구니 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
 					if(loginUser==null) {%>
 						<li><a href="LoginCheck.jsp"><img src="img/bucket.png"></a></li>
-					<%}else {%>
-						<li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
-					<%} %>
+					<%}else {
+						//장바구니 담아놓은 상품이 있는지 확인하기(만약 없다면 NoBucket.jsp로 이동)
+						if(Bsize>0){%>
+							<li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+						<%} else{%>
+							<li><a href="NoBucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+						<%}%>
+					<%}%>
 					
 					<%//위시리스트 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
 					if(loginUser==null) {%>

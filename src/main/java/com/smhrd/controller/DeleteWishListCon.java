@@ -26,7 +26,7 @@ public class DeleteWishListCon extends HttpServlet {
 		String u_id=loginUser.getU_id();
 		String prod_num = request.getParameter("prod_num");
 		
-		WishListVO vo = new WishListVO(u_id,prod_num);
+		WishListVO vo = new WishListVO(prod_num,u_id);
 		int cnt = new WishListDAO().DeleteWishList(vo);
 		
 		if(cnt>0) {

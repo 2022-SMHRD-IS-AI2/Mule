@@ -1,5 +1,5 @@
-<%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.ProductVO"%>
+<%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,10 +10,11 @@
 <meta charset="UTF-8">
 	<title>소비자 구매패턴 분석을 활용한 해외구매대행 플랫폼 MULE</title>
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/login_no.css">
+	<link rel="stylesheet" href="css/bucket_no.css">
 </head>
+
 <body>
-<%
+	<%
 	// 로그인한 회원 불러오기
 	UserVO loginUser=(UserVO)session.getAttribute("loginUser");
 
@@ -105,15 +106,21 @@
 				</ul>
 				</div>
 
+
 			<div class="quick_wrap pf fc ac">
 				<ul class="quick">
 				
 					<%//장바구니 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
 					if(loginUser==null) {%>
 						<li><a href="LoginCheck.jsp"><img src="img/bucket.png"></a></li>
-					<%}else {%>
-						<li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
-					<%} %>
+					<%}else {
+						//장바구니 담아놓은 상품이 있는지 확인하기(만약 없다면 NoBucket.jsp로 이동)
+						if(Bsize>0){%>
+							<li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+						<%} else{%>
+							<li><a href="NoBucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+						<%}%>
+					<%}%>
 					
 					<%//위시리스트 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
 					if(loginUser==null) {%>
@@ -139,25 +146,24 @@
 			</div>
 		</nav>
 
-			<!--LoginCheck페이지 시작 -->
-			<div class="login_no_wrap">
-                <div class="nolg_wrap">
-					<ul class="nolg">
-						<li class="lg fc ac"><img src="img/login_no.PNG"></li>
-						<li>로그인이 필요한 서비스 입니다.</li>
+			<!-- NoBucket 페이지 시작 -->
+			<div class="bucket_no_wrap">
+                <div class="nobk_wrap">
+					<ul class="nobk">
+						<li class="bk fc ac"><img src="img/bucket_no.png"></li>
+						<li>장바구니가 비었습니다.</li>
 					</ul>
-					<ul class="nolg_lg fc ac">
-                        <a href="Login.jsp">
-                            <button id="nolg_btn" class="nolg_big_btn">
-                                로그인 하러 가기
+					<ul class="nobk_bk fc ac">
+                        <a href="Main.jsp">
+                            <button id="nobk_btn" class="nobk_big_btn">
+                                상품 구경하기
                             </button>
                         </a>
 					</ul>
 				</div>
 			</div>
-
-	
-		<div class="sns_wrap pf">
+		
+			<div class="sns_wrap pf">
 			<ul class="sns fa">
 				<li><a href=""><img src="img/twiter.png"></a></li>
 				<li><a href=""><img src="img/ins.png"></a></li>

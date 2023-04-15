@@ -26,7 +26,7 @@ public class DeleteBucketCon extends HttpServlet {
 		String u_id=loginUser.getU_id();
 		String prod_num = request.getParameter("prod_num");
 		
-		BucketVO vo = new BucketVO(u_id,prod_num);
+		BucketVO vo = new BucketVO(prod_num,u_id);
 		int cnt = new BucketDAO().DeleteBucket(vo);
 		
 		if(cnt>0) {

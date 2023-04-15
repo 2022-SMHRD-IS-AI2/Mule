@@ -223,8 +223,6 @@
 				<li><a class="fc ac" href=""><img src="img/chatbot.png"></a></li>
 			</ul>
 		</div>
-		</div>
-	
-	 
+
 </body>
 </html>
