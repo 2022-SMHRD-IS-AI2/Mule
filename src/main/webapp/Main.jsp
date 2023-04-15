@@ -1,4 +1,6 @@
 <%@page import="java.text.DecimalFormat"%>
+<%@page import="com.smhrd.model.ReviewDAO"%>
+<%@page import="com.smhrd.model.ReviewVO"%>
 <%@page import="com.smhrd.model.ProductVO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
@@ -11,20 +13,44 @@
 <meta charset="UTF-8">
    <title>소비자 구매패턴 분석을 활용한 해외구매대행 플랫폼 MULE</title>
    <link rel="stylesheet" href="css/style.css">
-   <link rel="stylesheet" href="css/bucket.css">
-   <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+   <link rel="stylesheet" href="css/index.css">
 </head>
-
 <body>
+
    <%
    // 로그인한 회원 불러오기
-   UserVO loginUser=(UserVO)session.getAttribute("loginUser"); 
-     String u_id=loginUser.getU_id();
+   UserVO loginUser=(UserVO)session.getAttribute("loginUser");
+
+   //해외 공구 상품 불러오기
+   List<ProductVO> Pvo = (new ProductDAO()).OPshow(); 
    
-     //로그인한 회원의 장바구니 정보 불러오기
-     List<ProductVO> Bvo = new ProductDAO().Bucket(u_id);
+    //로그인한 회원의 장바구니 수량 불러오기
+    int Bsize = 0 ;
+    
+   if(loginUser!=null) {
+      String u_id=loginUser.getU_id();
+        List<ProductVO> Bvo = new ProductDAO().Bucket(u_id);
+      
+       if(Bvo!=null){
+          Bsize=Bvo.size();   
+       }
+   }
+   
+     //로그인한 회원의 위시리스트 수량 불러오기
+   int Wsize = 0 ;
+     
+     if(loginUser!=null) {
+        String u_id=loginUser.getU_id();
+        List<ProductVO> Wvo = new ProductDAO().WishList(u_id);
+        
+       if(Wvo!=null){
+          Wsize=Wvo.size();   
+       }
+     }
+     
+    
    %>
-   
+
    <div class="back_wrap pf">
       <div class="line_left pf"></div>
       <div class="line_right pf"></div>
@@ -66,150 +92,147 @@
                   </ul>
                </li>
                <li class="point"><a href="UsedProdMain.jsp">중고거래</a><span class="underline line6 none"></span></li>
-               <li class="point"><a href="Board.jsp">게시판</a><span class="underline line7 none"></span></li>
-               <%if(loginUser != null){
+               
+               <%// 게시판 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li class="point"><a href="LoginCheck.jsp">게시판</a><span class="underline line7 none"></span></li>
+               <%}else {%>
+                  <li class="point"><a href="Board.jsp">게시판</a><span class="underline line7 none"></span></li>
+               <%} %>
+               
+               <%// 관리자에게만 보이는 구매대행 상품등록 페이지
+               if(loginUser != null){
                   if(loginUser.getU_id().equals("admin")){%>
                      <li class="point"><a href="OverseasProd.jsp">상품등록</a><span class="underline line7 none"></span></li>
                   <%} %>
                <%}%>
             </ul>
             </div>
-
+            
+            <div class="banner_img"><img src="img/banner.png"></div>
 
          <div class="quick_wrap pf fc ac">
             <ul class="quick">
-               <li><a href="Bucket.jsp"><img src="img/bucket.png"></a></li>
-               <li><a href="WishList.jsp"><img src="img/heart.png"></a></li>
-               <li><a href="OrderList.jsp"><img src="img/mypage.png"></a></li>
-               <li><a href="Center.jsp"><img src="img/center.png"></a></li>
+            
+               <%//장바구니 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/bucket.png"></a></li>
+               <%}else {
+                  //장바구니 담아놓은 상품이 있는지 확인하기(만약 없다면 NoBucket.jsp로 이동)
+                  if(Bsize>0){%>
+                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                  <%} else{%>
+                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                  <%}%>
+               <%}%>
+               
+               <%//위시리스트 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/heart.png"></a></li>
+               <%}else {%>
+                  <li><a href="WishList.jsp"><img src="img/heart.png"><%=Wsize%></a></li>
+               <%} %>
+               
+               <%//마이페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/mypage.png"></a></li>
+               <%}else {%>
+                  <li><a href="OrderList.jsp"><img src="img/mypage.png"></a></li>
+               <%} %>
+               
+               <%//고객센터 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/center.png"></a></li>
+               <%}else {%>
+                  <li><a href="Center.jsp"><img src="img/center.png"></a></li>
+               <%} %>
             </ul>
          </div>
       </nav>
 
-      <section class="bucket_wrap fc">
-         <div class="bucket fc">
-            <div class="bucket_info fb">
-               <ul class="cart">
-                  <li>
-                     <img src="img/cart_icon2.png">
-                     <p>CART</p>
-                  </li>
-                  <li>장바구니</li>
-               </ul>
-               <!-- cart end -->
-               <ul class="arrow">
-                  >
-               </ul>
-               <ul class="order">
-                  <li>
-                     <img src="img/order_icon1.png">
-                     <p>ORDER</p>
-                  </li>
-                  <li>주문서작성</li>
-               </ul>
-               <!-- order end -->
-               <ul class="arrow">
-                  >
-               </ul>
-               <ul class="complete">
-                  <li>
-                     <img src="img/complete_icon1.png">
-                     <p>COMPLETE</p>
-                  </li>
-                  <li>주문완료</li>
-               </ul>
-               <!-- complete end -->
-            </div>
-            <!-- bucket_info end -->
-
-            <div class="cart_wrap">
-               <ul class="cart_title fb">
-                  <li>상품/옵션정보</li>
-                  <li>수량</li>
-                  <li>상품금액</li>
-                  <li>합계금액</li>
-               </ul>
-               
-               <% int totalAmount = 0; // 총 결제 금액을 저장할 변수
-   
-                if(Bvo.size()>0){
-                   for (int i = 0; i < Bvo.size(); i++) {
-                      int amount = Bvo.get(i).getAmount();
-                      int price = Bvo.get(i).getProd_price();
-                      int totalPrice = amount * price;
-                      totalAmount += totalPrice; // 총 결제 금액 계산
-                      
-                      // 가격 천다위 쉼표로 나타내기 
-                      DecimalFormat formatter = new DecimalFormat("#,###");
-                      String Prod_price = formatter.format(price);
-                      String total_Price = formatter.format(totalPrice);
-                      
-               %>
-               
-               <form class="input2" action="OrderCon" method="post">
-               <ul class="cart_list fb">
-                  <li><a href="DeleteBucketCon?prod_num=<%=Bvo.get(i).getProd_num()%>">X</a></li>
-                  <li class="f ac cart_img"><span><img src="./Prod/<%= Bvo.get(i).getProd_title() %>"></span>
-                  <%= Bvo.get(i).getProd_name() %></li>
-                  <li><input type="number" min="1" max="9999" id="cnt<%= i %>" name="cnt[]" value=<%= amount %>></li>
-                  <li><%=Prod_price%> 원</li>
-                  <li><span class="totalPrice" id="totalPrice<%= i %>"><%=total_Price%> 원</span></li>
-               </ul>
-               
-               <script>
-                 $(document).ready(function() {
-                   $('#cnt'+<%= i %>).change(function() {
-                     let amount = $('#cnt'+<%= i %>).val();
-                     let totalPrice = amount * <%= price %>; // 상품 하나당 총 결제 금액 계산
-                     $('#totalPrice'+<%= i %>).text(totalPrice.toLocaleString() + " 원"); // 천단위 쉼표 추가
-                     totalAmount = 0; // 총 결제 금액 초기화
-                     $('.totalPrice').each(function() {
-                       totalAmount += parseInt($(this).text().replace(/,/g, "")); // 총 결제 금액 재계산
-                     });
-                     $('#totalAmount').text(totalAmount.toLocaleString() + " 원"); // 천단위 쉼표 추가
-                     document.getElementById('_totalAmount').value = totalAmount;
-                     console.log(document.getElementById('_totalAmount').value);
-                   });
-                 });
-               </script>
-                 
-                 <input hidden name="prodNum[]" value="<%=Bvo.get(i).getProd_num()%>">
-              <%}%>
-        
-               <ul class="cart_total fe">
-                  <li>총 <span><%=Bvo.size()%></span>개의 상품 금액</li>
-                  <ul class="fa">
-                     <li>TOTAL</li>
-                     <li>=</li>
-                     
-                     <% // 가격 천다위 쉼표로 나타내기
-                      DecimalFormat formatter = new DecimalFormat("#,###");
-                     String total_Amount = formatter.format(totalAmount); %>
-                     
-                     <li><span id="totalAmount"><%=total_Amount%>원</li>
-                  </ul>
-               </ul>
-               
-              <input hidden name="main_prod_name" value="<%=Bvo.get(0).getProd_name() %>">
-              <input hidden name="amount" value="<%=Bvo.size()%>">
-              <input name="_totalAmount" id="_totalAmount" value="<%=totalAmount%>" type="hidden">
-            </div>
-            <!-- cart_wrap -->
-
-            <div class="order_wrap">
-               <ul class="fb ae">
-                  <li><input type="submit" value="상품 주문 하기"></li>
-         <%}%>
-                    </form>         
-                  <li><a href="Main.jsp">쇼핑 계속 하기</a></li>
-               </ul>
-            </div>
+      <section class="product_wrap">
+         <div class="category_wrap f ac">
+            <ul class="category fc ac">
+               <li>BEST 상품</li>
+            </ul>
          </div>
-         <!-- bucket end -->
+         <!-- category end -->
+
+         <div class="product fb">
+         <div class="cate cate1 f">
+         <%for(int i=0; i<Pvo.size(); i++){ %>
+         <div class="tv_pro">
+            <ul class="p_img fc ac">
+               <li><a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
+                  <img src="./Prod/<%=Pvo.get(i).getProd_title()%>"></a></li>
+            </ul>
+            <ul class="p_text f ac">
+               <li><span><b>[<%=Pvo.get(i).getProd_cate() %>]</b></span>
+                       <b><%=Pvo.get(i).getProd_name() %></b></li>
+                       
+            <li class="fb">
+               <ul>
+               <% // 가격 천다위 쉼표로 나타내기 
+               
+               int price = Pvo.get(i).getProd_price();
+                DecimalFormat formatter = new DecimalFormat("#,###");
+                String Prod_price = formatter.format(price);
+               
+               %>
+                  <li><b><%=Prod_price%>원</b></li>
+               </ul>
+               
+               <% //리뷰
+               String prod_num=Pvo.get(i).getProd_num(); 
+               ReviewVO rvo = new ReviewDAO().avgRating(prod_num);
+                 
+               if(rvo!=null){
+                 float avg = rvo.getAvg_rating();
+                 int avg2 = (int) avg;%>
+                 
+               <ul class="star f">
+                    <% for(int j=0; j<avg2; j++){%>
+                     <li>★</li>
+                  <%}%>
+                  <li class="black"><%=avg%></li>
+                  <li class="black">점</li>
+               <%}%>
+               </ul>
+            </li>
+            
+               <% int num = 1; %>
+               <ul class="cart fa ae"> 
+               <li class="fc ac">
+               <span><a href="AmountCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>&amount=<%=num%>">장바구니&nbsp;</span>
+                  <img src="img/bucket.png" class="bk1">
+                  <img src="img/w_bucket.png" class="bk2">
+               </a>
+               </li>
+            
+               <li class="fc ac">
+                  <span><a href="WishListCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>">찜하기&nbsp; </span>
+                  <img src="img/heart.png" class="heart heart1">
+                  <img src="img/w_heart.png" class="heart heart2">
+                  </a>
+               </li>
+               
+            </ul>
+            
+            </ul>
+         </div>
+      <%}%>   
+         <!-- pro end -->
+      </div>
+   <!-- cate1 end -->
+
+
+         </div>
+         <!-- product end -->
       </section>
    </div>
    <!-- wrap end -->
 
+   <footer class="footer fb">
       <div class="sns_wrap pf">
          <ul class="sns fa">
             <li><a href=""><img src="img/twiter.png"></a></li>
@@ -220,9 +243,10 @@
 
       <div class="chat_wrap pf">
          <ul class="chat fc ac">
-            <li><a class="fc ac" href=""><img src="img/chatbot.png"></a></li>
+            <li><a class="fc ac" href="Center.jsp"><img src="img/chatbot.png"></a></li>
          </ul>
       </div>
+   </footer>
 
 </body>
 </html>
