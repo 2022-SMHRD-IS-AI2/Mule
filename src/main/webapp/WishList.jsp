@@ -106,7 +106,7 @@
 					  	<%//위시리스트 출력
 			  			for(int i=0; i<Wvo.size(); i++){%>
 					<ul class="wishlist fb">
-						<li><a>X</a></li>
+						<li><a href="DeleteWishListCon?prod_num=<%=Wvo.get(i).getProd_num()%>">X</a></li>
 						<li class="f ac"><span><img src="./Prod/<%= Wvo.get(i).getProd_title() %>"></span>
 						<p><%=Wvo.get(i).getProd_name() %></p></li>
 						

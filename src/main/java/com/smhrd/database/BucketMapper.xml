@@ -34,4 +34,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM bucket WHERE u_id = #{u_id}
 	</delete>
 	
+	<!--X버튼 클릭시 해당 상품 장바구니에서 삭제하기 -->
+	<delete id="DeleteBucket" parameterType="com.smhrd.model.BucketVO" >
+		DELETE FROM bucket WHERE u_id = #{u_id} and prod_num=#{prod_num}
+	</delete>
+	
 </mapper>

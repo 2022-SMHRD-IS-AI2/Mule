@@ -19,4 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		wishlist_SEQ.nextval,#{prod_num},sysdate,#{u_id})
 	</insert>
 	
+	<!--X버튼 클릭시 해당 상품 위시리스트에서 삭제하기 -->
+	<delete id="DeleteWishList"  parameterType="com.smhrd.model.WishListVO">
+		DELETE FROM WishList WHERE u_id = #{u_id} and prod_num=#{prod_num}
+	</delete>
+	
+	
 </mapper>
