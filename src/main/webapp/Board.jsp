@@ -1,3 +1,8 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Date"%>
+<%@page import="com.smhrd.model.BoardDAO"%>
+<%@page import="com.smhrd.model.BoardVO"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.ProductVO"%>
 <%@page import="java.util.List"%>
@@ -10,7 +15,8 @@
 <meta charset="UTF-8">
 	<title>소비자 구매패턴 분석을 활용한 해외구매대행 플랫폼 MULE</title>
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/login_no.css">
+	<link rel="stylesheet" href="css/board.css">
+	<link rel="stylesheet" href="css/board_main.css">
 </head>
 <body>
 <%
@@ -44,6 +50,8 @@
 	 	}
   	}
   	
+  	// 게시글 전체 내용 불러오기
+  	List<BoardVO> bvo = (new BoardDAO()).AllBoardShow(); 
  	
 	%>
 
@@ -138,25 +146,75 @@
 				</ul>
 			</div>
 		</nav>
+		<section class="product_wrap">
+			<div class="category_wrap">
+				<ul class="category fc">
+					<li>게시판</li>
+				</ul>
+			</div>
+			<!-- category end -->
 
-			<!--LoginCheck페이지 시작 -->
-			<div class="login_no_wrap">
-                <div class="nolg_wrap">
-					<ul class="nolg">
-						<li class="lg fc ac"><img src="img/login_no.PNG"></li>
-						<li>로그인이 필요한 서비스 입니다.</li>
-					</ul>
-					<ul class="nolg_lg fc ac">
-                        <a href="Login.jsp">
-                            <button id="nolg_btn" class="nolg_big_btn">
-                                로그인 하러 가기
-                            </button>
-                        </a>
-					</ul>
-				</div>
+			<div class="pr_title fb">
+				<ul class="pr_txt f">
+					<li class="f">
+						<img src="img/list.JPG">
+						<span><%=bvo.size()%>개</span>의 게시글이 있습니다.</li>
+				</ul>
+				<ul class="pr_list f">
+					<li><img src="img/home.JPG"></li>
+					<li>></li>
+					<li>게시판</li>
+				</ul>
 			</div>
 
-	
+		<div class="product fa">
+			<div class="board_wrap">
+				<div class="board_list">
+					<div class="top">
+						<div class="num">번호</div>
+						<div class="title">제목</div>
+						<div class="writer">작성자</div>
+						<div class="date">작성일</div>
+					</div>
+					<%for(int i=0; i<bvo.size(); i++){%>
+						<div>
+							<div class="num"><%=i+1%></div>
+							<div class="title"><a href="BoardView.jsp?B_num=<%=bvo.get(i).getB_num()%>">
+							<%=bvo.get(i).getB_name()%></a></div>
+							<div class="writer"><%=loginUser.getU_nick()%></div>
+							
+							<%Timestamp boardTimestamp = bvo.get(i).getB_date(); // 주문일자 정보를 Timestamp 타입으로 받아옴
+		 					Date boardDate = new Date(boardTimestamp.getTime()); // Timestamp에서 Date로 변환
+		 					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		 					String BoardDate = dateFormat.format(boardDate); // 날짜 포맷을 적용한 문자열을 생성 %>
+							<div class="date"><%=BoardDate%></div>                            
+						</div>
+					<%}%>
+				</div>
+				
+					<div class="board_page">
+						<a href="#" class="bt first"></a>
+						<a href="#" class="bt prev"></a>
+						<a href="#" class="num on">1</a>
+						<a href="#" class="num">2</a>
+						<a href="#" class="num">3</a>
+						<a href="#" class="num">4</a>
+						<a href="#" class="num">5</a>
+						<a href="#" class="bt next">></a>
+						<a href="#" class="bt last">>></a>
+					</div>
+					
+					<div class="bt_wrap">
+						<a href="BoardWrite.jsp" class="on">등록</a>
+						<!--<a href="#">수정</a>-->
+					</div>
+				</div>
+			</div>
+			<!-- product end -->
+		</section>
+	</div>
+	<!-- wrap end -->
+
 		<div class="sns_wrap pf">
 			<ul class="sns fa">
 				<li><a href=""><img src="img/twiter.png"></a></li>
@@ -170,5 +228,6 @@
 				<li><a class="fc ac" href=""><img src="img/chatbot.png"></a></li>
 			</ul>
 		</div>
+
 </body>
 </html>

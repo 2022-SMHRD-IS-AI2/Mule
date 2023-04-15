@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 	<title>소비자 구매패턴 분석을 활용한 해외구매대행 플랫폼 MULE</title>
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/login_no.css">
+	<link rel="stylesheet" href="css/board_write.css">
 </head>
 <body>
 <%
@@ -139,36 +139,67 @@
 			</div>
 		</nav>
 
-			<!--LoginCheck페이지 시작 -->
-			<div class="login_no_wrap">
-                <div class="nolg_wrap">
-					<ul class="nolg">
-						<li class="lg fc ac"><img src="img/login_no.PNG"></li>
-						<li>로그인이 필요한 서비스 입니다.</li>
-					</ul>
-					<ul class="nolg_lg fc ac">
-                        <a href="Login.jsp">
-                            <button id="nolg_btn" class="nolg_big_btn">
-                                로그인 하러 가기
-                            </button>
-                        </a>
+			<!-- BoardWrite페이지 시작 -->
+            <section class="board_wrap">
+				<div class="category_wrap">
+					<ul class="category fc">
+						<li>게시글</li>
 					</ul>
 				</div>
-			</div>
+				<!-- category end -->
+
+                <div class="board_write_wrap">
+                    <div class="board_write">
+                        <div class="title">
+                            <dl>
+                                <dt>제목</dt>
+                                <form action="BoardCon" method="POST" enctype="multipart/form-data">
+                                <dd><input type="text" placeholder="제목 입력" name="Bname"></dd>
+                            </dl>
+                        </div>
+                        
+                        <div class="info">
+                            <dl>
+                                <dt>글쓴이</dt>
+                                <dd><%=loginUser.getU_nick() %></dd>
+                            </dl>
+                            <dl>
+                                <dt>사진첨부</dt>
+                                <dd><input type = "file" name="Bimg" ></dd>
+                            </dl>
+                            <!-- <dl>
+                                <dt>비밀번호</dt>
+                                <dd><input type="password" placeholder="비밀번호 입력"></dd>
+                            </dl> -->
+                        </div>
+                        
+                        <div class="cont">
+                            <textarea placeholder="내용 입력" name="Bcontent"></textarea>
+                        </div>
+                    </div>
+                    <div class="bt_wrap">
+                        <input type="submit" value="등록">
+                        </form>
+                        <a href="Board.jsp">취소</a>
+                    </div>
+                </div>
+			</section>
 
 	
-		<div class="sns_wrap pf">
-			<ul class="sns fa">
-				<li><a href=""><img src="img/twiter.png"></a></li>
-				<li><a href=""><img src="img/ins.png"></a></li>
-				<li><a href=""><img src="img/tube.png"></a></li>
-			</ul>
-		</div>
+			<div class="sns_wrap pf">
+				<ul class="sns fa">
+					<li><a href=""><img src="img/twiter.png"></a></li>
+					<li><a href=""><img src="img/ins.png"></a></li>
+					<li><a href=""><img src="img/tube.png"></a></li>
+				</ul>
+			</div>
 
-		<div class="chat_wrap pf">
-			<ul class="chat fc ac">
-				<li><a class="fc ac" href=""><img src="img/chatbot.png"></a></li>
-			</ul>
+			<div class="chat_wrap pf">
+				<ul class="chat fc ac">
+					<li><a class="fc ac" href=""><img src="img/chatbot.png"></a></li>
+				</ul>
+			</div>
 		</div>
+	<!-- wrap end -->
 </body>
 </html>

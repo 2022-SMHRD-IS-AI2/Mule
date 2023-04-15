@@ -15,18 +15,14 @@ import lombok.Setter;
 @NoArgsConstructor //기본생성자
 @Getter //getter메소드
 @Setter //setter 메소드
-public class BucketVO {
+public class BoardVO {
 
-	
-	private BigDecimal BUCKET_NUM;
-	@NonNull private String prod_num;
-	private Timestamp BUCKET_DATE;
-	@NonNull private String U_id;
-	@NonNull private int amount;
-	
-	public BucketVO(String prod_num,  String u_id) {
-		this.prod_num = prod_num;
-		this.U_id = u_id;
-	}
-	
+	private BigDecimal b_num;
+	@NonNull private String b_name;
+	@NonNull private String b_content;
+	private Timestamp b_date;
+	@NonNull private String u_id;
+	private int b_views;
+	private int b_likes;
+	@NonNull private String b_img;
 }

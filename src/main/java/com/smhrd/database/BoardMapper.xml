@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.model.BoardDAO">
+
+	<!--게시글 등록하기  -->
+	<insert id="BoardUpload" parameterType = "com.smhrd.model.BoardVO">
+	insert into BOARD values(
+	BOARD_SEQ.nextval,#{b_name},#{b_content},sysdate,#{u_id},'0','0',#{b_img})	
+	</insert>
+	
+	<!--전체 게시글 조회하기 -->
+	<select id="AllBoardShow" resultType="com.smhrd.model.BoardVO">
+		select * from BOARD order by B_DATE desc
+	</select>
+	
+	<!--게시글 세부 페이지 조회하기 -->
+	<select id="DetailBoardShow" parameterType="int" resultType="com.smhrd.model.BoardVO">
+		select * from BOARD where b_num=#{b_num}
+	</select>
+
+</mapper>

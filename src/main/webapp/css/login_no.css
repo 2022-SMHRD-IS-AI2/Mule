@@ -1,0 +1,28 @@
+.login_no_wrap{width:550px; height:800px; background:white; margin:0 auto;}
+
+.nolg_wrap{
+    width: 380px;
+    height: 500px;
+    padding : 150px 100px;
+    text-align: center;
+    color:#aeaeba;
+}
+
+.nolg_big_btn{
+    width: 200px;
+    height: 53px;
+    vertical-align: middle;
+    line-height: 50px;
+    background: #6255f6;
+    border-radius: 30px;
+    border: rgba(98, 85, 246, 0.2) solid 1px !important;
+    font-weight: 700;
+    font-size: 16px;
+    color:#e4e4eb;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.nolg_lg{
+    height: 180px;
+}
