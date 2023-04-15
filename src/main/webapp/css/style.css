@@ -18,6 +18,8 @@
 li{list-style:none;}
 a{text-decoration: none; color:inherit;}
 img{display:block;}
+input{background:none; border:none; font-size:18px; font-family: 'Noto Sans KR', sans-serif; }
+button{background:none; border:none; font-size:18px; font-family: 'Noto Sans KR', sans-serif;}
 
 body{font-family:'Noto Sans KR','The Jamsil OTF 1 Thin'; color:#6255f6; font-size:18px; width:100%; height:auto;}
 /* 보라색 : 6255f6   연두색 : 74eb8b   회색 : d0d0d0 */

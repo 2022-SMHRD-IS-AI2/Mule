@@ -124,6 +124,7 @@
 
 				<div class="cart_wrap">
 					<ul class="cart_title fb">
+						<li></li>
 						<li>상품/옵션정보</li>
 						<li>수량</li>
 						<li>상품금액</li>
@@ -148,9 +149,9 @@
 					
 					<form class="input2" action="OrderCon" method="post">
 					<ul class="cart_list fb">
-						<li><a>X</a></li>
+						<li><button>X</button></li>
 						<li class="f ac cart_img"><span><img src="./Prod/<%= Bvo.get(i).getProd_title() %>"></span>
-						<%= Bvo.get(i).getProd_name() %></li>
+						<p><%= Bvo.get(i).getProd_name() %></p></li>
 						<li><input type="number" min="1" max="9999" id="cnt<%= i %>" name="cnt[]" value=<%= amount %>></li>
 						<li><%=Prod_price%> 원</li>
 						<li><span class="totalPrice" id="totalPrice<%= i %>"><%=total_Price%> 원</span></li>

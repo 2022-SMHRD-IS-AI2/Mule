@@ -160,11 +160,13 @@
 				 			<%//결제확정 여부 검사
 				 			if(Pvo.get(i).getPayment_status().equals("Y")){%>
 				 				<%if(Pvo.get(i).getReview_status().equals("N")){%>
+							 			<li>
 							 			<form action="Review.jsp">
 						            		<input hidden name="prod_num" value="<%=Pvo.get(i).getProd_num()%>">
 						            		<input hidden name="order_num" value="<%=Pvo.get(i).getOrder_num()%>">
 						            		<li><button class=rbtn type="submit">리뷰작성하기</button></li>
 						            	</form>
+						            	</li>
 			            		<%}else if(Pvo.get(i).getReview_status().equals("Y")){%>
 			            			<li>리뷰작성완료</li>
 			            		<%}%>
