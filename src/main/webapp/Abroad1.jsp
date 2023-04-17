@@ -23,9 +23,35 @@
    
    //해외 공구 상품 불러오기
    List<ProductVO> Pvo = (new ProductDAO()).OPshow();
+   
+   //로그인한 회원의 장바구니 수량 불러오기
+   int Bsize = 0 ;
+   
+  if(loginUser!=null) {
+     String u_id=loginUser.getU_id();
+       List<ProductVO> Bvo = new ProductDAO().Bucket(u_id);
+     
+      if(Bvo!=null){
+         Bsize=Bvo.size();   
+      }
+  }
+  
+    //로그인한 회원의 위시리스트 수량 불러오기
+  int Wsize = 0 ;
+    
+    if(loginUser!=null) {
+       String u_id=loginUser.getU_id();
+       List<ProductVO> Wvo = new ProductDAO().WishList(u_id);
+       
+      if(Wvo!=null){
+         Wsize=Wvo.size();   
+      }
+    }
+    
+   
    %>
 
-   <div class="back_wrap pf">
+    <div class="back_wrap pf">
       <div class="line_left pf"></div>
       <div class="line_right pf"></div>
       <div class="withmule pf"><img src="img/width_back.png"></div>
@@ -66,25 +92,62 @@
                   </ul>
                </li>
                <li class="point"><a href="UsedProdMain.jsp">중고거래</a><span class="underline line6 none"></span></li>
-               <li class="point"><a href="Board.jsp">게시판</a><span class="underline line7 none"></span></li>
-               <%if(loginUser != null){
+               
+               <%// 게시판 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li class="point"><a href="LoginCheck.jsp">게시판</a><span class="underline line7 none"></span></li>
+               <%}else {%>
+                  <li class="point"><a href="Board.jsp">게시판</a><span class="underline line7 none"></span></li>
+               <%} %>
+               
+               <%// 관리자에게만 보이는 구매대행 상품등록 페이지
+               if(loginUser != null){
                   if(loginUser.getU_id().equals("admin")){%>
                      <li class="point"><a href="OverseasProd.jsp">상품등록</a><span class="underline line7 none"></span></li>
                   <%} %>
                <%}%>
             </ul>
             </div>
-
-
+            
          <div class="quick_wrap pf fc ac">
             <ul class="quick">
-               <li><a href="Bucket.jsp"><img src="img/bucket.png"></a></li>
-               <li><a href="WishList.jsp"><img src="img/heart.png"></a></li>
-               <li><a href="OrderList.jsp"><img src="img/mypage.png"></a></li>
-               <li><a href="Center.jsp"><img src="img/center.png"></a></li>
+            
+               <%//장바구니 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/bucket.png"></a></li>
+               <%}else {
+                  //장바구니 담아놓은 상품이 있는지 확인하기(만약 없다면 NoBucket.jsp로 이동)
+                  if(Bsize>0){%>
+                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                  <%} else{%>
+                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                  <%}%>
+               <%}%>
+               
+               <%//위시리스트 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/heart.png"></a></li>
+               <%}else {%>
+                  <li><a href="WishList.jsp"><img src="img/heart.png"><%=Wsize%></a></li>
+               <%} %>
+               
+               <%//마이페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/mypage.png"></a></li>
+               <%}else {%>
+                  <li><a href="OrderList.jsp"><img src="img/mypage.png"></a></li>
+               <%} %>
+               
+               <%//고객센터 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/center.png"></a></li>
+               <%}else {%>
+                  <li><a href="Center.jsp"><img src="img/center.png"></a></li>
+               <%} %>
             </ul>
          </div>
       </nav>
+
 
       <section class="product_wrap">
          <div class="category_wrap">
