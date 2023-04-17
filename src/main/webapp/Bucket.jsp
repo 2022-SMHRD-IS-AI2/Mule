@@ -124,6 +124,7 @@
 
             <div class="cart_wrap">
                <ul class="cart_title fb">
+               	  <li></li>
                   <li>상품/옵션정보</li>
                   <li>수량</li>
                   <li>상품금액</li>
@@ -148,7 +149,7 @@
                
                <form class="input2" action="OrderCon" method="post">
                <ul class="cart_list fb">
-                  <li><a href="DeleteBucketCon?prod_num=<%=Bvo.get(i).getProd_num()%>">X</a></li>
+                  <li><a href='DeleteBucketCon?prod_num=<%=Bvo.get(i).getProd_num()%>'>X</a></li>
                   <li class="f ac cart_img"><span><img src="./Prod/<%= Bvo.get(i).getProd_title() %>"></span>
                   <%= Bvo.get(i).getProd_name() %></li>
                   <li><input type="number" min="1" max="9999" id="cnt<%= i %>" name="cnt[]" value=<%= amount %>></li>

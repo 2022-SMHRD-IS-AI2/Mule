@@ -117,7 +117,7 @@
 						%>
 						
 						<li><%=Prod_price%> 원</li>
-						<a href="ProdDetail.jsp?prod_num=<%=Wvo.get(i).getProd_num()%>"><li class="gogo"><span>찜한 상품 보러가기</span></li></a>
+						<li class="gogo"><a href="ProdDetail.jsp?prod_num=<%=Wvo.get(i).getProd_num()%>"><span>찜한 상품 보러가기</span></a></li>
 					</ul>
   				<%}%>			
 				</div>
