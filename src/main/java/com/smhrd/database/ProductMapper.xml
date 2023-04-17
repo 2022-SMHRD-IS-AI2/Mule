@@ -24,14 +24,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 <!--해외공구상품 출력-->
 	 <!--prod_check=0(해외공구상품) prod_check=1(중고거래 상품)-->
 	<select id="OPshow" resultType="com.smhrd.model.ProductVO">
-		select * from product where prod_check='0' 		 
+		select * from product where prod_check='0' 
+		ORDER BY prod_num ASC		 
 	</select>
 	
 	
 	 <!--중고거래상품 출력-->
 	 <!--prod_check=0(해외공구상품) prod_check=1(중고거래 상품)-->
 	<select id="UPshow" resultType="com.smhrd.model.ProductVO">
-		select * from product where prod_check='1' 		 
+		select * from product where prod_check='1'
+		ORDER BY prod_num ASC		 
 	</select>
 	
 	 <!--상품 상세정보 페이지 -->
@@ -77,6 +79,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   	select * from PRODUCT where seller_id=#{u_id} 
 	</select> 
 	
+	<!-- 베스트상품 조회 -->
+	<select id="BestProdShow" resultType="com.smhrd.model.ProductVO">
+	   	SELECT * FROM product ORDER BY Buyer_cnt DESC
+	</select> 
 
 	
 </mapper>	

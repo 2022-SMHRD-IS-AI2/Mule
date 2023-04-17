@@ -65,6 +65,15 @@ public class ProductDAO {
 			return vo;
 		}
 		
+		// 베스트상품 출력
+		public List<ProductVO> BestProdShow() {
+			
+			List<ProductVO> OPshow  = sqlSession.selectList("com.smhrd.model.ProductDAO.BestProdShow");
+			sqlSession.close();
+		
+			return OPshow;
+		}
+		
 		
 	    // 로그인한 사람의 장바구니 조회
 		public List<ProductVO> Bucket(String U_id) {

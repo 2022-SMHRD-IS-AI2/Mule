@@ -1,6 +1,6 @@
 .banner{height:auto;}
 
-.product_wrap{width:1315px; height:auto; margin-left:300px; margin-top:10px;}
+.product_wrap{width:1315px; height:auto; margin-left:400px; margin-top:10px;}
 
 .category_wrap{width:1050px; height:130px; margin:0 auto;}
 .category li{ display:block; width:200px; height:50px; background:#f7f7f7; border-radius:30px; text-align:center; line-height:50px; font-weight:600; cursor:pointer; transition:all 0.05s;}
@@ -23,7 +23,7 @@
 .game_pro{width:380px; height:auto; margin-bottom:60px; margin-left:43px;}
 .beam_pro{width:380px; height:auto; margin-bottom:60px; margin-left:43px;}
 
-.p_img{width:380px; height:260px; background:#cfcfcf;  overflow:hidden;  border-radius:20px; }
+.p_img{width:380px; height:260px; overflow:hidden;  border-radius:20px; }
 .p_img>li>a>img{height:260px;}
 .p_text{flex-wrap:wrap; color:#282828;}
 .p_text>li{width:380px; height:60px; line-height:60px;  font-size:21px; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}

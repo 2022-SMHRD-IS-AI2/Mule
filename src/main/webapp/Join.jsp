@@ -103,7 +103,6 @@
             </ul>
             </div>
             
-           
          <div class="quick_wrap pf fc ac">
             <ul class="quick">
             
@@ -142,20 +141,6 @@
             </ul>
          </div>
       </nav>
-
-
-			<div class="join_wrap pa">
-				<ul class="join fb ac">
-					<li><img src="img/dod.jpg"></li>
-						<%if(loginUser != null){%>
-							<li><a href="LogoutCon">Logout</a></li>
-						<%}else{%>
-							<li><a href="Login.jsp">Login</a></li>
-						<%} %>
-					<li><a href="Join.jsp">Join</a></li>
-				</ul>
-			</div>
-		</header>
 
 		<nav class="banner fb">
 			<div class="menu_wrap pf">
@@ -197,7 +182,9 @@
 									<li class="f ac"><span>휴대폰번호</span><input type="text" name="tel" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></li>
 								</ul>
 								<ul class="info2 fb ac">
-									<li class="f ac"><p>성별</p>&nbsp;<input type="radio" name="gender">여성&nbsp;&nbsp;&nbsp;<input type="radio" name="gender"> 남성</li>
+									<li class="f ac"><p>성별</p>&nbsp;
+										<input type="radio" name="gender" value="female">여성&nbsp;&nbsp;&nbsp;
+										<input type="radio" name="gender" value="male">남성</li>
 									<li class="f ac"><p>나이</p><input type="number" min="1" max="99" value="20" name="age"></li>
 									<li class="f ac"><p>직업</p>
 									<select name="job" id="">

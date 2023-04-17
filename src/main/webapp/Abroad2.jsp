@@ -205,8 +205,8 @@
 								<li>★</li>
 							<%}%>
 							<li class="black"><%=avg%></li>
-						<%}%>
 							<li class="black">점</li>
+						<%}%>
 						</ul>
 					</li>
 					

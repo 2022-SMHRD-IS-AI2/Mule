@@ -21,8 +21,8 @@
    // 로그인한 회원 불러오기
    UserVO loginUser=(UserVO)session.getAttribute("loginUser");
 
-   //해외 공구 상품 불러오기
-   List<ProductVO> Pvo = (new ProductDAO()).OPshow(); 
+   //베스트 상품 불러오기
+   List<ProductVO> Pvo = (new ProductDAO()).BestProdShow();
    
     //로그인한 회원의 장바구니 수량 불러오기
     int Bsize = 0 ;
@@ -160,7 +160,7 @@
 
          <div class="product fb">
          <div class="cate cate1 f">
-         <%for(int i=0; i<Pvo.size(); i++){ %>
+         <%for(int i=0; i<9; i++){ %>
          <div class="tv_pro">
             <ul class="p_img fc ac">
                <li><a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
