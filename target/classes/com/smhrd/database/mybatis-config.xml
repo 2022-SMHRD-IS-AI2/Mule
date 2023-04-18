@@ -25,6 +25,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<mapper resource="com/smhrd/database/PayMapper.xml" />
 	<mapper resource="com/smhrd/database/ReviewMapper.xml" />
 	<mapper resource="com/smhrd/database/WishListMapper.xml" />
+	<mapper resource="com/smhrd/database/BoardMapper.xml" />
+	<mapper resource="com/smhrd/database/BoardCommentMapper.xml" />
 	</mappers>
 
 </configuration>

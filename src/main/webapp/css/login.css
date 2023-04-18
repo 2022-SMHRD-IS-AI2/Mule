@@ -1,5 +1,5 @@
 /* 크기랑 높이 원하는대로 설정하고 background 지우면돼~ */
-.login_wrap{width:480px; height:500px; margin-left:630px; margin-top:80px; font-size:12px; color:#64646b;}
+.login_wrap{width:480px; height:500px; margin-left:700px; margin-top:80px; font-size:12px; color:#64646b;}
 
 .form .f_field .ff_wrap > label + .input.t1, .form .f_field .ff_wrap > label ~ .input.t1 {
     padding-left: 130px !important;
@@ -222,3 +222,4 @@ strong, b {
 .f_field:nth-child(5){margin-top:-15px;}
 
 button:hover{cursor:pointer;}
+.ff_wrap{margin-top:13px;}

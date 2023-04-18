@@ -10,8 +10,6 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-
-
 @AllArgsConstructor //모든 파라미터를 받는 생성자
 @RequiredArgsConstructor //final or @NonNUll 파라미터만 받는 생성자
 @NoArgsConstructor //기본생성자

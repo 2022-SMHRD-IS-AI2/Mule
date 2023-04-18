@@ -21,73 +21,134 @@
 	<%
 	// 로그인한 회원 불러오기
 	UserVO loginUser=(UserVO)session.getAttribute("loginUser"); 
-  	String u_id=loginUser.getU_id();
+  	String U_id=loginUser.getU_id();
 	
   	//로그인한 회원의 주문내역 불러오기
-  	List<ProductVO> Pvo = new ProductDAO().orderList(u_id);
+  	List<ProductVO> Pvo = new ProductDAO().orderList(U_id);
+  	
+    //로그인한 회원의 장바구니 수량 불러오기
+	    int Bsize = 0 ;
+	    
+	   if(loginUser!=null) {
+	      String u_id=loginUser.getU_id();
+	        List<ProductVO> Bvo = new ProductDAO().Bucket(u_id);
+	      
+	       if(Bvo!=null){
+	          Bsize=Bvo.size();   
+	       }
+	   }
+   
+     //로그인한 회원의 위시리스트 수량 불러오기
+	   int Wsize = 0 ;
+	     
+	     if(loginUser!=null) {
+	        String u_id=loginUser.getU_id();
+	        List<ProductVO> Wvo = new ProductDAO().WishList(u_id);
+	        
+	       if(Wvo!=null){
+	          Wsize=Wvo.size();   
+	       }
+	     }
+     
   	%>
   	
-  	<div class="back_wrap pf">
-		<div class="line_left pf"></div>
-		<div class="line_right pf"></div>
-		<div class="withmule pf"><img src="img/width_back.png"></div>
-	</div>
+  	  <div class="back_wrap pf">
+      <div class="line_left pf"></div>
+      <div class="line_right pf"></div>
+      <div class="withmule pf"><img src="img/width_back.png"></div>
+   </div>
 
-	<div class="wrap">
-		<header class="header fb ae">
-			<div class="logo pf">
-				<a href="Main.jsp">
-					<img src="img/logo.png">
-				</a>
-			</div>
-			<!-- logo end  -->
+   <div class="wrap">
+      <header class="header fb ae">
+         <div class="logo pf">
+            <a href="Main.jsp">
+               <img src="img/logo.png">
+            </a>
+         </div>
+         <!-- logo end  -->
 
-			<div class="join_wrap pa">
-				<ul class="join fb ac">
-					<li><img src="img/dod.jpg"></li>
-						<%if(loginUser != null){%>
-							<li><a href="LogoutCon">Logout</a></li>
-						<%}else{%>
-							<li><a href="Login.jsp">Login</a></li>
-						<%} %>
-					<li><a href="Join.jsp">Join</a></li>
-				</ul>
-			</div>
-		</header>
+         <div class="join_wrap pa">
+            <ul class="join fb ac">
+               <li><img src="img/dod.jpg"></li>
+                  <%if(loginUser != null){%>
+                     <li><a href="LogoutCon">Logout</a></li>
+                  <%}else{%>
+                     <li><a href="Login.jsp">Login</a></li>
+                  <%} %>
+               <li><a href="Join.jsp">Join</a></li>
+            </ul>
+         </div>
+      </header>
 
-		<nav class="banner fb">
-			<div class="menu_wrap pf">
-				<ul class="abroad_menu">
-					<h2>해외 구매대행<span class="underline line"></span></h2>
-					<li class="point">상품목록<span class="underline line1 none"></span>
-						<ul>
-							<li><a href="Abroad1.jsp">TV&리모컨</a><span class="underline line2 none"></span></li>
-							<li><a href="Abroad2.jsp">PC모니터</a><span class="underline line3 none"></span></li>
-							<li><a href="Abroad3.jsp">마우스&키보드</a><span class="underline line4 none"></span></li>
-							<li><a href="Abroad4.jsp">빔프로젝터&스피커</a><span class="underline line5 none"></span></li>
-						</ul>
-					</li>
-					<li class="point"><a href="UsedProdMain.jsp">중고거래</a><span class="underline line6 none"></span></li>
-					<li class="point"><a href="Board.jsp">게시판</a><span class="underline line7 none"></span></li>
-					<%if(loginUser != null){
-						if(loginUser.getU_id().equals("admin")){%>
-							<li class="point"><a href="OverseasProd.jsp">상품등록</a><span class="underline line7 none"></span></li>
-						<%} %>
-					<%}%>
-				</ul>
-				</div>
-
-
-			<div class="quick_wrap pf fc ac">
-				<ul class="quick">
-					<li><a href="Bucket.jsp"><img src="img/bucket.png"></a></li>
-					<li><a href="WishList.jsp"><img src="img/heart.png"></a></li>
-					<li><a href="OrderList.jsp"><img src="img/mypage.png"></a></li>
-					<li><a href="Center.jsp"><img src="img/center.png"></a></li>
-				</ul>
-			</div>
-		</nav>
-
+      <nav class="banner fb">
+         <div class="menu_wrap pf">
+            <ul class="abroad_menu">
+               <h2>해외 구매대행<span class="underline line"></span></h2>
+               <li class="point">상품목록<span class="underline line1 none"></span>
+                  <ul>
+                     <li><a href="Abroad1.jsp">TV&리모컨</a><span class="underline line2 none"></span></li>
+                     <li><a href="Abroad2.jsp">PC모니터</a><span class="underline line3 none"></span></li>
+                     <li><a href="Abroad3.jsp">마우스&키보드</a><span class="underline line4 none"></span></li>
+                     <li><a href="Abroad4.jsp">빔프로젝터&스피커</a><span class="underline line5 none"></span></li>
+                  </ul>
+               </li>
+               <li class="point"><a href="UsedProdMain.jsp">중고거래</a><span class="underline line6 none"></span></li>
+               
+               <%// 게시판 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li class="point"><a href="LoginCheck.jsp">게시판</a><span class="underline line7 none"></span></li>
+               <%}else {%>
+                  <li class="point"><a href="Board.jsp">게시판</a><span class="underline line7 none"></span></li>
+               <%} %>
+               
+               <%// 관리자에게만 보이는 구매대행 상품등록 페이지
+               if(loginUser != null){
+                  if(loginUser.getU_id().equals("admin")){%>
+                     <li class="point"><a href="OverseasProd.jsp">상품등록</a><span class="underline line7 none"></span></li>
+                  <%} %>
+               <%}%>
+            </ul>
+            </div>
+            
+         <div class="quick_wrap pf fc ac">
+            <ul class="quick">
+            
+               <%//장바구니 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/bucket.png"></a></li>
+               <%}else {
+                  //장바구니 담아놓은 상품이 있는지 확인하기(만약 없다면 NoBucket.jsp로 이동)
+                  if(Bsize>0){%>
+                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
+                  <%} else{%>
+                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
+                  <%}%>
+               <%}%>
+               
+               <%//위시리스트 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/heart.png"></a></li>
+               <%}else {%>
+                  <li><a href="WishList.jsp"><img src="img/heart.png"><span class="sub_cnt"><%=Wsize%></span></a></li>
+               <%} %>
+               
+               <%//마이페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/mypage.png"></a></li>
+               <%}else {%>
+                  <li><a href="OrderList.jsp"><img src="img/mypage.png"></a></li>
+               <%} %>
+               
+               <%//고객센터 페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
+               if(loginUser==null) {%>
+                  <li><a href="LoginCheck.jsp"><img src="img/center.png"></a></li>
+               <%}else {%>
+                  <li><a href="Center.jsp"><img src="img/center.png"></a></li>
+               <%} %>
+            </ul>
+         </div>
+      </nav>
+      
 		<section class="mypage_wrap">
 			<div class="mypage fc">
 				<div class="mypage_info fb">
@@ -160,11 +221,13 @@
 				 			<%//결제확정 여부 검사
 				 			if(Pvo.get(i).getPayment_status().equals("Y")){%>
 				 				<%if(Pvo.get(i).getReview_status().equals("N")){%>
+							 			<li>
 							 			<form action="Review.jsp">
 						            		<input hidden name="prod_num" value="<%=Pvo.get(i).getProd_num()%>">
 						            		<input hidden name="order_num" value="<%=Pvo.get(i).getOrder_num()%>">
 						            		<li><button class=rbtn type="submit">리뷰작성하기</button></li>
 						            	</form>
+						            	</li>
 			            		<%}else if(Pvo.get(i).getReview_status().equals("Y")){%>
 			            			<li>리뷰작성완료</li>
 			            		<%}%>
@@ -176,13 +239,13 @@
 				 			<%}else{%>
 						 		<li class="check_menu_wrap">
 									<span class="check_menu">구매확정하기<span>
-										<ul class="check_sub none">
+										<div class="check_sub none">
 											<p class="triangle"></p>
+											<ul class="check_ul">
 								 				<form action="UsedprodStatusCon">
 							            			<input hidden name="order_num" value="<%=Pvo.get(i).getOrder_num()%>">
-							            			<button type="submit"><li>중고판매하기</li></button>
+							            			<li><button type="submit">중고판매하기</button></li>
 							            		</form>
-							            		
 							            		<form action="ReturnStatusCon">
 							            			<input hidden name="order_num" value="<%=Pvo.get(i).getOrder_num()%>">
 							            			<li><button type="submit">반품신청하기</button></li>
@@ -190,9 +253,10 @@
 							            		
 							            		<form action="PaymentStatusCon">
 							            			<input hidden name="order_num" value="<%=Pvo.get(i).getOrder_num()%>">
-							            			<li><button type="submit">구매확정하기</button></li>>
+							            			<li><button type="submit">구매확정하기</button></li>
 							            		</form>
-										</ul>
+							            	</ul>
+										</div>
 									</li>
 								 		<%} //배송완료시 사용자가 선택할 수 있는 이벤트 else문 끝%>
 								 	<%} // 배송완료 검사 else if문 끝%>

@@ -23,8 +23,8 @@
 .game_pro{width:380px; height:auto; margin-bottom:60px; margin-left:43px;}
 .beam_pro{width:380px; height:auto; margin-bottom:60px; margin-left:43px;}
 
-.p_img{width:380px; height:260px; background:#cfcfcf;  overflow:hidden;  border-radius:20px; }
-.p_img>li>img{width:480px;}
+.p_img{width:380px; height:260px; overflow:hidden;  border-radius:20px; }
+.p_img>li>a>img{height:200px;}
 .p_text{flex-wrap:wrap; color:#282828;}
 .p_text>li{width:380px; height:60px; line-height:60px;  font-size:21px; white-space: nowrap; text-overflow:ellipsis; overflow:hidden;}
 .p_text>li:first-child{height:50px; line-height:60px;}
