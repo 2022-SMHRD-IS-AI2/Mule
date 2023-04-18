@@ -119,9 +119,9 @@
                <%}else {
                   //장바구니 담아놓은 상품이 있는지 확인하기(만약 없다면 NoBucket.jsp로 이동)
                   if(Bsize>0){%>
-                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
                   <%} else{%>
-                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
                   <%}%>
                <%}%>
                
@@ -129,7 +129,7 @@
                if(loginUser==null) {%>
                   <li><a href="LoginCheck.jsp"><img src="img/heart.png"></a></li>
                <%}else {%>
-                  <li><a href="WishList.jsp"><img src="img/heart.png"><%=Wsize%></a></li>
+                  <li><a href="WishList.jsp"><img src="img/heart.png"><span class="sub_cnt"><%=Wsize%></span></a></li>
                <%} %>
                
                <%//마이페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
@@ -239,13 +239,13 @@
 				 			<%}else{%>
 						 		<li class="check_menu_wrap">
 									<span class="check_menu">구매확정하기<span>
-										<ul class="check_sub none">
+										<div class="check_sub none">
 											<p class="triangle"></p>
+											<ul class="check_ul">
 								 				<form action="UsedprodStatusCon">
 							            			<input hidden name="order_num" value="<%=Pvo.get(i).getOrder_num()%>">
-							            			<button type="submit"><li>중고판매하기</li></button>
+							            			<li><button type="submit">중고판매하기</button></li>
 							            		</form>
-							            		
 							            		<form action="ReturnStatusCon">
 							            			<input hidden name="order_num" value="<%=Pvo.get(i).getOrder_num()%>">
 							            			<li><button type="submit">반품신청하기</button></li>
@@ -253,9 +253,10 @@
 							            		
 							            		<form action="PaymentStatusCon">
 							            			<input hidden name="order_num" value="<%=Pvo.get(i).getOrder_num()%>">
-							            			<li><button type="submit">구매확정하기</button></li>>
+							            			<li><button type="submit">구매확정하기</button></li>
 							            		</form>
-										</ul>
+							            	</ul>
+										</div>
 									</li>
 								 		<%} //배송완료시 사용자가 선택할 수 있는 이벤트 else문 끝%>
 								 	<%} // 배송완료 검사 else if문 끝%>

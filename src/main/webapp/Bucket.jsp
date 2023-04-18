@@ -116,9 +116,9 @@
                <%}else {
                   //장바구니 담아놓은 상품이 있는지 확인하기(만약 없다면 NoBucket.jsp로 이동)
                   if(Bsize>0){%>
-                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
                   <%} else{%>
-                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
                   <%}%>
                <%}%>
                
@@ -126,7 +126,7 @@
                if(loginUser==null) {%>
                   <li><a href="LoginCheck.jsp"><img src="img/heart.png"></a></li>
                <%}else {%>
-                  <li><a href="WishList.jsp"><img src="img/heart.png"><%=Wsize%></a></li>
+                  <li><a href="WishList.jsp"><img src="img/heart.png"><span class="sub_cnt"><%=Wsize%></span></a></li>
                <%} %>
                
                <%//마이페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
@@ -212,7 +212,7 @@
                <ul class="cart_list fb">
                   <li><a href='DeleteBucketCon?prod_num=<%=Bvo.get(i).getProd_num()%>'>X</a></li>
                   <li class="f ac cart_img"><span><img src="./Prod/<%= Bvo.get(i).getProd_title() %>"></span>
-                  <%= Bvo.get(i).getProd_name() %></li>
+                  <p><%= Bvo.get(i).getProd_name() %></p></li>
                   <li><input type="number" min="1" max="9999" id="cnt<%= i %>" name="cnt[]" value=<%= amount %>></li>
                   <li><%=Prod_price%> 원</li>
                   <li><span class="totalPrice" id="totalPrice<%= i %>"><%=total_Price%> 원</span></li>

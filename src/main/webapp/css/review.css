@@ -53,6 +53,8 @@
     display: flex;
     
 }
+.midpart_image img{height:150px;}
+
 .product-imfor{
     margin-left: 100px;
 }
@@ -60,8 +62,11 @@
     margin-top: 10px;
     margin-bottom: 25px;
     font-size: 16px;
-    font-weight: 550px;
+    font-weight:300;
+    color:#282828;
 }
+
+.product-imfor1 b{font-weight:500;}
 .realstarstar legend{
     margin-bottom: 25px;
 }
@@ -112,15 +117,15 @@
     min-width: 140px;
     height: 53px;
     margin-top: 40px;
-   
-    
+   cursor:pointer;
     border: 1px solid lightgray;
     border-radius: 30px;
     font-size: 15px;
-    font-weight: 550;
+    font-weight: 400;
     letter-spacing: -0.5px;
     border-color: #6255f6 !important;
     background-color: #6255f6;
-    color: #74eb8b;
+    color: #fff;
     text-align: center;
 }
+.bt_wraprv input:hover{color:#74eb8b;}

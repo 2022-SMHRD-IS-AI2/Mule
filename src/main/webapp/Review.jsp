@@ -119,9 +119,9 @@
                <%}else {
                   //장바구니 담아놓은 상품이 있는지 확인하기(만약 없다면 NoBucket.jsp로 이동)
                   if(Bsize>0){%>
-                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
                   <%} else{%>
-                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
                   <%}%>
                <%}%>
                
@@ -129,7 +129,7 @@
                if(loginUser==null) {%>
                   <li><a href="LoginCheck.jsp"><img src="img/heart.png"></a></li>
                <%}else {%>
-                  <li><a href="WishList.jsp"><img src="img/heart.png"><%=Wsize%></a></li>
+                  <li><a href="WishList.jsp"><img src="img/heart.png"><span class="sub_cnt"><%=Wsize%></span></a></li>
                <%} %>
                
                <%//마이페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
@@ -158,13 +158,13 @@
                 <div class="midpart_image">
                      <img src="./Prod/<%=Pvo.getProd_title()%>">
                     <div class="product-imfor">
-                        <div class="product-imfor1">상품명 : <%=Pvo.getProd_name() %></div>
-                         <div class="product-imfor1">가격 : <%=Pvo.getProd_price() %></div>
+                        <div class="product-imfor1"><b>상품명</b> : <%=Pvo.getProd_name() %></div>
+                         <div class="product-imfor1"><b>가격</b> : <%=Pvo.getProd_price() %></div>
                          <div class="realstarstar">
                          
                             <form name="myform" id="myform" method="post" action="ReviewCon">
                                 <fieldset>
-                                    <legend class="product-imfor1">별점</legend>
+                                    <legend class="product-imfor1"><b>별점</b></legend>
                                         <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
                                         <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
                                         <input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>

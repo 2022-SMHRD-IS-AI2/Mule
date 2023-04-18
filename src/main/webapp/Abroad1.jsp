@@ -118,9 +118,9 @@
                <%}else {
                   //장바구니 담아놓은 상품이 있는지 확인하기(만약 없다면 NoBucket.jsp로 이동)
                   if(Bsize>0){%>
-                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
                   <%} else{%>
-                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
                   <%}%>
                <%}%>
                
@@ -128,7 +128,7 @@
                if(loginUser==null) {%>
                   <li><a href="LoginCheck.jsp"><img src="img/heart.png"></a></li>
                <%}else {%>
-                  <li><a href="WishList.jsp"><img src="img/heart.png"><%=Wsize%></a></li>
+                  <li><a href="WishList.jsp"><img src="img/heart.png"><span class="sub_cnt"><%=Wsize%></span></a></li>
                <%} %>
                
                <%//마이페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
@@ -254,6 +254,24 @@
             <li><a href=""><img src="img/tube.png"></a></li>
          </ul>
       </div>
+
+	<div class="f_box">
+			<ul class="f1 f">
+				<li><a href="of_use.html">이용약관</a></li>
+				<li><a href="privacy.html"><span class="bar">|</span>개인정보 처리방침<span class="bar">|</span></a></li>
+				<li><a href="Email.html">이메일 무단 수집 거부</a></li>
+			</ul>
+			<ul class="f2 f">
+				 <li>회사명 : (주)위드뮬</li>
+					<li><span class="bar">|</span>사업장주소 : 광주광역시 동구 예술길 31-15<span class="bar">|</span></li>
+					<li>대표번호 : 062-655-1616</li>
+			</ul>
+			<ul class="f3">
+					<li class="f_copylaw">쇼핑몰의 모든 제작물의 저작권은 (주)위드뮬 에 있으며, 무단복제나 도용은 저작권법(97조5항)에 의해 금지되어 있습니다.</li>
+					<li class="f_copy">Copyright. (c) 2021. <span>withmule</span>. All rights reserved</li>
+			</ul>
+		</div>
+
 
       <div class="chat_wrap pf">
          <ul class="chat fc ac">
