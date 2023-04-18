@@ -1,0 +1,39 @@
+.center_wrap{width:650px; height:850px; border:1px solid rgba(98, 85, 246, 0.2); border-radius:20px; margin-left:650px; overflow:hidden; margin-top:-90px;}
+/* rgba(98, 85, 246, 0.2) */
+
+.center_tit{width:650px; height:60px; background:#6255f6; color:#fff; font-family:'The Jamsil OTF 3 Regular'; font-size:28px; text-align:center; line-height:60px; letter-spacing:5px;}
+.chatting_wrap{width:650px; height:695px; background:#fff; padding:20px; box-sizing:border-box; overflow-y:scroll;} 
+.chatting_wrap::-webkit-scrollbar{width:5px;}
+
+
+.chat_sandbox{height:auto;}
+
+.chat_submit{width:650px; height:95px; background:rgba(98, 85, 246, 0.2);}
+.chat_submit>ul{width:615px; height:50px; background:#fff;}
+.chat_submit>ul>li>input{border:none; background:none; width:545px; height:50px; font-family:'Noto Sans KR'; font-size:15px;  padding:0 10px; box-sizing:border-box; border-radius:none;}
+.chat_submit>ul>li>input:focus{outline:none;}
+.chat_submit>ul>li>button{width:70px; height:50px; background:#6255f6; color:#fff; border:none; cursor:pointer; font-size:16px;}
+
+.char>li:first-child{width:60px; height:60px; border:1px solid #6255f6; border-radius:100%; margin-right:10px;}
+.char>li:nth-child(2){font-family: 'The Jamsil OTF 2 Light';}
+.char>li:nth-child(2)>span{color:#74eb8b; font-family: 'The Jamsil OTF 4 Medium';}
+
+.chat_sandbox{height:auto;}
+.chat_txtbox{height:auto; background:#f2f2f2; border-radius:10px; padding:30px 20px 10px 20px;}
+.chat_bubble{margin-top:10px;}
+.chat_bubble img{margin-left:20px;}
+
+.chat_txt>.chat_maintxt{color:#282828;}
+.chat_txt>.chat_maintxt>span{line-height:20px; margin-left:20px;}
+.chat_txt>.chat_subtxt{font-size:14px; color:#a4a4a4; font-weight:300; margin-top:20px;}
+.chat_txt>.chat_answertxt{font-size:15px; margin-top:20px; color:#282828;}
+
+.chat_btn{flex-wrap:wrap; margin-top:40px;}
+.chat_btn>li>a>button{width:250px; height:50px; background:#6255f6; margin-bottom:20px; border:none; color:#fff; font-size:14px; border-radius:50px; font-family:'Noto Sans KR'; cursor:pointer;}
+.chat_btn>.answer_btn>a>button{width:400px; height:50px;}
+.chat_btn>.answer_btn>a>button>img{margin-left:5px; margin-top:2px;}
+
+.chat_questionbox{margin:20px 0;}
+.chat_questiotxt>li{padding:10px 15px; background:#74eb8b; color:#282828; border-radius:10px; font-size:15px;}
+
+.chat_answertxt a{color:#6255f6; text-decoration:underline; font-size:18px; font-weight:bold;}
