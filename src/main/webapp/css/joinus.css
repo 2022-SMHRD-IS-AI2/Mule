@@ -7,7 +7,8 @@
 .join_wrap>.info>li{width:600px; height:60px; background:#f5f5fa; border-radius:60px; margin-top:20px; padding:0 30px; box-sizing:border-box;}
 .join_wrap>.info>li>span{font-size:14px; font-weight:500; color:#64646b; width:80px;}
 .join_wrap>.info>li:first-child>input{width:320px;}
-.join_wrap>.info>li:first-child>button{right:30px; border:none; width:150px; display:block; background:#fff; height:40px; border:rgba(98, 85, 246, 0.2) solid 1px; border-radius:30px; color:#6255f6; font-weight:900; cursor:pointer; transition:all 0.2s;}
+.join_wrap>.info>li:first-child>button{right:30px; border:none; width:150px; display:block; background:#fff; height:40px;
+border:rgba(98, 85, 246, 0.2) solid 1px; border-radius:30px; color:#6255f6; font-size:14px; font-weight:500; cursor:pointer; transition:all 0.2s; font-family:'Noto Sans KR';}
 .join_wrap>.info>li:first-child>button:hover{border:1px solid #6255f6;}
 .join_wrap>.info>li>input{width:450px; height:40px; border:none; background:none; font-size:18px;}
 .join_wrap>.info>li>input:focus{outline:none;}
@@ -17,7 +18,7 @@
 .join_wrap>.info2>li:nth-child(1){font-size:15px;}
 .join_wrap>.info2>li:nth-child(2){width:140px;}
 .join_wrap>.info2>li>p{font-size:14px; font-weight:500; color:#64646b; width:35px;}
-.join_wrap>.info2>li:nth-child(2)>input{width:40px; height:25px; border:1px solid rgba(98, 85, 246, 0.2); padding-left:15px; padding-right:5px; border-radius:30px;}
+.join_wrap>.info2>li:nth-child(2)>input{width:40px; height:25px; background:#fff; border:1px solid rgba(98, 85, 246, 0.2); padding-left:15px; padding-right:5px; border-radius:30px;}
 .join_wrap>.info2 select{width:135px; height:25px; border:none; background:none; font-family: 'Noto Sans KR'; color:#282828; background:#fff;}
 .join_wrap>.info2 select:focus{outline: none;}
 .join_wrap>.info2>li>input:focus{outline: none;}

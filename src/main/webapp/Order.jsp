@@ -125,9 +125,9 @@
                <%}else {
                   //장바구니 담아놓은 상품이 있는지 확인하기(만약 없다면 NoBucket.jsp로 이동)
                   if(Bsize>0){%>
-                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                     <li><a href="Bucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
                   <%} else{%>
-                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><%=Bsize%></a></li>
+                     <li><a href="NoBucket.jsp"><img src="img/bucket.png"><span class="sub_cnt"><%=Bsize%></span></a></li>
                   <%}%>
                <%}%>
                
@@ -135,7 +135,7 @@
                if(loginUser==null) {%>
                   <li><a href="LoginCheck.jsp"><img src="img/heart.png"></a></li>
                <%}else {%>
-                  <li><a href="WishList.jsp"><img src="img/heart.png"><%=Wsize%></a></li>
+                  <li><a href="WishList.jsp"><img src="img/heart.png"><span class="sub_cnt"><%=Wsize%></span></a></li>
                <%} %>
                
                <%//마이페이지 클릭시 로그인여부 체크(로그인 안했을 시 로그인 페이지로 넘기기)
@@ -204,9 +204,9 @@
 				<form action="PayCon" method="post">
 					<ul class="order_input">
 						<li><input type="text" name="recipient"></li>
-						<li><input type="text" name="phone"></li>
 						<li><input type="text" name="address"></li>
-						<li><%=main_prod_name %>외 <%=amount%>개   <%=paid_Amount%>원</li>
+						<li><input type="text" placeholder="-를 빼고 작성해 주세요." name="phone"></li>
+						<li class="f"><span><%=main_prod_name %></span>외 <%=amount%>개  <p><%=paid_Amount%>원</p></li>
 					</ul>
 						<input hidden name="main_prod_name" value="<%=main_prod_name %>">
 		  				<input hidden name="total_amount" value="<%=total_amount%>">

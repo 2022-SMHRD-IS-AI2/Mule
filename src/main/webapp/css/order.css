@@ -54,8 +54,10 @@
 .order1{width:1250px; height:auto; border-top:1px solid #ccc; color:#282828; text-align:left;}
 .order_title>li{width:150px; background:#f5f5fa; padding-left:30px; line-height:60px; border-bottom:1px solid #eee;}
 .order_input>li{width:1070px; background:#fff; padding:0 20px; box-sizing:border-box; line-height:60px; border-bottom:1px solid #eee;}
-.order_input>li:last-child{color:#6255f6; font-weight:bold; padding-left:30px; font-size:16px;}
-.order_input>li>input{width:150px; height:40px; border:none; background:#f5f5fa; border-radius:30px; padding:0 15px;}
+.order_input>li:last-child{color:#282828; padding-left:30px; font-size:16px;}
+.order_input>li:last-child span{display:block; width:300px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin-right:10px;}
+.order_input>li:last-child p{margin-left:20px; font-weight:bold;}
+.order_input>li>input{width:150px; height:40px; border:none; background:#f5f5fa; border-radius:30px; padding:0 15px; font-size:15px;}
 .order_input>li>input:focus{outline:none;}
 .order_input>li:nth-child(3)>input{width:200px;}
 .order_input>li:nth-child(2)>input{width:350px;}

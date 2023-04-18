@@ -2,7 +2,7 @@
 
 .detail{width:1050px; padding:20px; margin-right:100px;}
 
-.dt_img{width:600px; height:500px; border-radius:20px; overflow:hidden;}
+.dt_img{width:600px;height:500px;border-radius:20px;border: 1px solid #ccc;overflow:hidden;}
 .dt_img img{width:600px;}
 .mini_img>li{height:100px;}
 .mini_img img{width:80px; margin-left:50px; opacity:0.8;}
@@ -14,6 +14,7 @@
 
 
 .info_tit>li{font-weight:bold; font-size:22px; height:80px;}
+.info_tit>li:first-child{height:auto; margin-bottom:10px;}
 .info_tit>li>span{color:#6255f6;}
 .info_tit>li:first-child{color:#282828;}
 .info_tit>li:nth-child(2){font-weight:300; color:#adadad; font-size:16px; height:70px;}
@@ -29,8 +30,8 @@
 .cnt_wrap>h5{width:400px; padding:0 10px; height:50px; line-height:50px;}
 .pro_cnt{width:420px; padding:0 20px; height:60px; border-radius:15px; background:#f5f5fa; box-sizing: border-box;}
 .pro_cnt>.f>span{color:#64646b; background:#fff; width:20px; height:20px; border-radius:100%; border:rgba(98, 85, 246, 0.2) solid 1px; cursor:pointer; text-align:Center; line-height:18px;}
-.pro_cnt>.f>input{border:1px solid #cccccc;; width:50px;  margin:0 10px; text-align:center; font-weight:bold; font-family:'The Jamsil OTF 5 Bold'; font-size:15px; border-radius:3px;}
-.pro_cnt>.f>input[type=number]::-webkit-inner-spin-button {
+.pro_cnt>.f>form>input{border:1px solid #cccccc;; width:50px;  margin:0 10px; text-align:center; font-weight:bold; font-family:'The Jamsil OTF 5 Bold'; font-size:15px; border-radius:3px; background:#fff;}
+.pro_cnt>.f>form>input[type=number]::-webkit-inner-spin-button {
 	opacity: 1;}
 .pro_cnt>.f>input:focus{outline:none;}
 .person{font-size:16px;}
@@ -41,11 +42,13 @@
 .price1{font-size:14px; color:#64646b; line-height:50px;}
 .price2{font-size:18px; color:#000; line-height:40px; font-weight:bold;}
 
-.buy_wrap{width:400px; padding:0 10px; background:#fff;}
+.buy_wrap{width:400px;padding:0 10px;background:#fff;margin-top:20px;/* margin-bottom: 500px; */}
 .buy_wrap>ul{flex-wrap:wrap; font-family:'The Jamsil OTF 5 Bold'; margin:15px 0;}
-.buy_wrap>ul>li{width:195px; height:60px; border:rgba(98, 85, 246, 0.2) solid 1px; border-radius:30px; font-weight: bold; text-align:center; line-height:60px; transition:all 0.1s;}
+.buy_wrap>ul>li{width:190px; height:60px; border:rgba(98, 85, 246, 0.2) solid 1px; border-radius:30px; font-weight: bold; text-align:center; line-height:60px; transition:all 0.1s;}
+.buy_wrap>ul>li>button{width:190px; height:60px; font-family:'The Jamsil OTF 3 Regular'; color:#6255f6;  font-weight:bold; font-size:17px;}
 .buy_wrap>ul>li:hover{cursor: pointer; border:rgba(98, 85, 246,0.6) solid 1px;}
-.buy_wrap>ul>li:first-child{width:400px; border-radius:30px; height:60px; background:#6255f6; color:#74eb8b;flex-wrap:wrap; margin-bottom:10px;}
+.buy_wrap>ul>li>button:hover{cursor: pointer;}
+.buy_wrap>ul>li:first-child{margin-right:15px;}
 .buy_wrap>ul>li:last-child{color:#74eb8b;}
 
 .detail_contents{width:600px; height:auto; margin-top:150px; overflow:hidden; margin-bottom:60px;}
