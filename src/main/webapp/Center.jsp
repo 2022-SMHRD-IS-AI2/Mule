@@ -352,7 +352,7 @@
 					button = directPurchaseTariffButton;
 				} else if (message.value.includes("가입") || message.value.includes("로그인") || message.value.includes("ID") || message.value.includes("PW") || message.value.includes("아이디") || message.value.includes("비밀번호") || message.value.includes("비번") || message.value.includes("패스워드") || message.value.includes("수정") || message.value.includes("탈퇴")){
 					button = keyWord1Button;
-				} else if (message.value.includes("반품") || message.value.includes("환불") || message.value.includes("배송") || message.value.includes("조회") || message.value.includes("결제") || message.value.includes("이체") || message.value.includes("카드") || message.value.includes("페이") || message.value.includes("중고") || message.value.includes("상품등록")){
+				} else if (message.value.includes("반품") || message.value.includes("환불") || message.value.includes("배송") || message.value.includes("결제") || message.value.includes("이체") || message.value.includes("카드") || message.value.includes("페이") || message.value.includes("중고") || message.value.includes("상품등록")){
 					includedText = keyWord3Button;
 				} else {
 					button = basicButton;
@@ -365,7 +365,7 @@
 		    
 		function getChatTxtContent() {
 			var includedText = textFail;
-			if (message.value.includes("통관	") || message.value.includes("관세") || message.value.includes("세금") || message.value.includes("신고") || message.value.includes("부가세")){
+			if (message.value.includes("통관") || message.value.includes("세금") || message.value.includes("신고") || message.value.includes("부가세")){
 				includedText = customClearanceText;
 			} else if (message.value.includes("택배 운송장 조회")){
 				includedText = inquiryOfCourierWayBillText;
@@ -395,7 +395,7 @@
 				includedText = ASText;
 			} else if (message.value.includes("반품") || message.value.includes("환불")){
 				includedText = howToRefundText;
-			} else if (message.value.includes("배송") || message.value.includes("조회")){
+			} else if (message.value.includes("배송")){
 				includedText = howToDeliveryTrackingText;
 			} else if (message.value.includes("결제") || message.value.includes("이체") || message.value.includes("카드") || message.value.includes("페이")){
 				includedText = howToPaymentText;
