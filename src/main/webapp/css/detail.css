@@ -13,10 +13,10 @@
 #lnb.absolute{position:absolute; top:3600px;}
 
 
-.info_tit>li{font-weight:bold; font-size:22px;}
+.info_tit>li{font-weight:bold; font-size:22px; height:80px;}
 .info_tit>li>span{color:#6255f6;}
 .info_tit>li:first-child{color:#282828;}
-.info_tit>li:nth-child(2){font-weight:300; color:#adadad; font-size:16px; height:70px; margin-top:20px;}
+.info_tit>li:nth-child(2){font-weight:300; color:#adadad; font-size:16px; height:70px;}
 .info_tit>li:last-child{height:60px; color:#282828;}
 
 .info_wrap>h5{width:400px; padding:0 10px; height:50px; line-height:50px; border-bottom:1px solid #eeeeee;}
