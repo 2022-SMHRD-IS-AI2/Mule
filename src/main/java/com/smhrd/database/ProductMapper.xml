@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 <!--prod_check=0(해외공구상품) prod_check=1(중고거래 상품)-->
 	<select id="UPshow" resultType="com.smhrd.model.ProductVO">
 		select * from product where prod_check='1'
-		ORDER BY prod_num ASC		 
+		ORDER BY PROD_DATE DESC 
 	</select>
 	
 	 <!--상품 상세정보 페이지 -->
@@ -81,7 +81,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 베스트상품 조회 -->
 	<select id="BestProdShow" resultType="com.smhrd.model.ProductVO">
-	   	SELECT * FROM product ORDER BY Buyer_cnt DESC
+	   SELECT *FROM product
+		WHERE buyer_cnt IS NOT NULL
+		ORDER BY buyer_cnt DESC
 	</select> 
 
 	

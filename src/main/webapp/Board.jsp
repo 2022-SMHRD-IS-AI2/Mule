@@ -187,7 +187,7 @@
 							<div class="num"><%=i+1%></div>
 							<div class="title"><a href="BoardView.jsp?B_num=<%=bvo.get(i).getB_num()%>">
 							<%=bvo.get(i).getB_name()%></a></div>
-							<div class="writer"><%=loginUser.getU_nick()%></div>
+							<div class="writer"><%=bvo.get(i).getU_id()%></div>
 							
 							<%Timestamp boardTimestamp = bvo.get(i).getB_date(); // 주문일자 정보를 Timestamp 타입으로 받아옴
 		 					Date boardDate = new Date(boardTimestamp.getTime()); // Timestamp에서 Date로 변환

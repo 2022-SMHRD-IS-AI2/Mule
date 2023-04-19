@@ -159,7 +159,7 @@
 				<ul class="pr_txt f">
 					<li class="f">
 						<img src="img/list.JPG">
-						<span>9개</span>의 상품이 있습니다.</li>
+						<span><%=Pvo.size()%>개</span>의 상품이 있습니다.</li>
 				</ul>
 				<ul class="pr_list f">
 					<li><img src="img/home.JPG"></li>
