@@ -1,7 +1,6 @@
 window.addEventListener("scroll", function() {
 	var scroll = window.pageYOffset || document.documentElement.scrollTop;
 	var lnb = document.getElementById("lnb");
-	var high = document.getElementsByClassName("detail_wrap")
 
 	if (scroll >= 100) {
 			lnb.classList.add("fixed");
@@ -9,9 +8,9 @@ window.addEventListener("scroll", function() {
 			lnb.classList.remove("fixed");
 	}
 
-	if (scroll >= 2400 && high>=2400 ) {
+	if (scroll >= 3600) {
 			lnb.classList.add("absolute");
-			lnb.style.top = "2400px";
+			lnb.style.top = "3600px";
 	} else {
 			lnb.classList.remove("absolute");
 			lnb.style.top = "";
