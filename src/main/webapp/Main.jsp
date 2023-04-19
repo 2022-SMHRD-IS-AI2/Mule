@@ -153,7 +153,7 @@
       <section class="product_wrap">
          <div class="category_wrap f ac">
             <ul class="category fc ac">
-               <li>BEST 상품</li>
+               <li>소비자 추천 상품</li>
             </ul>
          </div>
          <!-- category end -->

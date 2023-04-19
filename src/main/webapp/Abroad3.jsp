@@ -274,7 +274,7 @@
 
       <div class="chat_wrap pf">
          <ul class="chat fc ac">
-            <li><a class="fc ac" href=""><img src="img/chatbot.png"></a></li>
+            <li><a class="fc ac" href="Center.jsp"><img src="img/chatbot.png"></a></li>
          </ul>
       </div>
    </footer>
