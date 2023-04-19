@@ -85,6 +85,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE buyer_cnt IS NOT NULL
 		ORDER BY buyer_cnt DESC
 	</select> 
+	
+	<!--추천상품 조회 -->
+	<select id="RecommendProdShow" resultType="com.smhrd.model.ProductVO" parameterType = "String">
+	   SELECT * FROM product
+	   WHERE PROd_NUM=#{prod_num}
+	</select> 
 
 	
 </mapper>	

@@ -141,6 +141,15 @@ public class ProductDAO {
 				
 				return vo;
 			}
+			
+			// 각 세부 상품정보 조회
+			public ProductVO RecommendProdShow(String prod_num) {
+				
+				ProductVO vo = sqlSession.selectOne("com.smhrd.model.ProductDAO.RecommendProdShow",prod_num);
+				sqlSession.close();
+				
+				return vo;
+			}
 		
 
 }

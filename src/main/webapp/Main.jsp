@@ -1,3 +1,8 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.net.HttpURLConnection"%>
+<%@page import="java.net.URL"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.smhrd.model.ReviewDAO"%>
 <%@page import="com.smhrd.model.ReviewVO"%>
@@ -20,24 +25,24 @@
    <%
    // 로그인한 회원 불러오기
    UserVO loginUser=(UserVO)session.getAttribute("loginUser");
-
+   
    //베스트 상품 불러오기
    List<ProductVO> Pvo = (new ProductDAO()).BestProdShow();
    
     //로그인한 회원의 장바구니 수량 불러오기
     int Bsize = 0 ;
     
-   if(loginUser!=null) {
-      String u_id=loginUser.getU_id();
-        List<ProductVO> Bvo = new ProductDAO().Bucket(u_id);
-      
-       if(Bvo!=null){
-          Bsize=Bvo.size();   
-       }
-   }
+	   if(loginUser!=null) {
+	      String u_id=loginUser.getU_id();
+	        List<ProductVO> Bvo = new ProductDAO().Bucket(u_id);
+	      
+	       if(Bvo!=null){
+	          Bsize=Bvo.size();   
+	       }
+	   }
    
-     //로그인한 회원의 위시리스트 수량 불러오기
-   int Wsize = 0 ;
+    //로그인한 회원의 위시리스트 수량 불러오기
+   	int Wsize = 0 ;
      
      if(loginUser!=null) {
         String u_id=loginUser.getU_id();
@@ -48,7 +53,43 @@
        }
      }
      
-    
+     // 로그인한 회원의 추천상품 불러오기
+     String result = null;
+  	 String[] ProdNum = null;
+     
+     if(loginUser!=null) {
+    	 
+ 			// 추천상품 URL에 로그인한 유저 id보내기
+			String urlString = "http://218.157.24.37:9804/send/" + loginUser.getU_id();
+			System.out.println(urlString);
+			URL url = new URL(urlString);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			
+			// 추천상품 결과 받아오기
+			int responseCode = con.getResponseCode();
+			
+			//추천상품 결과 받아오기 성공시 추천상품 추출하기
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				
+			    BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
+			    String inputLine;
+			    StringBuffer response1 = new StringBuffer();
+			    while ((inputLine = in.readLine()) != null) {
+			        response1.append(inputLine);
+			    }
+			    in.close();
+			    result = response1.toString();
+			    
+			    System.out.println(result);
+			}
+			
+			// 추출한 추천상품의 상품번호를 하나씩 꺼내어 배열에 저장
+			if(result != null){
+				ProdNum  = result.replaceAll("[\\[\\]\"]", "").split(",");
+			}
+		
+     }
    %>
 
    <div class="back_wrap pf">
@@ -150,28 +191,30 @@
          </div>
       </nav>
 
+	<!--BEST 상품-->
       <section class="product_wrap">
          <div class="category_wrap f ac">
             <ul class="category fc ac">
-               <li>소비자 추천 상품</li>
+               <li>Best상품</li>
             </ul>
          </div>
          <!-- category end -->
 
          <div class="product fb">
          <div class="cate cate1 f">
-         <%for(int i=0; i<9; i++){ %>
+         <%for(int i=0; i<9; i++){%>
          <div class="tv_pro">
             <ul class="p_img fc ac">
                <li><a href="ProdDetail.jsp?prod_num=<%=Pvo.get(i).getProd_num()%>">
                   <img src="./Prod/<%=Pvo.get(i).getProd_title()%>"></a></li>
             </ul>
             <ul class="p_text f ac">
-               <li><span><b>[<%=Pvo.get(i).getProd_cate() %>]</b></span>
+               <li><span><b>[<%=Pvo.get(i).getProd_cate()%>]</b></span>
                        <b><%=Pvo.get(i).getProd_name() %></b></li>
                        
             <li class="fb">
                <ul>
+               
                <% // 가격 천다위 쉼표로 나타내기 
                
                int price = Pvo.get(i).getProd_price();
@@ -217,22 +260,100 @@
                </li>
                
             </ul>
-            
             </ul>
          </div>
       <%}%>   
+         </div>
+         <!-- pro end -->
+         </div>
+
+<!----------------------------------------------------------tlqkf  -->
+
+	<!--추천상품-->
+	<%if(ProdNum.length>0){%>
+         <div class="category_wrap f ac">
+            <ul class="category fc ac">
+               <li><%=loginUser.getU_name()%>님을 위한 추천 상품</li>
+            </ul>
+         </div>
+         <!-- category end -->
+         
+         <div class="product fb">
+         <div class="cate cate1 f">
+         <%for(int i=0; i<ProdNum.length; i++){ 
+	         ProductVO Rvo = new ProductDAO().RecommendProdShow(ProdNum[i]);%>
+	         <div class="tv_pro">
+	            <ul class="p_img fc ac">
+	               <li><a href="ProdDetail.jsp?prod_num=<%=Rvo.getProd_num()%>">
+	                  <img src="./Prod/<%=Rvo.getProd_title()%>"></a></li>
+	            </ul>
+	            <ul class="p_text f ac">
+	               <li><span><b>[<%=Rvo.getProd_cate()%>]</b></span>
+	                       <b><%=Rvo.getProd_name()%></b></li>
+	                       
+	            <li class="fb">
+	               <ul>
+	               <% // 가격 천다위 쉼표로 나타내기 
+	               
+	               int price = Rvo.getProd_price();
+	                DecimalFormat formatter = new DecimalFormat("#,###");
+	                String Prod_price = formatter.format(price);
+	               
+	               %>
+	                  <li><b><%=Prod_price%>원</b></li>
+	               </ul>
+	               
+	               <% //리뷰
+	               ReviewVO rvo = new ReviewDAO().avgRating(ProdNum[i]);
+	                 
+	               if(rvo!=null){
+	                 float avg = rvo.getAvg_rating();
+	                 int avg2 = (int) avg;%>
+	                 
+	               <ul class="star f">
+	                    <% for(int j=0; j<avg2; j++){%>
+	                     <li>★</li>
+	                  <%}%>
+	                  <li class="black"><%=avg%></li>
+	                  <li class="black">점</li>
+	               <%}%>
+	               </ul>
+	            </li>
+	            
+	               <% int num = 1; %>
+	               <ul class="cart fa ae"> 
+	               <li class="fc ac">
+	               <span><a href="AmountCheckCon?prod_num=<%=Rvo.getProd_num()%>&amount=<%=num%>">장바구니&nbsp;</span>
+	                  <img src="img/bucket.png" class="bk1">
+	                  <img src="img/w_bucket.png" class="bk2">
+	               </a>
+	               </li>
+	            
+	               <li class="fc ac">
+	                  <span><a href="WishListCheckCon?prod_num=<%=Rvo.getProd_num()%>">찜하기&nbsp; </span>
+	                  <img src="img/heart.png" class="heart heart1">
+	                  <img src="img/w_heart.png" class="heart heart2">
+	                  </a>
+	               </li>
+	               
+	            </ul>
+	            
+	            </ul>
+	         </div>
+	      <%}%>
          <!-- pro end -->
       </div>
    <!-- cate1 end -->
-
-
          </div>
          <!-- product end -->
+    <%}%>   
+		
+		
       </section>
    </div>
    <!-- wrap end -->
 
-   <footer class="footer fb">
+   <footer class="footer fb pr">
       <div class="sns_wrap pf">
          <ul class="sns fa">
             <li><a href=""><img src="img/twiter.png"></a></li>

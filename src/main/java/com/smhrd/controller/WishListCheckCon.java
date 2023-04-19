@@ -35,7 +35,8 @@ public class WishListCheckCon extends HttpServlet {
 	      
 	    if(check==true) {
 			System.out.println("위시리스트에 있는 상품");
-			
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
 				
 		}else {
 				System.out.println("위시리스트에 없는 상품");

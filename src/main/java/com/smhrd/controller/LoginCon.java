@@ -1,6 +1,13 @@
 package com.smhrd.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Arrays;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,13 +36,17 @@ public class LoginCon extends HttpServlet {
 		UserVO loginUser =dao.selectUser(vo);
 		System.out.println("user"+loginUser);
 		
+		String result = null;
+		
 		if( loginUser!=null) {//로그인 성공
+			
 			System.out.println("로그인 성공");
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
 			response.sendRedirect("Main.jsp");
-			 
+	
+			
 		}else {//로그인 실패
 			System.out.println("로그인 실패");
 			response.sendRedirect("Login.jsp");
