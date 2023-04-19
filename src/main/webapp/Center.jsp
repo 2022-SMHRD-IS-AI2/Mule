@@ -422,7 +422,7 @@
     		return ulChatBtn;
 		}
 		
-		var customClearanceText = "통관 안내창입니다.</span></li><li class='chat_answertxt'>개인 통관은 본인 사용목적으로 소량 수입되는 화물로,<br> 받는 사람의 개인통관고유부호가 필요합니다.<br> <br> <a href='https://unipass.customs.go.kr/csp/persIndex.do', target='_blank'>해외통관번호 안내/조회 바로가기</a><br> <br> 해외통관번호 안내/조회 관련 링크도 같이 제공됩니다.";	  
+		var customClearanceText = "■ 통관 안내창입니다.</span></li><li class='chat_answertxt'>개인 통관은 본인 사용목적으로 소량 수입되는 화물로,<br> 받는 사람의 개인통관고유부호가 필요합니다.<br> <br> <a href='https://unipass.customs.go.kr/csp/persIndex.do', target='_blank'>해외통관번호 안내/조회 바로가기</a><br> <br> 해외통관번호 안내/조회 관련 링크도 같이 제공됩니다.";	  
 		var deliveryText = "■ 배송 관련 안내창입니다.</span></li><li class = 'chat_answertxt'><br>마이페이지 > 주문/배송조회<br><br>※ 출고 후 송장 조회까지는 평일 기준 1일 소요됩니다. <br><br>※ 해외에서 이미 출고된 상품의 취소는 불가하니 신중한 구매 부탁드립니다.<br><br>■ 택배 운송장 조회<br><a href='https://service.epost.go.kr/iservice/usr/trace/usrtrc001k01.jsp', target='_blank'>우체국택배 배송조회 바로가기</a><br><br>배송 관련 링크도 같이 제공됩니다.";
 		var directPurchaseTariffText = "관세란</span></li><li class = 'chat_answertxt'>외국에서 수입되거나 외국으로 수출되는 상품이 관세영역을 통과할 때 <br>부과되는 조세를 말합니다. <br><br>일반적으로 관세라 함은 수입하는 상품에 부과하는 수입관세를 의미합니다.<br><br><a href='https://www.customs.go.kr/kcs/ad/tax/BuyTaxCalculation.do', target = '_blank'>직구상품 관세 조회하기</a><br><br>관련 링크도 같이 제공됩니다.";
 		var listClearanceText = "■ 목록통관</span></li><li class = 'chat_answertxt'><br>물품가격 미화 150달러 이하(미국은 200달러 이하)는 목록통관 대상이며, <br>해당 금액 초과 시에는 수입신고 대상입니다.";
@@ -440,7 +440,7 @@
 		var howToRefundText = "■ 반품/환불 접수 경로</span></li><li class = 'chat_answertxt'><br><br>마이페이지 > 주문/배송 조회 > 구매확정하기 > 반품요청 또는 중고거래 중 선택 <br><br>※ 모니터의 해상도나 사이즈 측정방법에 따라 상세페이지와 약간 차이가<br>발생 할 수 있고 해당 경우는 불량(하자)이 아닙니다. <br><br>※ 제품에 사용 흔적, 오염, 세탁, 케이스(포장) 손상, 라벨 제거, 사은품 사용 등의<br>사유 시 반품이 가능하지 않습니다.<br><br>※ 상품 검수 시 불량(하자)이 아닌 경우 반품 관련 배송비 관세/통관 비용이 청구 됩니다.<br><br>※ 불량, 오배송인 경우 교환 요청해 주세요.<br><br><a href='mypage_check.html', target = '_blank'>반품/환불하기 바로가기</a><br><br>키워드+  관련 링크도 같이 제공됩니다.";
 		var howToDeliveryTrackingText = "■ 배송조회 경로</span></li><li class = 'chat_answertxt'><br><br>마이페이지 > 주문/배송조회<br><br>※ 출고 후 송장 조회까지는 평일 기준 1일 소요됩니다. <br><br>※ 해외에서 이미 출고된 상품의 취소는 불가하니 신중한 구매 부탁드립니다.<br><br>■ 택배 운송장 조회<br><a href='https://service.epost.go.kr/iservice/usr/trace/usrtrc001k01.jsp', target='_blank'>우체국택배 배송조회 바로가기</a><br><br>키워드+ 관련 링크도 같이 제공됩니다.";
 		var howToPaymentText = "주문서 작성 후 결제 항목에서 선택이 가능합니다.</span></li><li class = 'chat_answertxt'><br><br>■ 일반 결제 신용카드, 가상계좌, 계좌이체, Apple pay, 휴대폰결제, 토스 페이,<br> 카카오 페이, 네이버 페이, 페이코 결제가 있습니다.<br><br><a href='bucket.html' target='_blank'>결제하러가기</a><br><br>키워드+ 관련 링크도 같이 제공됩니다.";
-		var howToUsedGoodsText = "■ 중고거래 상품등록</span></li><li class = 'chat_answertxt'><br><br>마이페이지 > 주문/배송조회 > 구매확정하기 > 중고거래하기 <br><br>※ 중고거래 상품은 자사에서 구매한 제품만 등록이 가능합니다.<br><br><a href='product_regi.html', target='_blank'>중고거래 바로가기</a><br><br>키워드+ 관련 링크도 같이 제공됩니다.";
+		var howToUsedGoodsText = "■ 중고거래 상품등록</span></li><li class = 'chat_answertxt'><br><br>마이페이지 > 주문/배송조회 > 구매확정하기 > 중고거래하기 <br><br>※ 중고거래 상품은 자사에서 구매한 제품만 등록이 가능합니다.<br><br><a href='OrderList.jsp', target='_blank'>중고거래 바로가기</a><br><br>키워드+ 관련 링크도 같이 제공됩니다.";
 		var textFail = "죄송합니다 내용을 이해하지 못했어요.</span></li>";	  
 		var emptyText = "</span></li>"
 		
