@@ -227,19 +227,34 @@
 						<% int num = 1; %>
 						<ul class="cart fa ae"> 
 						<li class="fc ac">
-						<span><a href="AmountCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>&amount=<%=num%>">장바구니&nbsp;</span>
-							<img src="img/bucket.png" class="bk1">
-							<img src="img/w_bucket.png" class="bk2">
-						</a>
+					   <%if(loginUser != null){%>
+			               <span><a href="AmountCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>&amount=<%=num%>">장바구니&nbsp;</span>
+			                  <img src="img/bucket.png" class="bk1">
+			                  <img src="img/w_bucket.png" class="bk2">
+			               </a>
+	               	  <%}else{%>
+		                 <span><a href="LoginCheck.jsp">장바구니&nbsp;</span>
+		                  <img src="img/bucket.png" class="bk1">
+		                  <img src="img/w_bucket.png" class="bk2">
+		               </a>
+	               	 <%}%>
 						</li>
 					
 						<li class="fc ac">
-							<span><a href="WishListCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>">찜하기&nbsp; </span>
-							<img src="img/heart.png" class="heart heart1">
-							<img src="img/w_heart.png" class="heart heart2">
-							</a>
+							<%if(loginUser != null){%>
+			                  <span><a href="WishListCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>">찜하기&nbsp; </span>
+			                  <img src="img/heart.png" class="heart heart1">
+			                  <img src="img/w_heart.png" class="heart heart2">
+			                  </a>
+                  		<%}else{%>
+			                  <span><a href="LoginCheck.jsp">찜하기&nbsp; </span>
+			                  <img src="img/heart.png" class="heart heart1">
+			                  <img src="img/w_heart.png" class="heart heart2">
+			                  </a>
+		                <%}%>
 						</li>
-						</ul>
+						
+					</ul>
 					</ul>
 				</div>
 				<%} %>

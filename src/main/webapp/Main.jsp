@@ -60,7 +60,7 @@
      if(loginUser!=null) {
     	 
  			// 추천상품 URL에 로그인한 유저 id보내기
-			String urlString = "http://218.157.24.37:9804/send/" + loginUser.getU_id();
+			String urlString = "http://218.157.24.37:9806/send/" + loginUser.getU_id();
 			System.out.println(urlString);
 			URL url = new URL(urlString);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -246,17 +246,31 @@
                <% int num = 1; %>
                <ul class="cart fa ae"> 
                <li class="fc ac">
-               <span><a href="AmountCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>&amount=<%=num%>">장바구니&nbsp;</span>
+               <%if(loginUser != null){%>
+	               <span><a href="AmountCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>&amount=<%=num%>">장바구니&nbsp;</span>
+	                  <img src="img/bucket.png" class="bk1">
+	                  <img src="img/w_bucket.png" class="bk2">
+	               </a>
+               <%} else{%>
+                 <span><a href="LoginCheck.jsp">장바구니&nbsp;</span>
                   <img src="img/bucket.png" class="bk1">
                   <img src="img/w_bucket.png" class="bk2">
                </a>
+               <%}%>
                </li>
             
                <li class="fc ac">
+                <%if(loginUser != null){%>
                   <span><a href="WishListCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>">찜하기&nbsp; </span>
                   <img src="img/heart.png" class="heart heart1">
                   <img src="img/w_heart.png" class="heart heart2">
                   </a>
+                <%} else{%>
+                  <span><a href="LoginCheck.jsp">찜하기&nbsp; </span>
+                  <img src="img/heart.png" class="heart heart1">
+                  <img src="img/w_heart.png" class="heart heart2">
+                  </a>
+                 <%}%>
                </li>
                
             </ul>
@@ -267,10 +281,8 @@
          <!-- pro end -->
          </div>
 
-<!----------------------------------------------------------tlqkf  -->
-
 	<!--추천상품-->
-	<%if(ProdNum.length>0){%>
+	<%if(!ProdNum[0].equals("[]")){%>
          <div class="category_wrap f ac">
             <ul class="category fc ac">
                <li><%=loginUser.getU_name()%>님을 위한 추천 상품</li>
@@ -323,21 +335,33 @@
 	               <% int num = 1; %>
 	               <ul class="cart fa ae"> 
 	               <li class="fc ac">
-	               <span><a href="AmountCheckCon?prod_num=<%=Rvo.getProd_num()%>&amount=<%=num%>">장바구니&nbsp;</span>
+	               <%if(loginUser != null){%>
+		               <span><a href="AmountCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>&amount=<%=num%>">장바구니&nbsp;</span>
+		                  <img src="img/bucket.png" class="bk1">
+		                  <img src="img/w_bucket.png" class="bk2">
+		               </a>
+               	  <%} else{%>
+	                 <span><a href="LoginCheck.jsp">장바구니&nbsp;</span>
 	                  <img src="img/bucket.png" class="bk1">
 	                  <img src="img/w_bucket.png" class="bk2">
 	               </a>
+               <%}%>
 	               </li>
 	            
 	               <li class="fc ac">
-	                  <span><a href="WishListCheckCon?prod_num=<%=Rvo.getProd_num()%>">찜하기&nbsp; </span>
+	              <%if(loginUser != null){%>
+	                  <span><a href="WishListCheckCon?prod_num=<%=Pvo.get(i).getProd_num()%>">찜하기&nbsp; </span>
 	                  <img src="img/heart.png" class="heart heart1">
 	                  <img src="img/w_heart.png" class="heart heart2">
 	                  </a>
+                  <%}else{%>
+	                  <span><a href="LoginCheck.jsp">찜하기&nbsp; </span>
+	                  <img src="img/heart.png" class="heart heart1">
+	                  <img src="img/w_heart.png" class="heart heart2">
+	                  </a>
+                 <%}%>
 	               </li>
-	               
 	            </ul>
-	            
 	            </ul>
 	         </div>
 	      <%}%>
